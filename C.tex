@@ -1,0 +1,1767 @@
+\documentclass[11pt]{article}
+
+\usepackage{fontspec, xunicode, xltxtra}
+\setmainfont{Microsoft YaHei}
+\usepackage{ctex}
+
+    \usepackage[breakable]{tcolorbox}
+    \usepackage{parskip} % Stop auto-indenting (to mimic markdown behaviour)
+    
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % Keep aspect ratio if custom image width or height is specified
+    \setkeys{Gin}{keepaspectratio}
+    % Maintain compatibility with old templates. Remove in nbconvert 6.0
+    \let\Oldincludegraphics\includegraphics
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionFormat{nocaption}{}
+    \captionsetup{format=nocaption,aboveskip=0pt,belowskip=0pt}
+
+    \usepackage{float}
+    \floatplacement{figure}{H} % forces figures to be placed at the correct location
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+
+    \usepackage{iftex}
+    \ifPDFTeX
+        \usepackage[T1]{fontenc}
+        \IfFileExists{alphabeta.sty}{
+              \usepackage{alphabeta}
+          }{
+              \usepackage[mathletters]{ucs}
+              \usepackage[utf8x]{inputenc}
+          }
+    \else
+        \usepackage{fontspec}
+        \usepackage{unicode-math}
+    \fi
+
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics
+                         % to support a larger range
+    \makeatletter % fix for old versions of grffile with XeLaTeX
+    \@ifpackagelater{grffile}{2019/11/01}
+    {
+      % Do nothing on new versions
+    }
+    {
+      \def\Gread@@xetex#1{%
+        \IfFileExists{"\Gin@base".bb}%
+        {\Gread@eps{\Gin@base.bb}}%
+        {\Gread@@xetex@aux#1}%
+      }
+    }
+    \makeatother
+    \usepackage[Export]{adjustbox} % Used to constrain images to a maximum size
+    \adjustboxset{max size={0.9\linewidth}{0.9\paperheight}}
+
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    % The default LaTeX title has an obnoxious amount of whitespace. By default,
+    % titling removes some of it. It also provides customization options.
+    \usepackage{titling}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage{array}     % table support for pandoc >= 2.11.3
+    \usepackage{calc}      % table minipage width calculation for pandoc >= 2.11.1
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    \usepackage{soul}      % strikethrough (\st) support for pandoc >= 3.0.0
+    \usepackage{mathrsfs}
+    
+
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+    \definecolor{ansi-default-inverse-fg}{HTML}{FFFFFF}
+    \definecolor{ansi-default-inverse-bg}{HTML}{000000}
+
+    % common color for the border for error outputs.
+    \definecolor{outerrorbackground}{HTML}{FFDFDF}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+
+
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatibility definitions
+    \def\gt{>}
+    \def\lt{<}
+    \let\Oldtex\TeX
+    \let\Oldlatex\LaTeX
+    \renewcommand{\TeX}{\textrm{\Oldtex}}
+    \renewcommand{\LaTeX}{\textrm{\Oldlatex}}
+    % Document parameters
+    % Document title
+    \title{C}
+    
+    
+    
+    
+    
+    
+    
+% Pygments definitions
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\@namedef{PY@tok@w}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\@namedef{PY@tok@c}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@cp}{\def\PY@tc##1{\textcolor[rgb]{0.61,0.40,0.00}{##1}}}
+\@namedef{PY@tok@k}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kp}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kt}{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\@namedef{PY@tok@o}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@ow}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\@namedef{PY@tok@nb}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@nf}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\@namedef{PY@tok@nc}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\@namedef{PY@tok@nn}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\@namedef{PY@tok@ne}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.80,0.25,0.22}{##1}}}
+\@namedef{PY@tok@nv}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@no}{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\@namedef{PY@tok@nl}{\def\PY@tc##1{\textcolor[rgb]{0.46,0.46,0.00}{##1}}}
+\@namedef{PY@tok@ni}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.44,0.44,0.44}{##1}}}
+\@namedef{PY@tok@na}{\def\PY@tc##1{\textcolor[rgb]{0.41,0.47,0.13}{##1}}}
+\@namedef{PY@tok@nt}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@nd}{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\@namedef{PY@tok@s}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@sd}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@si}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.64,0.35,0.47}{##1}}}
+\@namedef{PY@tok@se}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.36,0.12}{##1}}}
+\@namedef{PY@tok@sr}{\def\PY@tc##1{\textcolor[rgb]{0.64,0.35,0.47}{##1}}}
+\@namedef{PY@tok@ss}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@sx}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@m}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@gh}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\@namedef{PY@tok@gu}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\@namedef{PY@tok@gd}{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\@namedef{PY@tok@gi}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.52,0.00}{##1}}}
+\@namedef{PY@tok@gr}{\def\PY@tc##1{\textcolor[rgb]{0.89,0.00,0.00}{##1}}}
+\@namedef{PY@tok@ge}{\let\PY@it=\textit}
+\@namedef{PY@tok@gs}{\let\PY@bf=\textbf}
+\@namedef{PY@tok@ges}{\let\PY@bf=\textbf\let\PY@it=\textit}
+\@namedef{PY@tok@gp}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\@namedef{PY@tok@go}{\def\PY@tc##1{\textcolor[rgb]{0.44,0.44,0.44}{##1}}}
+\@namedef{PY@tok@gt}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\@namedef{PY@tok@err}{\def\PY@bc##1{{\setlength{\fboxsep}{\string -\fboxrule}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}}
+\@namedef{PY@tok@kc}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kd}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kn}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kr}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@bp}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@fm}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\@namedef{PY@tok@vc}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@vg}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@vi}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@vm}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@sa}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@sb}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@sc}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@dl}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@s2}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@sh}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@s1}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@mb}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@mf}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@mh}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@mi}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@il}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@mo}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@ch}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@cm}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@cpf}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@c1}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@cs}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % For linebreaks inside Verbatim environment from package fancyvrb.
+    \makeatletter
+        \newbox\Wrappedcontinuationbox
+        \newbox\Wrappedvisiblespacebox
+        \newcommand*\Wrappedvisiblespace {\textcolor{red}{\textvisiblespace}}
+        \newcommand*\Wrappedcontinuationsymbol {\textcolor{red}{\llap{\tiny$\m@th\hookrightarrow$}}}
+        \newcommand*\Wrappedcontinuationindent {3ex }
+        \newcommand*\Wrappedafterbreak {\kern\Wrappedcontinuationindent\copy\Wrappedcontinuationbox}
+        % Take advantage of the already applied Pygments mark-up to insert
+        % potential linebreaks for TeX processing.
+        %        {, <, #, %, $, ' and ": go to next line.
+        %        _, }, ^, &, >, - and ~: stay at end of broken line.
+        % Use of \textquotesingle for straight quote.
+        \newcommand*\Wrappedbreaksatspecials {%
+            \def\PYGZus{\discretionary{\char`\_}{\Wrappedafterbreak}{\char`\_}}%
+            \def\PYGZob{\discretionary{}{\Wrappedafterbreak\char`\{}{\char`\{}}%
+            \def\PYGZcb{\discretionary{\char`\}}{\Wrappedafterbreak}{\char`\}}}%
+            \def\PYGZca{\discretionary{\char`\^}{\Wrappedafterbreak}{\char`\^}}%
+            \def\PYGZam{\discretionary{\char`\&}{\Wrappedafterbreak}{\char`\&}}%
+            \def\PYGZlt{\discretionary{}{\Wrappedafterbreak\char`\<}{\char`\<}}%
+            \def\PYGZgt{\discretionary{\char`\>}{\Wrappedafterbreak}{\char`\>}}%
+            \def\PYGZsh{\discretionary{}{\Wrappedafterbreak\char`\#}{\char`\#}}%
+            \def\PYGZpc{\discretionary{}{\Wrappedafterbreak\char`\%}{\char`\%}}%
+            \def\PYGZdl{\discretionary{}{\Wrappedafterbreak\char`\$}{\char`\$}}%
+            \def\PYGZhy{\discretionary{\char`\-}{\Wrappedafterbreak}{\char`\-}}%
+            \def\PYGZsq{\discretionary{}{\Wrappedafterbreak\textquotesingle}{\textquotesingle}}%
+            \def\PYGZdq{\discretionary{}{\Wrappedafterbreak\char`\"}{\char`\"}}%
+            \def\PYGZti{\discretionary{\char`\~}{\Wrappedafterbreak}{\char`\~}}%
+        }
+        % Some characters . , ; ? ! / are not pygmentized.
+        % This macro makes them "active" and they will insert potential linebreaks
+        \newcommand*\Wrappedbreaksatpunct {%
+            \lccode`\~`\.\lowercase{\def~}{\discretionary{\hbox{\char`\.}}{\Wrappedafterbreak}{\hbox{\char`\.}}}%
+            \lccode`\~`\,\lowercase{\def~}{\discretionary{\hbox{\char`\,}}{\Wrappedafterbreak}{\hbox{\char`\,}}}%
+            \lccode`\~`\;\lowercase{\def~}{\discretionary{\hbox{\char`\;}}{\Wrappedafterbreak}{\hbox{\char`\;}}}%
+            \lccode`\~`\:\lowercase{\def~}{\discretionary{\hbox{\char`\:}}{\Wrappedafterbreak}{\hbox{\char`\:}}}%
+            \lccode`\~`\?\lowercase{\def~}{\discretionary{\hbox{\char`\?}}{\Wrappedafterbreak}{\hbox{\char`\?}}}%
+            \lccode`\~`\!\lowercase{\def~}{\discretionary{\hbox{\char`\!}}{\Wrappedafterbreak}{\hbox{\char`\!}}}%
+            \lccode`\~`\/\lowercase{\def~}{\discretionary{\hbox{\char`\/}}{\Wrappedafterbreak}{\hbox{\char`\/}}}%
+            \catcode`\.\active
+            \catcode`\,\active
+            \catcode`\;\active
+            \catcode`\:\active
+            \catcode`\?\active
+            \catcode`\!\active
+            \catcode`\/\active
+            \lccode`\~`\~
+        }
+    \makeatother
+
+    \let\OriginalVerbatim=\Verbatim
+    \makeatletter
+    \renewcommand{\Verbatim}[1][1]{%
+        %\parskip\z@skip
+        \sbox\Wrappedcontinuationbox {\Wrappedcontinuationsymbol}%
+        \sbox\Wrappedvisiblespacebox {\FV@SetupFont\Wrappedvisiblespace}%
+        \def\FancyVerbFormatLine ##1{\hsize\linewidth
+            \vtop{\raggedright\hyphenpenalty\z@\exhyphenpenalty\z@
+                \doublehyphendemerits\z@\finalhyphendemerits\z@
+                \strut ##1\strut}%
+        }%
+        % If the linebreak is at a space, the latter will be displayed as visible
+        % space at end of first line, and a continuation symbol starts next line.
+        % Stretch/shrink are however usually zero for typewriter font.
+        \def\FV@Space {%
+            \nobreak\hskip\z@ plus\fontdimen3\font minus\fontdimen4\font
+            \discretionary{\copy\Wrappedvisiblespacebox}{\Wrappedafterbreak}
+            {\kern\fontdimen2\font}%
+        }%
+
+        % Allow breaks at special characters using \PYG... macros.
+        \Wrappedbreaksatspecials
+        % Breaks at punctuation characters . , ; ? ! and / need catcode=\active
+        \OriginalVerbatim[#1,codes*=\Wrappedbreaksatpunct]%
+    }
+    \makeatother
+
+    % Exact colors from NB
+    \definecolor{incolor}{HTML}{303F9F}
+    \definecolor{outcolor}{HTML}{D84315}
+    \definecolor{cellborder}{HTML}{CFCFCF}
+    \definecolor{cellbackground}{HTML}{F7F7F7}
+
+    % prompt
+    \makeatletter
+    \newcommand{\boxspacing}{\kern\kvtcb@left@rule\kern\kvtcb@boxsep}
+    \makeatother
+    \newcommand{\prompt}[4]{
+        {\ttfamily\llap{{\color{#2}[#3]:\hspace{3pt}#4}}\vspace{-\baselineskip}}
+    }
+    
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+\begin{document}
+    
+    \maketitle
+    
+    
+
+    
+    \section{导入数据}\label{ux5bfcux5165ux6570ux636e}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{1}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} 导入相关package}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{geopandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{gpd}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{plt}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{chardet}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{2}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} 定义一个函数，自动检测文件编码并读取文件}
+\PY{k}{def}\PY{+w}{ }\PY{n+nf}{read\PYZus{}csv\PYZus{}with\PYZus{}detected\PYZus{}encoding}\PY{p}{(}\PY{n}{file\PYZus{}path}\PY{p}{)}\PY{p}{:}
+    \PY{c+c1}{\PYZsh{} 检测文件编码}
+    \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{n}{file\PYZus{}path}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rb}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{f}\PY{p}{:}
+        \PY{n}{result} \PY{o}{=} \PY{n}{chardet}\PY{o}{.}\PY{n}{detect}\PY{p}{(}\PY{n}{f}\PY{o}{.}\PY{n}{read}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+        \PY{n}{encoding} \PY{o}{=} \PY{n}{result}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{encoding}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{检测到文件 }\PY{l+s+si}{\PYZob{}}\PY{n}{file\PYZus{}path}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{ 的编码格式为：}\PY{l+s+si}{\PYZob{}}\PY{n}{encoding}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{c+c1}{\PYZsh{} 使用检测到的编码读取文件}
+    \PY{k}{return} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{n}{file\PYZus{}path}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{n}{encoding}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 读取 data\PYZus{}dictionary.csv 文件}
+\PY{n}{csv\PYZus{}content} \PY{o}{=} \PY{n}{read\PYZus{}csv\PYZus{}with\PYZus{}detected\PYZus{}encoding}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2025\PYZus{}Problem\PYZus{}C\PYZus{}Data}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{data\PYZus{}dictionary.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{data\PYZus{}dictionary.csv 数据预览：}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{csv\PYZus{}content}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 读取 summerOly\PYZus{}medal\PYZus{}counts.csv 文件}
+\PY{n}{medal\PYZus{}counts} \PY{o}{=} \PY{n}{read\PYZus{}csv\PYZus{}with\PYZus{}detected\PYZus{}encoding}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2025\PYZus{}Problem\PYZus{}C\PYZus{}Data}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{summerOly\PYZus{}medal\PYZus{}counts.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{summerOly\PYZus{}medal\PYZus{}counts.csv 数据预览：}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{medal\PYZus{}counts}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 读取 summerOly\PYZus{}hosts.csv 文件}
+\PY{n}{olympic\PYZus{}hosts} \PY{o}{=} \PY{n}{read\PYZus{}csv\PYZus{}with\PYZus{}detected\PYZus{}encoding}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2025\PYZus{}Problem\PYZus{}C\PYZus{}Data}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{summerOly\PYZus{}hosts.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{summerOly\PYZus{}hosts.csv 数据预览：}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{olympic\PYZus{}hosts}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 读取 summerOly\PYZus{}programs.csv 文件}
+\PY{n}{olympic\PYZus{}programs} \PY{o}{=} \PY{n}{read\PYZus{}csv\PYZus{}with\PYZus{}detected\PYZus{}encoding}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2025\PYZus{}Problem\PYZus{}C\PYZus{}Data}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{summerOly\PYZus{}programs.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{summerOly\PYZus{}programs.csv 数据预览：}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{olympic\PYZus{}programs}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 读取 summerOly\PYZus{}athletes.csv 文件}
+\PY{n}{olympic\PYZus{}athletes} \PY{o}{=} \PY{n}{read\PYZus{}csv\PYZus{}with\PYZus{}detected\PYZus{}encoding}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2025\PYZus{}Problem\PYZus{}C\PYZus{}Data}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{summerOly\PYZus{}athletes.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{summerOly\PYZus{}athletes.csv 数据预览：}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{olympic\PYZus{}athletes}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+检测到文件 2025\_Problem\_C\_Data\textbackslash{}data\_dictionary.csv 的编码格式为：Windows-1252
+data\_dictionary.csv 数据预览：
+  summerOly\_medal\_counts.csv                                     Unnamed: 1  \textbackslash{}
+0                  variables                                    explanation
+1                       Rank      Rank of country based on total medals won
+2                        NOC  Name of country as recorded for that Olympics
+3                       Gold       Number of Gold medals the country earned
+4                     Silver     Number of Silver medals the country earned
+
+      Unnamed: 2
+0        example
+1           1, 2
+2  China, France
+3        0, 1, 2
+4        0, 1, 2
+检测到文件 2025\_Problem\_C\_Data\textbackslash{}summerOly\_medal\_counts.csv 的编码格式为：utf-8
+
+summerOly\_medal\_counts.csv 数据预览：
+   Rank            NOC  Gold  Silver  Bronze  Total  Year
+0     1  United States    11       7       2     20  1896
+1     2         Greece    10      18      19     47  1896
+2     3        Germany     6       5       2     13  1896
+3     4         France     5       4       2     11  1896
+4     5  Great Britain     2       3       2      7  1896
+检测到文件 2025\_Problem\_C\_Data\textbackslash{}summerOly\_hosts.csv 的编码格式为：UTF-8-SIG
+
+summerOly\_hosts.csv 数据预览：
+   Year                       Host
+0  1896             Athens, Greece
+1  1900              Paris, France
+2  1904   St. Louis, United States
+3  1908     London, United Kingdom
+4  1912          Stockholm, Sweden
+检测到文件 2025\_Problem\_C\_Data\textbackslash{}summerOly\_programs.csv 的编码格式为：Windows-1252
+
+summerOly\_programs.csv 数据预览：
+      Sport         Discipline Code Sports Governing Body 1896 1900 1904  \textbackslash{}
+0  Aquatics  Artistic Swimming  SWA        World Aquatics    0    0    0
+1  Aquatics             Diving  DIV        World Aquatics    0    0    2
+2  Aquatics  Marathon Swimming  OWS        World Aquatics    0    0    0
+3  Aquatics           Swimming  SWM        World Aquatics    4    7    9
+4  Aquatics         Water Polo  WPO        World Aquatics    0    1    1
+
+   1906*  1908 1912  {\ldots}  1988 1992  1996  2000  2004  2008  2012  2016  2020  \textbackslash{}
+0      0     0    0  {\ldots}     2    2   1.0   2.0   2.0   2.0   2.0   2.0   2.0
+1      1     2    4  {\ldots}     4    4   4.0   8.0   8.0   8.0   8.0   8.0   8.0
+2      0     0    0  {\ldots}     0    0   0.0   0.0   0.0   2.0   2.0   2.0   2.0
+3      4     6    9  {\ldots}    31   31  32.0  32.0  32.0  32.0  32.0  32.0  35.0
+4      0     1    1  {\ldots}     1    1   1.0   2.0   2.0   2.0   2.0   2.0   2.0
+
+   2024
+0   2.0
+1   8.0
+2   2.0
+3  35.0
+4   2.0
+
+[5 rows x 35 columns]
+检测到文件 2025\_Problem\_C\_Data\textbackslash{}summerOly\_athletes.csv 的编码格式为：utf-8
+
+summerOly\_athletes.csv 数据预览：
+                    Name Sex            Team  NOC  Year         City  \textbackslash{}
+0              A Dijiang   M           China  CHN  1992    Barcelona
+1               A Lamusi   M           China  CHN  2012       London
+2            Gunnar Aaby   M         Denmark  DEN  1920    Antwerpen
+3            Edgar Aabye   M  Denmark/Sweden  DEN  1900        Paris
+4  Cornelia (-strannood)   F     Netherlands  NED  1932  Los Angeles
+
+        Sport                         Event     Medal
+0  Basketball   Basketball Men's Basketball  No medal
+1        Judo  Judo Men's Extra-Lightweight  No medal
+2    Football       Football Men's Football  No medal
+3  Tug-Of-War   Tug-Of-War Men's Tug-Of-War      Gold
+4   Athletics  Athletics Women's 100 metres  No medal
+    \end{Verbatim}
+
+    \section{数据清洗}\label{ux6570ux636eux6e05ux6d17}
+
+    \subsubsection{缺失值检查}\label{ux7f3aux5931ux503cux68c0ux67e5}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{3}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} 1. 缺失值检查}
+\PY{k}{def}\PY{+w}{ }\PY{n+nf}{check\PYZus{}missing\PYZus{}values}\PY{p}{(}\PY{n}{file\PYZus{}path}\PY{p}{)}\PY{p}{:}
+\PY{+w}{    }\PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+\PY{l+s+sd}{    检查 CSV 文件中的缺失值。}
+
+\PY{l+s+sd}{    参数:}
+\PY{l+s+sd}{        file\PYZus{}path (str): CSV 文件的路径。}
+
+\PY{l+s+sd}{    返回:}
+\PY{l+s+sd}{        None，但会打印缺失值的相关信息。}
+\PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+    \PY{k}{try}\PY{p}{:}
+        \PY{c+c1}{\PYZsh{} 尝试读取 CSV 文件}
+        \PY{n}{data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{n}{file\PYZus{}path}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \PY{k}{except} \PY{n+ne}{UnicodeDecodeError}\PY{p}{:}
+        \PY{n}{data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{n}{file\PYZus{}path}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ISO\PYZhy{}8859\PYZhy{}1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+    \PY{n+nb}{print}\PY{p}{(}\PY{n}{file\PYZus{}path}\PY{p}{)}
+
+    \PY{c+c1}{\PYZsh{} 检查每列的缺失值数量}
+    \PY{n}{missing\PYZus{}values\PYZus{}per\PYZus{}column} \PY{o}{=} \PY{n}{data}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{每列的缺失值数量：}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{n+nb}{print}\PY{p}{(}\PY{n}{missing\PYZus{}values\PYZus{}per\PYZus{}column}\PY{p}{)}
+
+    \PY{c+c1}{\PYZsh{} 检查整个数据框的总缺失值数量}
+    \PY{n}{total\PYZus{}missing\PYZus{}values} \PY{o}{=} \PY{n}{missing\PYZus{}values\PYZus{}per\PYZus{}column}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{整个数据框的总缺失值数量：}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{total\PYZus{}missing\PYZus{}values}\PY{p}{)}
+
+    \PY{c+c1}{\PYZsh{} 检查是否有任何缺失值}
+    \PY{n}{has\PYZus{}missing\PYZus{}values} \PY{o}{=} \PY{n}{data}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{values}\PY{o}{.}\PY{n}{any}\PY{p}{(}\PY{p}{)}
+    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{数据框中是否存在缺失值：}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{has\PYZus{}missing\PYZus{}values}\PY{p}{)}
+    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+
+    \PY{c+c1}{\PYZsh{} 如果有缺失值，输出包含缺失值的行}
+    \PY{k}{if} \PY{n}{has\PYZus{}missing\PYZus{}values}\PY{p}{:}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{包含缺失值的行：}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{data}\PY{p}{[}\PY{n}{data}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{any}\PY{p}{(}\PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+    
+\PY{n}{content\PYZus{}name} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2025\PYZus{}Problem\PYZus{}C\PYZus{}Data}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{summerOly\PYZus{}medal\PYZus{}counts.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2025\PYZus{}Problem\PYZus{}C\PYZus{}Data}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{summerOly\PYZus{}hosts.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2025\PYZus{}Problem\PYZus{}C\PYZus{}Data}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{summerOly\PYZus{}programs.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2025\PYZus{}Problem\PYZus{}C\PYZus{}Data}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{summerOly\PYZus{}athletes.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{content\PYZus{}name}\PY{p}{:}
+    \PY{n}{check\PYZus{}missing\PYZus{}values}\PY{p}{(}\PY{n}{i}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+2025\_Problem\_C\_Data\textbackslash{}summerOly\_medal\_counts.csv
+每列的缺失值数量：
+Rank      0
+NOC       0
+Gold      0
+Silver    0
+Bronze    0
+Total     0
+Year      0
+dtype: int64
+整个数据框的总缺失值数量： 0
+数据框中是否存在缺失值： False
+
+
+2025\_Problem\_C\_Data\textbackslash{}summerOly\_hosts.csv
+每列的缺失值数量：
+Year    0
+Host    0
+dtype: int64
+整个数据框的总缺失值数量： 0
+数据框中是否存在缺失值： False
+
+
+2025\_Problem\_C\_Data\textbackslash{}summerOly\_programs.csv
+每列的缺失值数量：
+Sport                    0
+Discipline               2
+Code                     0
+Sports Governing Body    0
+1896                     0
+1900                     0
+1904                     0
+1906*                    0
+1908                     0
+1912                     0
+1920                     0
+1924                     0
+1928                     2
+1932                     2
+1936                     2
+1948                     2
+1952                     2
+1956                     2
+1960                     2
+1964                     2
+1968                     2
+1972                     2
+1976                     2
+1980                     2
+1984                     2
+1988                     3
+1992                     2
+1996                     2
+2000                     2
+2004                     2
+2008                     2
+2012                     2
+2016                     2
+2020                     2
+2024                     2
+dtype: int64
+整个数据框的总缺失值数量： 49
+数据框中是否存在缺失值： True
+
+
+
+包含缺失值的行：
+                Sport     Discipline Code Sports Governing Body 1896 1900  \textbackslash{}
+12      Basque Pelota  Basque Pelota  PEL                  FIPV    0    1
+44  Modern Pentathlon            NaN  MPN                  UIPM    0    0
+65  Water Motorsports            NaN  PBT                   UIM    0    
+69            Skating         Figure  FSK                   ISU    0    0
+70         Ice Hockey     Ice Hockey  IHO                  IIHF    0    0
+
+   1904  1906*  1908 1912  {\ldots}  1988 1992 1996 2000 2004 2008  2012 2016  \textbackslash{}
+12    0      0     0    0  {\ldots}   NaN      0.0  0.0  0.0  0.0   0.0  0.0
+44    0      0     0    1  {\ldots}     2    2  1.0  2.0  2.0  2.0   2.0  2.0
+65    0      0     3    0  {\ldots}     0    0  0.0  0.0  0.0  0.0   0.0  0.0
+69    0      0     4    0  {\ldots}   NaN  NaN  NaN  NaN  NaN  NaN   NaN  NaN
+70    0      0     0    0  {\ldots}   NaN  NaN  NaN  NaN  NaN  NaN   NaN  NaN
+
+    2020 2024
+12   0.0  0.0
+44   2.0  2.0
+65   0.0  0.0
+69   NaN  NaN
+70   NaN  NaN
+
+[5 rows x 35 columns]
+2025\_Problem\_C\_Data\textbackslash{}summerOly\_athletes.csv
+每列的缺失值数量：
+Name     0
+Sex      0
+Team     0
+NOC      0
+Year     0
+City     0
+Sport    0
+Event    0
+Medal    0
+dtype: int64
+整个数据框的总缺失值数量： 0
+数据框中是否存在缺失值： False
+
+
+    \end{Verbatim}
+
+    \subsubsection{补全summerOly\_programs.csv中的缺失值}\label{ux8865ux5168summeroly_programs.csvux4e2dux7684ux7f3aux5931ux503c}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{4}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{numpy}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{np}
+\PY{k+kn}{from}\PY{+w}{ }\PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{ensemble}\PY{+w}{ }\PY{k+kn}{import} \PY{n}{RandomForestRegressor}
+\PY{k+kn}{from}\PY{+w}{ }\PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{linear\PYZus{}model}\PY{+w}{ }\PY{k+kn}{import} \PY{n}{LinearRegression}
+\PY{k+kn}{from}\PY{+w}{ }\PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{neighbors}\PY{+w}{ }\PY{k+kn}{import} \PY{n}{KNeighborsRegressor}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{re}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{os}
+
+\PY{c+c1}{\PYZsh{} 确保保存结果的目录存在}
+\PY{n}{os}\PY{o}{.}\PY{n}{makedirs}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{exist\PYZus{}ok}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+
+\PY{n}{data} \PY{o}{=} \PY{n}{olympic\PYZus{}programs}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 3. 检查缺失值}
+\PY{c+c1}{\PYZsh{}print(\PYZdq{}每列的缺失值数量：\PYZdq{})}
+\PY{c+c1}{\PYZsh{}print(data.isnull().sum())}
+
+\PY{c+c1}{\PYZsh{} 4. 填充 Discipline 列的缺失值}
+\PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Discipline}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Discipline}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 5. 准备年份列的数据}
+\PY{n}{years} \PY{o}{=} \PY{p}{[}\PY{n}{col} \PY{k}{for} \PY{n}{col} \PY{o+ow}{in} \PY{n}{data}\PY{o}{.}\PY{n}{columns} \PY{k}{if} \PY{n}{col}\PY{o}{.}\PY{n}{isdigit}\PY{p}{(}\PY{p}{)} \PY{o+ow}{or} \PY{n}{col}\PY{o}{.}\PY{n}{endswith}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{*}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{]}
+
+\PY{c+c1}{\PYZsh{} 6. 将数据从宽格式转换为长格式}
+\PY{n}{data\PYZus{}long} \PY{o}{=} \PY{n}{data}\PY{o}{.}\PY{n}{melt}\PY{p}{(}\PY{n}{id\PYZus{}vars}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Discipline}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Code}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sports Governing Body}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} 
+                      \PY{n}{value\PYZus{}vars}\PY{o}{=}\PY{n}{years}\PY{p}{,} 
+                      \PY{n}{var\PYZus{}name}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
+                      \PY{n}{value\PYZus{}name}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Events}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 7. 将年份列转换为数值}
+\PY{n}{data\PYZus{}long}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{data\PYZus{}long}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{str}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{*}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n+nb}{int}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 8. 清理 Events 列中的非数值字符}
+\PY{k}{def}\PY{+w}{ }\PY{n+nf}{clean\PYZus{}events}\PY{p}{(}\PY{n}{value}\PY{p}{)}\PY{p}{:}
+    \PY{k}{if} \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{value}\PY{p}{,} \PY{n+nb}{str}\PY{p}{)}\PY{p}{:}
+        \PY{c+c1}{\PYZsh{} 移除非数值字符}
+        \PY{n}{cleaned\PYZus{}value} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{sub}\PY{p}{(}\PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{[\PYZca{}0\PYZhy{}9]}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{value}\PY{p}{)}
+        \PY{k}{return} \PY{n+nb}{float}\PY{p}{(}\PY{n}{cleaned\PYZus{}value}\PY{p}{)} \PY{k}{if} \PY{n}{cleaned\PYZus{}value}\PY{o}{.}\PY{n}{isdigit}\PY{p}{(}\PY{p}{)} \PY{k}{else} \PY{n}{np}\PY{o}{.}\PY{n}{nan}
+    \PY{k}{return} \PY{n}{value}
+
+\PY{n}{data\PYZus{}long}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Events}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{data\PYZus{}long}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Events}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{n}{clean\PYZus{}events}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 9. 将1924年以及之后的 Skating 和 Ice Hockey 项目的赛事数目填为0}
+\PY{n}{mask} \PY{o}{=} \PY{p}{(}\PY{n}{data\PYZus{}long}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{1924}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{data\PYZus{}long}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{isin}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Skating}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Ice Hockey}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\PY{n}{data\PYZus{}long}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{mask}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Events}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{0}
+
+\PY{c+c1}{\PYZsh{} 10. 分组处理，按运动种类单独训练模型}
+\PY{k}{for} \PY{n}{sport}\PY{p}{,} \PY{n}{group} \PY{o+ow}{in} \PY{n}{data\PYZus{}long}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{:}
+    \PY{c+c1}{\PYZsh{} 分离已知数据和缺失数据}
+    \PY{n}{known\PYZus{}data} \PY{o}{=} \PY{n}{group}\PY{o}{.}\PY{n}{dropna}\PY{p}{(}\PY{n}{subset}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Events}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+    \PY{n}{missing\PYZus{}data} \PY{o}{=} \PY{n}{group}\PY{p}{[}\PY{n}{group}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Events}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{isna}\PY{p}{(}\PY{p}{)}\PY{p}{]}
+    
+    \PY{k}{if} \PY{o+ow}{not} \PY{n}{known\PYZus{}data}\PY{o}{.}\PY{n}{empty} \PY{o+ow}{and} \PY{o+ow}{not} \PY{n}{missing\PYZus{}data}\PY{o}{.}\PY{n}{empty}\PY{p}{:}
+        \PY{c+c1}{\PYZsh{} 准备训练数据}
+        \PY{n}{X\PYZus{}known} \PY{o}{=} \PY{n}{known\PYZus{}data}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
+        \PY{n}{y\PYZus{}known} \PY{o}{=} \PY{n}{known\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Events}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+        
+        \PY{c+c1}{\PYZsh{} 检查已知数据的数量}
+        \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{y\PYZus{}known}\PY{p}{)} \PY{o}{\PYZlt{}} \PY{l+m+mi}{5}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{警告：运动种类 }\PY{l+s+s2}{\PYZsq{}}\PY{l+s+si}{\PYZob{}}\PY{n}{sport}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{ 的已知数据太少，使用 KNN 或线性回归填充。}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            
+            \PY{c+c1}{\PYZsh{} 尝试使用线性回归}
+            \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{y\PYZus{}known}\PY{p}{)} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{3}\PY{p}{:}  \PY{c+c1}{\PYZsh{} 至少需要3个点来拟合线性回归}
+                \PY{n}{model} \PY{o}{=} \PY{n}{LinearRegression}\PY{p}{(}\PY{p}{)}
+                \PY{n}{model}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X\PYZus{}known}\PY{p}{,} \PY{n}{y\PYZus{}known}\PY{p}{)}
+                \PY{n}{predicted\PYZus{}events} \PY{o}{=} \PY{n}{model}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{missing\PYZus{}data}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+            \PY{k}{else}\PY{p}{:}  \PY{c+c1}{\PYZsh{} 使用 KNN，K=1}
+                \PY{n}{model} \PY{o}{=} \PY{n}{KNeighborsRegressor}\PY{p}{(}\PY{n}{n\PYZus{}neighbors}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+                \PY{n}{model}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X\PYZus{}known}\PY{p}{,} \PY{n}{y\PYZus{}known}\PY{p}{)}
+                \PY{n}{predicted\PYZus{}events} \PY{o}{=} \PY{n}{model}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{missing\PYZus{}data}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+            
+            \PY{c+c1}{\PYZsh{} 将预测值四舍五入为整数}
+            \PY{n}{predicted\PYZus{}events} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{round}\PY{p}{(}\PY{n}{predicted\PYZus{}events}\PY{p}{)}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n+nb}{int}\PY{p}{)}
+            
+            \PY{c+c1}{\PYZsh{} 将预测值转换为 Pandas Series，并确保索引对齐}
+            \PY{n}{predicted\PYZus{}series} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{n}{predicted\PYZus{}events}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n}{missing\PYZus{}data}\PY{o}{.}\PY{n}{index}\PY{p}{)}
+            
+            \PY{c+c1}{\PYZsh{} 填充缺失值}
+            \PY{n}{data\PYZus{}long}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{data\PYZus{}long}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{n}{sport}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Events}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{data\PYZus{}long}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{data\PYZus{}long}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{n}{sport}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Events}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{n}{predicted\PYZus{}series}\PY{p}{)}
+        \PY{k}{else}\PY{p}{:}
+            \PY{c+c1}{\PYZsh{} 训练随机森林模型}
+            \PY{n}{model} \PY{o}{=} \PY{n}{RandomForestRegressor}\PY{p}{(}\PY{n}{n\PYZus{}estimators}\PY{o}{=}\PY{l+m+mi}{100}\PY{p}{,} \PY{n}{random\PYZus{}state}\PY{o}{=}\PY{l+m+mi}{42}\PY{p}{)}
+            \PY{n}{model}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X\PYZus{}known}\PY{p}{,} \PY{n}{y\PYZus{}known}\PY{p}{)}
+            
+            \PY{c+c1}{\PYZsh{} 预测缺失数据}
+            \PY{n}{X\PYZus{}missing} \PY{o}{=} \PY{n}{missing\PYZus{}data}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
+            \PY{n}{predicted\PYZus{}events} \PY{o}{=} \PY{n}{model}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{X\PYZus{}missing}\PY{p}{)}
+            
+            \PY{c+c1}{\PYZsh{} 将预测值四舍五入为整数}
+            \PY{n}{predicted\PYZus{}events} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{round}\PY{p}{(}\PY{n}{predicted\PYZus{}events}\PY{p}{)}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n+nb}{int}\PY{p}{)}
+            
+            \PY{c+c1}{\PYZsh{} 将预测值转换为 Pandas Series，并确保索引对齐}
+            \PY{n}{predicted\PYZus{}series} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{n}{predicted\PYZus{}events}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n}{missing\PYZus{}data}\PY{o}{.}\PY{n}{index}\PY{p}{)}
+            
+            \PY{c+c1}{\PYZsh{} 填充缺失值}
+            \PY{n}{data\PYZus{}long}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{data\PYZus{}long}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{n}{sport}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Events}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{data\PYZus{}long}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{data\PYZus{}long}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{n}{sport}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Events}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{n}{predicted\PYZus{}series}\PY{p}{)}
+            
+            \PY{c+c1}{\PYZsh{} 记录日志}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{运动种类 }\PY{l+s+s2}{\PYZsq{}}\PY{l+s+si}{\PYZob{}}\PY{n}{sport}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{ 的模型训练完成，预测了 }\PY{l+s+si}{\PYZob{}}\PY{n+nb}{len}\PY{p}{(}\PY{n}{predicted\PYZus{}events}\PY{p}{)}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{ 个缺失值。}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{k}{else}\PY{p}{:}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{运动种类 }\PY{l+s+s2}{\PYZsq{}}\PY{l+s+si}{\PYZob{}}\PY{n}{sport}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{ 没有缺失数据或没有足够的已知数据。}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 11. 将数据重新转换为宽格式}
+\PY{n}{data\PYZus{}filled} \PY{o}{=} \PY{n}{data\PYZus{}long}\PY{o}{.}\PY{n}{pivot\PYZus{}table}\PY{p}{(}\PY{n}{index}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Discipline}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Code}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sports Governing Body}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} 
+                                    \PY{n}{columns}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
+                                    \PY{n}{values}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Events}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
+                                    \PY{n}{aggfunc}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{first}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 12. 输出结果}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{填充后的数据：}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{data\PYZus{}filled}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 13. 保存结果到新的 CSV 文件}
+\PY{n}{output\PYZus{}path} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{summerOly\PYZus{}programs\PYZus{}filled.csv}\PY{l+s+s1}{\PYZsq{}}
+\PY{n}{data\PYZus{}filled}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{n}{output\PYZus{}path}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{k+kc}{False}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}  \PY{c+c1}{\PYZsh{} 确保保存时使用正确的编码}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{填充后的数据已保存到 }\PY{l+s+si}{\PYZob{}}\PY{n}{output\PYZus{}path}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+运动种类 'Aquatics' 没有缺失数据或没有足够的已知数据。
+运动种类 'Archery' 没有缺失数据或没有足够的已知数据。
+运动种类 'Athletics' 没有缺失数据或没有足够的已知数据。
+运动种类 'Badminton' 的模型训练完成，预测了 2 个缺失值。
+运动种类 'Baseball and Softball' 的模型训练完成，预测了 8 个缺失值。
+运动种类 'Basketball' 的模型训练完成，预测了 2 个缺失值。
+运动种类 'Basque Pelota' 的模型训练完成，预测了 4 个缺失值。
+运动种类 'Boxing' 没有缺失数据或没有足够的已知数据。
+运动种类 'Breaking' 没有缺失数据或没有足够的已知数据。
+运动种类 'Canoeing' 的模型训练完成，预测了 1 个缺失值。
+运动种类 'Cricket' 没有缺失数据或没有足够的已知数据。
+运动种类 'Croquet' 没有缺失数据或没有足够的已知数据。
+运动种类 'Cycling' 没有缺失数据或没有足够的已知数据。
+运动种类 'Equestrian' 没有缺失数据或没有足够的已知数据。
+运动种类 'Fencing' 没有缺失数据或没有足够的已知数据。
+运动种类 'Field hockey' 没有缺失数据或没有足够的已知数据。
+运动种类 'Flag football' 没有缺失数据或没有足够的已知数据。
+运动种类 'Football' 没有缺失数据或没有足够的已知数据。
+运动种类 'Golf' 没有缺失数据或没有足够的已知数据。
+运动种类 'Gymnastics' 没有缺失数据或没有足够的已知数据。
+运动种类 'Handball' 的模型训练完成，预测了 1 个缺失值。
+运动种类 'Ice Hockey' 没有缺失数据或没有足够的已知数据。
+运动种类 'Jeu de Paume' 没有缺失数据或没有足够的已知数据。
+运动种类 'Judo' 没有缺失数据或没有足够的已知数据。
+运动种类 'Karate' 没有缺失数据或没有足够的已知数据。
+运动种类 'Lacrosse' 的模型训练完成，预测了 3 个缺失值。
+运动种类 'Modern Pentathlon' 没有缺失数据或没有足够的已知数据。
+运动种类 'Polo' 没有缺失数据或没有足够的已知数据。
+运动种类 'Rackets' 没有缺失数据或没有足够的已知数据。
+运动种类 'Roque' 没有缺失数据或没有足够的已知数据。
+运动种类 'Rowing' 没有缺失数据或没有足够的已知数据。
+运动种类 'Rugby' 没有缺失数据或没有足够的已知数据。
+运动种类 'Sailing' 没有缺失数据或没有足够的已知数据。
+运动种类 'Shooting' 没有缺失数据或没有足够的已知数据。
+运动种类 'Skateboarding' 没有缺失数据或没有足够的已知数据。
+运动种类 'Skating' 没有缺失数据或没有足够的已知数据。
+运动种类 'Sport Climbing' 没有缺失数据或没有足够的已知数据。
+运动种类 'Squash' 没有缺失数据或没有足够的已知数据。
+运动种类 'Surfing' 没有缺失数据或没有足够的已知数据。
+运动种类 'Table Tennis' 没有缺失数据或没有足够的已知数据。
+运动种类 'Taekwondo' 的模型训练完成，预测了 2 个缺失值。
+运动种类 'Tennis' 的模型训练完成，预测了 2 个缺失值。
+运动种类 'Total disciplines' 没有缺失数据或没有足够的已知数据。
+运动种类 'Total events' 没有缺失数据或没有足够的已知数据。
+运动种类 'Total sports' 没有缺失数据或没有足够的已知数据。
+运动种类 'Triathlon' 没有缺失数据或没有足够的已知数据。
+运动种类 'Tug of War' 没有缺失数据或没有足够的已知数据。
+运动种类 'Volleyball' 的模型训练完成，预测了 1 个缺失值。
+运动种类 'Water Motorsports' 的模型训练完成，预测了 1 个缺失值。
+运动种类 'Weightlifting' 没有缺失数据或没有足够的已知数据。
+运动种类 'Wrestling' 没有缺失数据或没有足够的已知数据。
+
+填充后的数据：
+Year     Sport         Discipline Code Sports Governing Body  1896  1900  \textbackslash{}
+0     Aquatics  Artistic Swimming  SWA        World Aquatics   0.0   0.0
+1     Aquatics             Diving  DIV        World Aquatics   0.0   0.0
+2     Aquatics  Marathon Swimming  OWS        World Aquatics   0.0   0.0
+3     Aquatics           Swimming  SWM        World Aquatics   4.0   7.0
+4     Aquatics         Water Polo  WPO        World Aquatics   0.0   1.0
+
+Year  1904  1906  1908  1912  {\ldots}  1988  1992  1996  2000  2004  2008  2012  \textbackslash{}
+0      0.0   0.0   0.0   0.0  {\ldots}   2.0   2.0   1.0   2.0   2.0   2.0   2.0
+1      2.0   1.0   2.0   4.0  {\ldots}   4.0   4.0   4.0   8.0   8.0   8.0   8.0
+2      0.0   0.0   0.0   0.0  {\ldots}   0.0   0.0   0.0   0.0   0.0   2.0   2.0
+3      9.0   4.0   6.0   9.0  {\ldots}  31.0  31.0  32.0  32.0  32.0  32.0  32.0
+4      1.0   0.0   1.0   1.0  {\ldots}   1.0   1.0   1.0   2.0   2.0   2.0   2.0
+
+Year  2016  2020  2024
+0      2.0   2.0   2.0
+1      8.0   8.0   8.0
+2      2.0   2.0   2.0
+3     32.0  35.0  35.0
+4      2.0   2.0   2.0
+
+[5 rows x 35 columns]
+填充后的数据已保存到 Generated\textbackslash{}summerOly\_programs\_filled.csv
+    \end{Verbatim}
+
+    \subsubsection{Medal\_counts
+数据清洗}\label{medal_counts-ux6570ux636eux6e05ux6d17}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{5}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} 2. 数据清洗}
+\PY{c+c1}{\PYZsh{} 确保数据的格式正确}
+\PY{n}{data} \PY{o}{=} \PY{n}{medal\PYZus{}counts}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Gold}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Silver}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Bronze}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
+
+\PY{c+c1}{\PYZsh{} 3. 创建年份和国家的索引}
+\PY{n}{years} \PY{o}{=} \PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{p}{)}
+\PY{n}{noc} \PY{o}{=} \PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 4. 定义一个函数来生成表格}
+\PY{k}{def}\PY{+w}{ }\PY{n+nf}{generate\PYZus{}table}\PY{p}{(}\PY{n}{data}\PY{p}{,} \PY{n}{column\PYZus{}name}\PY{p}{)}\PY{p}{:}
+    \PY{c+c1}{\PYZsh{} 创建一个空的 DataFrame，以年份为列，国家为行}
+    \PY{n}{table} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{index}\PY{o}{=}\PY{n}{noc}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{n}{years}\PY{p}{)}
+    
+    \PY{c+c1}{\PYZsh{} 填充数据}
+    \PY{k}{for} \PY{n}{index}\PY{p}{,} \PY{n}{row} \PY{o+ow}{in} \PY{n}{data}\PY{o}{.}\PY{n}{iterrows}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+        \PY{n}{year} \PY{o}{=} \PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+        \PY{n}{country} \PY{o}{=} \PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+        \PY{n}{value} \PY{o}{=} \PY{n}{row}\PY{p}{[}\PY{n}{column\PYZus{}name}\PY{p}{]}
+        \PY{n}{table}\PY{o}{.}\PY{n}{at}\PY{p}{[}\PY{n}{country}\PY{p}{,} \PY{n}{year}\PY{p}{]} \PY{o}{=} \PY{n}{value}
+    
+    \PY{c+c1}{\PYZsh{} 推断数据类型并填充缺失值为0}
+    \PY{n}{table} \PY{o}{=} \PY{n}{table}\PY{o}{.}\PY{n}{infer\PYZus{}objects}\PY{p}{(}\PY{n}{copy}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n+nb}{int}\PY{p}{)}
+    
+    \PY{k}{return} \PY{n}{table}
+
+\PY{c+c1}{\PYZsh{} 5. 生成金牌、银牌、铜牌和总数的表格}
+\PY{n}{gold\PYZus{}table} \PY{o}{=} \PY{n}{generate\PYZus{}table}\PY{p}{(}\PY{n}{data}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Gold}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{silver\PYZus{}table} \PY{o}{=} \PY{n}{generate\PYZus{}table}\PY{p}{(}\PY{n}{data}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Silver}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{bronze\PYZus{}table} \PY{o}{=} \PY{n}{generate\PYZus{}table}\PY{p}{(}\PY{n}{data}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Bronze}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{total\PYZus{}table} \PY{o}{=} \PY{n}{generate\PYZus{}table}\PY{p}{(}\PY{n}{data}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 6. 保存到新的 CSV 文件}
+\PY{n}{gold\PYZus{}table}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{summerOly\PYZus{}gold\PYZus{}summary.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{silver\PYZus{}table}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{summerOly\PYZus{}silver\PYZus{}summary.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{bronze\PYZus{}table}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{summerOly\PYZus{}bronze\PYZus{}summary.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{total\PYZus{}table}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{summerOly\PYZus{}total\PYZus{}summary.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{6}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} 7. 输出结果}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{金牌表格：}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{gold\PYZus{}table}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+金牌表格：
+                      1896  1900  1904  1908  1912  1920  1924  1928  1932  \textbackslash{}
+United States           11    19    76    23    26    41    45    22     0
+Greece                  10     0     1     0     1     0     0     0     0
+Germany                  6     4     4     3     5     0     0    10     0
+France                   5    27     0     5     7     9    13     6     0
+Great Britain            2    15     1    56    10    14     9     3     0
+{\ldots}                    {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}
+Saint Lucia              0     0     0     0     0     0     0     0     0
+Dominica                 0     0     0     0     0     0     0     0     0
+Albania                  0     0     0     0     0     0     0     0     0
+Cabo Verde               0     0     0     0     0     0     0     0     0
+Refugee Olympic Team     0     0     0     0     0     0     0     0     0
+
+                      1936  {\ldots}  1988  1992  1996  2000  2004  2008  2012  \textbackslash{}
+United States           24  {\ldots}    36    37    44    37    36    36    48
+Greece                   0  {\ldots}     0     2     4     4     6     0     0
+Germany                 38  {\ldots}     0    33    20    13    13    16    11
+France                   7  {\ldots}     6     8    15    13    11     7    11
+Great Britain            4  {\ldots}     5     5     1    11     9    19    29
+{\ldots}                    {\ldots}  {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}
+Saint Lucia              0  {\ldots}     0     0     0     0     0     0     0
+Dominica                 0  {\ldots}     0     0     0     0     0     0     0
+Albania                  0  {\ldots}     0     0     0     0     0     0     0
+Cabo Verde               0  {\ldots}     0     0     0     0     0     0     0
+Refugee Olympic Team     0  {\ldots}     0     0     0     0     0     0     0
+
+                      2016  2020  2024
+United States           46    39    40
+Greece                   3     2     1
+Germany                 17    10    12
+France                  10    10    16
+Great Britain           27    22    14
+{\ldots}                    {\ldots}   {\ldots}   {\ldots}
+Saint Lucia              0     0     1
+Dominica                 0     0     1
+Albania                  0     0     0
+Cabo Verde               0     0     0
+Refugee Olympic Team     0     0     0
+
+[210 rows x 30 columns]
+    \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{7}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{银牌表格：}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{silver\PYZus{}table}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+银牌表格：
+                      1896  1900  1904  1908  1912  1920  1924  1928  1932  \textbackslash{}
+United States            7    14    78    12    19    27    27    18     0
+Greece                  18     0     0     3     0     1     0     0     0
+Germany                  5     3     5     5    13     0     0     7     0
+France                   4    39     1     5     4    19    15    10     0
+Great Britain            3     7     1    51    15    15    13    10     0
+{\ldots}                    {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}
+Saint Lucia              0     0     0     0     0     0     0     0     0
+Dominica                 0     0     0     0     0     0     0     0     0
+Albania                  0     0     0     0     0     0     0     0     0
+Cabo Verde               0     0     0     0     0     0     0     0     0
+Refugee Olympic Team     0     0     0     0     0     0     0     0     0
+
+                      1936  {\ldots}  1988  1992  1996  2000  2004  2008  2012  \textbackslash{}
+United States           21  {\ldots}    31    34    32    24    39    39    26
+Greece                   0  {\ldots}     0     0     4     6     6     2     0
+Germany                 31  {\ldots}     0    21    18    17    16    11    20
+France                   6  {\ldots}     4     5     7    14     9    16    11
+Great Britain            7  {\ldots}    10     3     8    10     9    13    18
+{\ldots}                    {\ldots}  {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}
+Saint Lucia              0  {\ldots}     0     0     0     0     0     0     0
+Dominica                 0  {\ldots}     0     0     0     0     0     0     0
+Albania                  0  {\ldots}     0     0     0     0     0     0     0
+Cabo Verde               0  {\ldots}     0     0     0     0     0     0     0
+Refugee Olympic Team     0  {\ldots}     0     0     0     0     0     0     0
+
+                      2016  2020  2024
+United States           37    41    44
+Greece                   1     1     1
+Germany                 10    11    13
+France                  18    12    26
+Great Britain           23    20    22
+{\ldots}                    {\ldots}   {\ldots}   {\ldots}
+Saint Lucia              0     0     1
+Dominica                 0     0     0
+Albania                  0     0     0
+Cabo Verde               0     0     0
+Refugee Olympic Team     0     0     0
+
+[210 rows x 30 columns]
+    \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{8}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{铜牌表格：}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{bronze\PYZus{}table}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+铜牌表格：
+                      1896  1900  1904  1908  1912  1920  1924  1928  1932  \textbackslash{}
+United States            2    15    77    12    19    27    27    16     0
+Greece                  19     0     1     1     1     0     0     0     0
+Germany                  2     2     6     5     7     0     0    14     0
+France                   2    37     0     9     3    13    10     5     0
+Great Britain            2     9     0    39    16    13    12     7     0
+{\ldots}                    {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}
+Saint Lucia              0     0     0     0     0     0     0     0     0
+Dominica                 0     0     0     0     0     0     0     0     0
+Albania                  0     0     0     0     0     0     0     0     0
+Cabo Verde               0     0     0     0     0     0     0     0     0
+Refugee Olympic Team     0     0     0     0     0     0     0     0     0
+
+                      1936  {\ldots}  1988  1992  1996  2000  2004  2008  2012  \textbackslash{}
+United States           12  {\ldots}    27    37    25    32    26    37    30
+Greece                   0  {\ldots}     1     0     0     3     4     1     2
+Germany                 32  {\ldots}     0    28    27    26    20    14    13
+France                   6  {\ldots}     6    16    15    11    13    20    13
+Great Britain            3  {\ldots}     9    12     6     7    12    19    18
+{\ldots}                    {\ldots}  {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}
+Saint Lucia              0  {\ldots}     0     0     0     0     0     0     0
+Dominica                 0  {\ldots}     0     0     0     0     0     0     0
+Albania                  0  {\ldots}     0     0     0     0     0     0     0
+Cabo Verde               0  {\ldots}     0     0     0     0     0     0     0
+Refugee Olympic Team     0  {\ldots}     0     0     0     0     0     0     0
+
+                      2016  2020  2024
+United States           38    33    42
+Greece                   2     1     6
+Germany                 15    16     8
+France                  14    11    22
+Great Britain           17    22    29
+{\ldots}                    {\ldots}   {\ldots}   {\ldots}
+Saint Lucia              0     0     0
+Dominica                 0     0     0
+Albania                  0     0     2
+Cabo Verde               0     0     1
+Refugee Olympic Team     0     0     1
+
+[210 rows x 30 columns]
+    \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{9}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{总数表格：}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{total\PYZus{}table}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+总数表格：
+                      1896  1900  1904  1908  1912  1920  1924  1928  1932  \textbackslash{}
+United States           20    48   231    47    64    95    99    56     0
+Greece                  47     0     2     4     2     1     0     0     0
+Germany                 13     9    15    13    25     0     0    31     0
+France                  11   103     1    19    14    41    38    21     0
+Great Britain            7    31     2   146    41    42    34    20     0
+{\ldots}                    {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}
+Saint Lucia              0     0     0     0     0     0     0     0     0
+Dominica                 0     0     0     0     0     0     0     0     0
+Albania                  0     0     0     0     0     0     0     0     0
+Cabo Verde               0     0     0     0     0     0     0     0     0
+Refugee Olympic Team     0     0     0     0     0     0     0     0     0
+
+                      1936  {\ldots}  1988  1992  1996  2000  2004  2008  2012  \textbackslash{}
+United States           57  {\ldots}    94   108   101    93   101   112   104
+Greece                   0  {\ldots}     1     2     8    13    16     3     2
+Germany                101  {\ldots}     0    82    65    56    49    41    44
+France                  19  {\ldots}    16    29    37    38    33    43    35
+Great Britain           14  {\ldots}    24    20    15    28    30    51    65
+{\ldots}                    {\ldots}  {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}   {\ldots}
+Saint Lucia              0  {\ldots}     0     0     0     0     0     0     0
+Dominica                 0  {\ldots}     0     0     0     0     0     0     0
+Albania                  0  {\ldots}     0     0     0     0     0     0     0
+Cabo Verde               0  {\ldots}     0     0     0     0     0     0     0
+Refugee Olympic Team     0  {\ldots}     0     0     0     0     0     0     0
+
+                      2016  2020  2024
+United States          121   113   126
+Greece                   6     4     8
+Germany                 42    37    33
+France                  42    33    64
+Great Britain           67    64    65
+{\ldots}                    {\ldots}   {\ldots}   {\ldots}
+Saint Lucia              0     0     2
+Dominica                 0     0     1
+Albania                  0     0     2
+Cabo Verde               0     0     1
+Refugee Olympic Team     0     0     1
+
+[210 rows x 30 columns]
+    \end{Verbatim}
+
+    \subsubsection{清理athletes.csv并转换格式为宽}\label{ux6e05ux7406athletes.csvux5e76ux8f6cux6362ux683cux5f0fux4e3aux5bbd}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{10}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} 读取 summerOly\PYZus{}athletes.csv 文件}
+\PY{n}{data} \PY{o}{=} \PY{n}{olympic\PYZus{}athletes}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 转换为长格式，将年份放到列的抬头位置}
+\PY{n}{pivot\PYZus{}df} \PY{o}{=} \PY{n}{data}\PY{o}{.}\PY{n}{pivot\PYZus{}table}\PY{p}{(}\PY{n}{index}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Team}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{City}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Event}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} 
+                                  \PY{n}{columns}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
+                                  \PY{n}{values}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Medal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                                  \PY{n}{aggfunc}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{first}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 填充缺失值为0}
+\PY{n}{pivot\PYZus{}df} \PY{o}{=} \PY{n}{pivot\PYZus{}df}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 输出结果}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{转换为宽格式后的数据：}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{pivot\PYZus{}df}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 保存为新的 CSV 文件}
+\PY{n}{output\PYZus{}path} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{summerOly\PYZus{}athletes\PYZus{}wide\PYZus{}format.csv}\PY{l+s+s1}{\PYZsq{}}
+\PY{n}{pivot\PYZus{}df}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{n}{output\PYZus{}path}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{k+kc}{False}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{宽格式数据已保存到 }\PY{l+s+si}{\PYZob{}}\PY{n}{output\PYZus{}path}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+转换为宽格式后的数据：
+Year           Name Sex          Team  NOC   City          Sport  \textbackslash{}
+0      (jr) Larocca   M     Argentina  ARG  Paris     Equestrian
+1     . Chadalavada   F         India  IND  Tokyo        Fencing
+2            . Deni   M     Indonesia  INA  Tokyo  Weightlifting
+3               671   F         China  CHN  Paris       Breaking
+4          A Alayed   F  Saudi Arabia  KSA  Paris       Swimming
+
+Year                     Event 1896 1900 1904  {\ldots} 1988 1992 1996 2000 2004  \textbackslash{}
+0           Jumping Individual    0    0    0  {\ldots}    0    0    0    0    0
+1     Women's Sabre Individual    0    0    0  {\ldots}    0    0    0    0    0
+2                   Men's 67kg    0    0    0  {\ldots}    0    0    0    0    0
+3                      B-Girls    0    0    0  {\ldots}    0    0    0    0    0
+4       Women's 200m Freestyle    0    0    0  {\ldots}    0    0    0    0    0
+
+Year 2008 2012 2016      2020      2024
+0       0    0    0         0  No medal
+1       0    0    0  No medal         0
+2       0    0    0  No medal         0
+3       0    0    0         0    Bronze
+4       0    0    0         0  No medal
+
+[5 rows x 38 columns]
+宽格式数据已保存到 Generated\textbackslash{}summerOly\_athletes\_wide\_format.csv
+    \end{Verbatim}
+
+    \section{分析数据}\label{ux5206ux6790ux6570ux636e}
+
+    \subsubsection{预处理}\label{ux9884ux5904ux7406}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{11}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} 读取 summerOly\PYZus{}athletes.csv 文件}
+\PY{n}{data} \PY{o}{=} \PY{n}{olympic\PYZus{}athletes}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 提取必要的列}
+\PY{n}{athlete\PYZus{}years} \PY{o}{=} \PY{n}{olympic\PYZus{}athletes}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Team}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Event}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}\PY{o}{.}\PY{n}{drop\PYZus{}duplicates}\PY{p}{(}\PY{p}{)}
+\PY{c+c1}{\PYZsh{} 合并Name, Sex, NOC列}
+\PY{n}{athlete\PYZus{}years}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Feature}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{athlete\PYZus{}years}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{, }\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{n}{athlete\PYZus{}years}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}  \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{, }\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{n}{athlete\PYZus{}years}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+
+\PY{c+c1}{\PYZsh{} 删除原始的Name, Sex, NOC列}
+\PY{c+c1}{\PYZsh{}athlete\PYZus{}years = athlete\PYZus{}years.drop(columns=[\PYZsq{}Name\PYZsq{}, \PYZsq{}Sex\PYZsq{}, \PYZsq{}NOC\PYZsq{}])}
+
+\PY{c+c1}{\PYZsh{} 对每个运动员进行排序}
+\PY{n}{athlete\PYZus{}years} \PY{o}{=} \PY{n}{athlete\PYZus{}years}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{n}{by}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Feature}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+\PY{n}{athlete\PYZus{}years}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{athlete\PYZus{}yesrs.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{k+kc}{False}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \subsubsection{添加唯一特征值}\label{ux6dfbux52a0ux552fux4e00ux7279ux5f81ux503c}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{12}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{os}
+
+\PY{c+c1}{\PYZsh{} 设置环境变量 LOKY\PYZus{}MAX\PYZus{}CPU\PYZus{}COUNT}
+\PY{n}{os}\PY{o}{.}\PY{n}{environ}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{LOKY\PYZus{}MAX\PYZus{}CPU\PYZus{}COUNT}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{8}\PY{l+s+s2}{\PYZdq{}}  \PY{c+c1}{\PYZsh{} 使用CPU 核心数}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{13}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
+\PY{k+kn}{from}\PY{+w}{ }\PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{cluster}\PY{+w}{ }\PY{k+kn}{import} \PY{n}{DBSCAN}
+\PY{k+kn}{from}\PY{+w}{ }\PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{preprocessing}\PY{+w}{ }\PY{k+kn}{import} \PY{n}{StandardScaler}
+
+\PY{c+c1}{\PYZsh{} 读取CSV文件}
+\PY{n}{file\PYZus{}path} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{athlete\PYZus{}yesrs.csv}\PY{l+s+s1}{\PYZsq{}}  \PY{c+c1}{\PYZsh{} 替换为你的文件路径}
+\PY{n}{data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{n}{file\PYZus{}path}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 显示原始数据的前几行}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{原始数据的前几行：}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{data}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 设置时间阈值}
+\PY{n}{time\PYZus{}threshold\PYZus{}small} \PY{o}{=} \PY{l+m+mi}{12}
+\PY{n}{time\PYZus{}threshold\PYZus{}large} \PY{o}{=} \PY{l+m+mi}{44}
+
+\PY{c+c1}{\PYZsh{} 按Feature分组}
+\PY{n}{grouped} \PY{o}{=} \PY{n}{data}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Feature}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 用于存储处理后的数据}
+\PY{n}{processed\PYZus{}data} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+
+\PY{c+c1}{\PYZsh{} 遍历每个分组}
+\PY{k}{for} \PY{n}{feature}\PY{p}{,} \PY{n}{group} \PY{o+ow}{in} \PY{n}{grouped}\PY{p}{:}
+    \PY{c+c1}{\PYZsh{} 按Year排序}
+    \PY{n}{group} \PY{o}{=} \PY{n}{group}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{n}{by}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    
+    \PY{c+c1}{\PYZsh{} 初始化变量}
+    \PY{n}{unique\PYZus{}feature\PYZus{}count} \PY{o}{=} \PY{l+m+mi}{0}
+    \PY{n}{last\PYZus{}year} \PY{o}{=} \PY{k+kc}{None}
+    
+    \PY{c+c1}{\PYZsh{} 遍历分组中的每条记录}
+    \PY{k}{for} \PY{n}{index}\PY{p}{,} \PY{n}{row} \PY{o+ow}{in} \PY{n}{group}\PY{o}{.}\PY{n}{iterrows}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+        \PY{n}{current\PYZus{}year} \PY{o}{=} \PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+        
+        \PY{c+c1}{\PYZsh{} 判断是否为同一个运动员}
+        \PY{k}{if} \PY{n}{last\PYZus{}year} \PY{o+ow}{is} \PY{o+ow}{not} \PY{k+kc}{None}\PY{p}{:}
+            \PY{n}{year\PYZus{}diff} \PY{o}{=} \PY{n}{current\PYZus{}year} \PY{o}{\PYZhy{}} \PY{n}{last\PYZus{}year}
+            \PY{k}{if} \PY{n}{year\PYZus{}diff} \PY{o}{\PYZgt{}} \PY{n}{time\PYZus{}threshold\PYZus{}large}\PY{p}{:}
+                \PY{c+c1}{\PYZsh{} 如果时间跨度大于44年，直接认为是不同运动员}
+                \PY{n}{unique\PYZus{}feature\PYZus{}count} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+            \PY{k}{elif} \PY{n}{year\PYZus{}diff} \PY{o}{\PYZgt{}} \PY{n}{time\PYZus{}threshold\PYZus{}small}\PY{p}{:}
+                \PY{c+c1}{\PYZsh{} 如果时间跨度在12到44年之间，进行聚类分析}
+                \PY{n}{features\PYZus{}cluster} \PY{o}{=} \PY{n}{group}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Event}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{x}\PY{o}{.}\PY{n}{factorize}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+                \PY{n}{features\PYZus{}cluster} \PY{o}{=} \PY{n}{StandardScaler}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{fit\PYZus{}transform}\PY{p}{(}\PY{n}{features\PYZus{}cluster}\PY{p}{)}
+                
+                \PY{c+c1}{\PYZsh{} 使用DBSCAN聚类}
+                \PY{n}{dbscan} \PY{o}{=} \PY{n}{DBSCAN}\PY{p}{(}\PY{n}{eps}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n}{min\PYZus{}samples}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}
+                \PY{n}{group}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Cluster}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{dbscan}\PY{o}{.}\PY{n}{fit\PYZus{}predict}\PY{p}{(}\PY{n}{features\PYZus{}cluster}\PY{p}{)}
+                
+                \PY{c+c1}{\PYZsh{} 为每个聚类生成唯一标识}
+                \PY{k}{for} \PY{n}{cluster} \PY{o+ow}{in} \PY{n}{group}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Cluster}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+                    \PY{n}{cluster\PYZus{}group} \PY{o}{=} \PY{n}{group}\PY{p}{[}\PY{n}{group}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Cluster}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{n}{cluster}\PY{p}{]}
+                    \PY{k}{for} \PY{n}{\PYZus{}}\PY{p}{,} \PY{n}{cluster\PYZus{}row} \PY{o+ow}{in} \PY{n}{cluster\PYZus{}group}\PY{o}{.}\PY{n}{iterrows}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+                        \PY{n}{new\PYZus{}feature} \PY{o}{=} \PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}}\PY{n}{feature}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZus{}}\PY{l+s+si}{\PYZob{}}\PY{n}{cluster}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}
+                        \PY{n}{processed\PYZus{}data}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{\PYZob{}}
+                            \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{cluster\PYZus{}row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}
+                            \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{cluster\PYZus{}row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}
+                            \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Team}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{cluster\PYZus{}row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Team}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}
+                            \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{cluster\PYZus{}row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}
+                            \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{cluster\PYZus{}row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}
+                            \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{cluster\PYZus{}row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}
+                            \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Event}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{cluster\PYZus{}row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Event}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}
+                            \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Feature}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{new\PYZus{}feature}
+                        \PY{p}{\PYZcb{}}\PY{p}{)}
+                        \PY{n}{unique\PYZus{}feature\PYZus{}count} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+                \PY{k}{break}  \PY{c+c1}{\PYZsh{} 已经处理完当前分组，跳出循环}
+        
+        \PY{c+c1}{\PYZsh{} 如果时间跨度在阈值内，认为是同一个运动员}
+        \PY{n}{new\PYZus{}feature} \PY{o}{=} \PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}}\PY{n}{feature}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZus{}}\PY{l+s+si}{\PYZob{}}\PY{n}{unique\PYZus{}feature\PYZus{}count}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}
+        \PY{n}{processed\PYZus{}data}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{\PYZob{}}
+            \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}
+            \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}
+            \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Team}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Team}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}
+            \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}
+            \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}
+            \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}
+            \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Event}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Event}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}
+            \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Feature}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{new\PYZus{}feature}
+        \PY{p}{\PYZcb{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} 更新变量}
+        \PY{n}{last\PYZus{}year} \PY{o}{=} \PY{n}{current\PYZus{}year}
+
+\PY{c+c1}{\PYZsh{} 将处理后的数据转换为DataFrame}
+\PY{n}{processed\PYZus{}df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{processed\PYZus{}data}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 显示处理后的数据}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{处理后的数据：}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{processed\PYZus{}df}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Feature}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Event}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 保存处理后的数据到新的CSV文件}
+\PY{n}{output\PYZus{}file\PYZus{}path} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{athlete\PYZus{}years\PYZus{}processed.csv}\PY{l+s+s1}{\PYZsq{}}
+\PY{n}{processed\PYZus{}df}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{n}{output\PYZus{}file\PYZus{}path}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{处理后的数据已保存到 }\PY{l+s+si}{\PYZob{}}\PY{n}{output\PYZus{}file\PYZus{}path}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+原始数据的前几行：
+            Name Sex  NOC          Team  Year          Sport  \textbackslash{}
+0   (jr) Larocca   M  ARG     Argentina  2024     Equestrian
+1  . Chadalavada   F  IND         India  2020        Fencing
+2         . Deni   M  INA     Indonesia  2020  Weightlifting
+3            671   F  CHN         China  2024       Breaking
+4       A Alayed   F  KSA  Saudi Arabia  2024       Swimming
+
+                      Event                Feature
+0        Jumping Individual   (jr) Larocca, M, ARG
+1  Women's Sabre Individual  . Chadalavada, F, IND
+2                Men's 67kg         . Deni, M, INA
+3                   B-Girls            671, F, CHN
+4    Women's 200m Freestyle       A Alayed, F, KSA
+
+处理后的数据：
+                   Feature          Sport                     Event  Year
+0   (jr) Larocca, M, ARG\_0     Equestrian        Jumping Individual  2024
+1  . Chadalavada, F, IND\_0        Fencing  Women's Sabre Individual  2020
+2         . Deni, M, INA\_0  Weightlifting                Men's 67kg  2020
+3            671, F, CHN\_0       Breaking                   B-Girls  2024
+4       A Alayed, F, KSA\_0       Swimming    Women's 200m Freestyle  2024
+
+处理后的数据已保存到 athlete\_years\_processed.csv
+    \end{Verbatim}
+
+    \subsubsection{统计连续参加奥运会的年数与对应人数}\label{ux7edfux8ba1ux8fdeux7eedux53c2ux52a0ux5965ux8fd0ux4f1aux7684ux5e74ux6570ux4e0eux5bf9ux5e94ux4ebaux6570}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{14}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} 读取CSV文件}
+\PY{n}{file\PYZus{}path} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{athlete\PYZus{}years\PYZus{}processed.csv}\PY{l+s+s1}{\PYZsq{}}  \PY{c+c1}{\PYZsh{} 替换为你的文件路径}
+\PY{n}{athlete\PYZus{}years} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{n}{file\PYZus{}path}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{15}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} 计算连续参加的届数}
+\PY{k}{def}\PY{+w}{ }\PY{n+nf}{count\PYZus{}consecutive\PYZus{}years}\PY{p}{(}\PY{n}{group}\PY{p}{)}\PY{p}{:}
+    \PY{n}{years} \PY{o}{=} \PY{n}{group}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{values}
+    \PY{n}{consecutive\PYZus{}year} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+    \PY{n}{current\PYZus{}count} \PY{o}{=} \PY{l+m+mi}{1}
+    \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{years}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+        \PY{k}{if} \PY{n}{years}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{years}\PY{p}{[}\PY{n}{i} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{]} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{6} \PY{p}{:}
+            \PY{k}{if} \PY{n}{years}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{years}\PY{p}{[}\PY{n}{i} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{]} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{3}\PY{p}{:}
+                \PY{n}{current\PYZus{}count} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+        \PY{k}{else}\PY{p}{:}
+            \PY{k}{if} \PY{n}{current\PYZus{}count} \PY{o}{\PYZgt{}} \PY{l+m+mi}{10}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{n}{group}\PY{p}{)}
+            \PY{n}{consecutive\PYZus{}year}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{current\PYZus{}count}\PY{p}{)}
+            \PY{n}{current\PYZus{}count} \PY{o}{=} \PY{l+m+mi}{1}
+    \PY{n}{consecutive\PYZus{}year}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{current\PYZus{}count}\PY{p}{)}
+    \PY{k}{return} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{n}{consecutive\PYZus{}year}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 应用函数计算每个运动员的连续届数}
+\PY{n}{consecutive\PYZus{}years} \PY{o}{=} \PY{n}{athlete\PYZus{}years}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Feature}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{n}{count\PYZus{}consecutive\PYZus{}years}\PY{p}{,} \PY{n}{include\PYZus{}groups}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}\PY{o}{.}\PY{n}{explode}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}
+\PY{n}{consecutive\PYZus{}years}\PY{o}{.}\PY{n}{columns} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Feature}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{level\PYZus{}0}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}  \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Consecutive\PYZus{}Years}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}  \PY{c+c1}{\PYZsh{} 修正列名}
+\PY{n}{consecutive\PYZus{}years} \PY{o}{=} \PY{n}{consecutive\PYZus{}years}\PY{o}{.}\PY{n}{drop}\PY{p}{(}\PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{level\PYZus{}0}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}  \PY{c+c1}{\PYZsh{} 删除不必要的列}
+
+\PY{c+c1}{\PYZsh{} 统计每个连续届数的人数}
+\PY{n}{consecutive\PYZus{}years\PYZus{}count} \PY{o}{=} \PY{n}{consecutive\PYZus{}years}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Consecutive\PYZus{}Years}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}
+\PY{n}{consecutive\PYZus{}years\PYZus{}count}\PY{o}{.}\PY{n}{columns} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Consecutive\PYZus{}Years}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Count}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+
+\PY{c+c1}{\PYZsh{} 输出结果}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{连续参加奥运会的届数与对应人次：}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{consecutive\PYZus{}years\PYZus{}count}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 保存为新的 CSV 文件}
+\PY{n}{output\PYZus{}path} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{consecutive\PYZus{}years\PYZus{}count.csv}\PY{l+s+s1}{\PYZsq{}}
+\PY{n}{consecutive\PYZus{}years\PYZus{}count}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{n}{output\PYZus{}path}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{k+kc}{False}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{统计结果已保存到 }\PY{l+s+si}{\PYZob{}}\PY{n}{output\PYZus{}path}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+连续参加奥运会的届数与对应人次：
+   Consecutive\_Years   Count
+0                  1  110747
+1                  2   23175
+2                  3    5959
+3                  4    1543
+4                  5     367
+5                  6      79
+6                  7      18
+7                  8       4
+8                  9       1
+统计结果已保存到 Generated\textbackslash{}consecutive\_years\_count.csv
+    \end{Verbatim}
+
+    \paragraph{数据可视化}\label{ux6570ux636eux53efux89c6ux5316}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{16}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} 导入必要的库}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{plt}
+\PY{k+kn}{from}\PY{+w}{ }\PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{font\PYZus{}manager}\PY{+w}{ }\PY{k+kn}{import} \PY{n}{FontProperties}
+
+\PY{c+c1}{\PYZsh{} 设置支持中文的字体}
+\PY{n}{plt}\PY{o}{.}\PY{n}{rcParams}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{font.sans\PYZhy{}serif}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{SimHei}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}  \PY{c+c1}{\PYZsh{} 使用黑体字体}
+\PY{n}{plt}\PY{o}{.}\PY{n}{rcParams}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{axes.unicode\PYZus{}minus}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{k+kc}{False}  \PY{c+c1}{\PYZsh{} 解决负号显示问题}
+
+\PY{c+c1}{\PYZsh{} 读取数据}
+\PY{n}{data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Generated/consecutive\PYZus{}years\PYZus{}count.csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 定义大致届数区间}
+\PY{n}{bins} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{14}\PY{p}{]}
+\PY{n}{labels} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{1次}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2次}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{3次}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{4次及以上}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+
+\PY{c+c1}{\PYZsh{} 将数据分组到区间}
+\PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Group}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{cut}\PY{p}{(}\PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Consecutive\PYZus{}Years}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{n}{bins}\PY{p}{,} \PY{n}{labels}\PY{o}{=}\PY{n}{labels}\PY{p}{,} \PY{n}{right}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 计算每个区间的总人次，显式设置 observed=True}
+\PY{n}{grouped\PYZus{}data} \PY{o}{=} \PY{n}{data}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Group}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{observed}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Count}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 准备绘图数据}
+\PY{n}{labels} \PY{o}{=} \PY{n}{grouped\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Group}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\PY{n}{sizes} \PY{o}{=} \PY{n}{grouped\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Count}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\PY{n}{colors} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsh{}ff9999}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsh{}66b3ff}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsh{}66ccff}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsh{}99ff99}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}  \PY{c+c1}{\PYZsh{} 颜色列表}
+
+\PY{c+c1}{\PYZsh{} 绘制饼图}
+\PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{)}
+\PY{n}{wedges}\PY{p}{,} \PY{n}{texts}\PY{p}{,} \PY{n}{autotexts} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{pie}\PY{p}{(}\PY{n}{sizes}\PY{p}{,} \PY{n}{colors}\PY{o}{=}\PY{n}{colors}\PY{p}{,} \PY{n}{autopct}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+si}{\PYZpc{}1.1f}\PY{l+s+si}{\PYZpc{}\PYZpc{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{startangle}\PY{o}{=}\PY{l+m+mi}{140}\PY{p}{,} \PY{n}{textprops}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fontsize}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{12}\PY{p}{\PYZcb{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 添加图例（色块+标签），放置在右侧}
+\PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{wedges}\PY{p}{,} \PY{n}{labels}\PY{p}{,} \PY{n}{title}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{连续参加届数}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{loc}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{center left}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{bbox\PYZus{}to\PYZus{}anchor}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+
+\PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{连续参加奥运会届数的扇形比例图}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{16}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{axis}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{equal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}  \PY{c+c1}{\PYZsh{} 确保饼图是圆形}
+\PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{C_files/C_26_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{17}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} 保存组别与对应比例}
+\PY{n}{group\PYZus{}percentages} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+\PY{k}{for} \PY{n}{label}\PY{p}{,} \PY{n}{autotext} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{n}{labels}\PY{p}{,} \PY{n}{autotexts}\PY{p}{)}\PY{p}{:}
+    \PY{c+c1}{\PYZsh{} 获取百分比文本并去掉百分号，转换为浮点数}
+    \PY{n}{percentage} \PY{o}{=} \PY{n+nb}{float}\PY{p}{(}\PY{n}{autotext}\PY{o}{.}\PY{n}{get\PYZus{}text}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{strip}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+    \PY{n}{group\PYZus{}percentages}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{n}{label}\PY{p}{,} \PY{n}{percentage}\PY{p}{)}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 打印结果}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{组别与对应比例：}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{k}{for} \PY{n}{group}\PY{p}{,} \PY{n}{percentage} \PY{o+ow}{in} \PY{n}{group\PYZus{}percentages}\PY{p}{:}
+    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}}\PY{n}{group}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{: }\PY{l+s+si}{\PYZob{}}\PY{n}{percentage}\PY{l+s+si}{:}\PY{l+s+s2}{.1f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+组别与对应比例：
+1次: 78.0\%
+2次: 16.3\%
+3次: 4.2\%
+4次及以上: 1.4\%
+    \end{Verbatim}
+
+    \subsubsection{统计运动员参加奥运会的时间跨度}\label{ux7edfux8ba1ux8fd0ux52a8ux5458ux53c2ux52a0ux5965ux8fd0ux4f1aux7684ux65f6ux95f4ux8de8ux5ea6}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{18}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} 读取CSV文件}
+\PY{n}{file\PYZus{}path} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{athlete\PYZus{}years\PYZus{}processed.csv}\PY{l+s+s1}{\PYZsq{}}  \PY{c+c1}{\PYZsh{} 替换为你的文件路径}
+\PY{n}{athlete\PYZus{}years} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{n}{file\PYZus{}path}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{19}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} 计算每个运动员的第一次和最后一次参赛年份}
+\PY{k}{def}\PY{+w}{ }\PY{n+nf}{calculate\PYZus{}year\PYZus{}gap}\PY{p}{(}\PY{n}{group}\PY{p}{)}\PY{p}{:}
+    \PY{n}{years} \PY{o}{=} \PY{n}{group}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{values}
+    \PY{n}{min\PYZus{}n} \PY{o}{=} \PY{l+m+mi}{2032}
+    \PY{n}{max\PYZus{}n} \PY{o}{=} \PY{l+m+mi}{1896}
+    \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{years}\PY{p}{:}
+        \PY{k}{if} \PY{n}{i} \PY{o}{\PYZlt{}} \PY{n}{min\PYZus{}n}\PY{p}{:}
+            \PY{n}{min\PYZus{}n} \PY{o}{=} \PY{n}{i}
+        \PY{k}{if} \PY{n}{i} \PY{o}{\PYZgt{}} \PY{n}{max\PYZus{}n}\PY{p}{:}
+            \PY{n}{max\PYZus{}n} \PY{o}{=} \PY{n}{i}
+    \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{years}\PY{p}{)} \PY{o}{\PYZgt{}} \PY{l+m+mi}{0}\PY{p}{:}
+        \PY{k}{if} \PY{n}{max\PYZus{}n} \PY{o}{\PYZhy{}} \PY{n}{min\PYZus{}n} \PY{o}{+} \PY{l+m+mi}{1} \PY{o}{\PYZgt{}} \PY{l+m+mi}{60}\PY{p}{:}
+            \PY{c+c1}{\PYZsh{}print(group)}
+            \PY{k}{return} \PY{l+m+mi}{1}
+        \PY{k}{return} \PY{n}{max\PYZus{}n} \PY{o}{\PYZhy{}} \PY{n}{min\PYZus{}n} \PY{o}{+} \PY{l+m+mi}{1}
+    \PY{k}{else}\PY{p}{:}
+        \PY{k}{return} \PY{l+m+mi}{0}
+
+\PY{c+c1}{\PYZsh{} 应用函数计算每个运动员的间隔年数}
+\PY{n}{athlete\PYZus{}gaps} \PY{o}{=} \PY{n}{athlete\PYZus{}years}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Feature}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{n}{calculate\PYZus{}year\PYZus{}gap}\PY{p}{,} \PY{n}{include\PYZus{}groups}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}\PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}
+\PY{n}{athlete\PYZus{}gaps}\PY{o}{.}\PY{n}{columns} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Feature}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year\PYZus{}Gap}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+
+\PY{c+c1}{\PYZsh{} 统计每个间隔年数的人数}
+\PY{n}{gap\PYZus{}counts} \PY{o}{=} \PY{n}{athlete\PYZus{}gaps}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year\PYZus{}Gap}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}
+\PY{n}{gap\PYZus{}counts}\PY{o}{.}\PY{n}{columns} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year\PYZus{}Gap}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Count}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+
+\PY{c+c1}{\PYZsh{} 按 Year\PYZus{}Gap 排序}
+\PY{n}{gap\PYZus{}counts} \PY{o}{=} \PY{n}{gap\PYZus{}counts}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{n}{by}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year\PYZus{}Gap}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 输出结果}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{运动员第一次参加奥运会和最后一次参加奥运会之间的间隔年数：}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{gap\PYZus{}counts}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 保存为新的 CSV 文件}
+\PY{n}{output\PYZus{}path} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{athlete\PYZus{}year\PYZus{}gaps.csv}\PY{l+s+s1}{\PYZsq{}}
+\PY{n}{gap\PYZus{}counts}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{n}{output\PYZus{}path}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{k+kc}{False}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{统计结果已保存到 }\PY{l+s+si}{\PYZob{}}\PY{n}{output\PYZus{}path}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+运动员第一次参加奥运会和最后一次参加奥运会之间的间隔年数：
+    Year\_Gap   Count
+0          1  103205
+6          3      98
+1          5   21831
+8          7      77
+2          9    8000
+11        11      12
+3         13    2872
+12        15      12
+4         17     781
+13        19       5
+5         21     233
+16        23       2
+7         25      86
+18        27       1
+9         29      37
+10        33      16
+14        37       3
+15        41       3
+17        45       2
+20        49       1
+19        53       1
+统计结果已保存到 Generated\textbackslash{}athlete\_year\_gaps.csv
+    \end{Verbatim}
+
+    \paragraph{数据可视化}\label{ux6570ux636eux53efux89c6ux5316}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{20}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} 导入必要的库}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{plt}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{numpy}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{np}
+
+\PY{c+c1}{\PYZsh{} 设置支持中文的字体}
+\PY{n}{plt}\PY{o}{.}\PY{n}{rcParams}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{font.sans\PYZhy{}serif}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{SimHei}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}  \PY{c+c1}{\PYZsh{} 使用黑体字体}
+\PY{n}{plt}\PY{o}{.}\PY{n}{rcParams}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{axes.unicode\PYZus{}minus}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{k+kc}{False}  \PY{c+c1}{\PYZsh{} 解决负号显示问题}
+
+\PY{c+c1}{\PYZsh{} 读取数据}
+\PY{n}{data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Generated}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s2}{athlete\PYZus{}year\PYZus{}gaps.csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 定义大致间隔年数区间}
+\PY{n}{bins} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{15}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{,} \PY{l+m+mi}{30}\PY{p}{,} \PY{l+m+mi}{120}\PY{p}{]}  \PY{c+c1}{\PYZsh{} 区间划分：0\PYZhy{}5年，5\PYZhy{}10年，10\PYZhy{}15年，15\PYZhy{}20年，20\PYZhy{}30年，30年以上}
+\PY{n}{labels} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{0\PYZhy{}5年}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{5\PYZhy{}10年}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{10\PYZhy{}15年}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{15\PYZhy{}20年}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{20\PYZhy{}30年}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{30年以上}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+
+\PY{c+c1}{\PYZsh{} 将数据分组到区间}
+\PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Group}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{cut}\PY{p}{(}\PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year\PYZus{}Gap}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{n}{bins}\PY{p}{,} \PY{n}{labels}\PY{o}{=}\PY{n}{labels}\PY{p}{,} \PY{n}{right}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 计算每个区间的总人次}
+\PY{n}{grouped\PYZus{}data} \PY{o}{=} \PY{n}{data}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Group}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{observed}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Count}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 准备绘图数据}
+\PY{n}{labels} \PY{o}{=} \PY{n}{grouped\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Group}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\PY{n}{sizes} \PY{o}{=} \PY{n}{grouped\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Count}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\PY{n}{colors} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{cm}\PY{o}{.}\PY{n}{viridis}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{labels}\PY{p}{)}\PY{p}{)}\PY{p}{)}  \PY{c+c1}{\PYZsh{} 使用颜色映射生成颜色列表}
+
+\PY{c+c1}{\PYZsh{} 绘制饼图}
+\PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
+\PY{n}{wedges}\PY{p}{,} \PY{n}{texts}\PY{p}{,} \PY{n}{autotexts} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{pie}\PY{p}{(}\PY{n}{sizes}\PY{p}{,} \PY{n}{colors}\PY{o}{=}\PY{n}{colors}\PY{p}{,} \PY{n}{autopct}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+si}{\PYZpc{}1.1f}\PY{l+s+si}{\PYZpc{}\PYZpc{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{startangle}\PY{o}{=}\PY{l+m+mi}{140}\PY{p}{,} \PY{n}{textprops}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fontsize}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{12}\PY{p}{\PYZcb{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 添加图例（色块+标签），放置在右侧}
+\PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{wedges}\PY{p}{,} \PY{n}{labels}\PY{p}{,} \PY{n}{title}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{间隔年数区间}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{loc}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{center left}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{bbox\PYZus{}to\PYZus{}anchor}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+
+\PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{运动员第一次参加奥运会和最后一次参加奥运会之间的间隔年数比例图}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{16}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{axis}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{equal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}  \PY{c+c1}{\PYZsh{} 确保饼图是圆形}
+\PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{C_files/C_32_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    '\,`'根据扇形图，对于运动员连续参加比赛，只考虑连续参加2-3届的运动员的连续性影响，其余影响可以忽略不计。'\,'\,'
+
+    \paragraph{参加时间跨度为0-15年的运动员中连续参加的比例}\label{ux53c2ux52a0ux65f6ux95f4ux8de8ux5ea6ux4e3a0-15ux5e74ux7684ux8fd0ux52a8ux5458ux4e2dux8fdeux7eedux53c2ux52a0ux7684ux6bd4ux4f8b}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{21}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} 合并时间跨度和连续届数数据}
+\PY{n}{athlete\PYZus{}gaps}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{athlete\PYZus{}gaps.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{consecutive\PYZus{}years}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{consecutive\PYZus{}years.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{merged\PYZus{}data} \PY{o}{=} \PY{n}{athlete\PYZus{}gaps}\PY{o}{.}\PY{n}{merge}\PY{p}{(}\PY{n}{consecutive\PYZus{}years}\PY{p}{,} \PY{n}{on}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Feature}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 筛选出时间跨度为1\PYZhy{}15年的运动员}
+\PY{n}{filtered\PYZus{}data} \PY{o}{=} \PY{n}{merged\PYZus{}data}\PY{p}{[}\PY{p}{(}\PY{n}{merged\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year\PYZus{}Gap}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{1}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{merged\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year\PYZus{}Gap}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{15}\PY{p}{)}\PY{p}{]}
+
+\PY{c+c1}{\PYZsh{} 统计连续参加的比例}
+\PY{n}{total\PYZus{}count} \PY{o}{=} \PY{n}{filtered\PYZus{}data}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+\PY{n}{consecutive\PYZus{}count} \PY{o}{=} \PY{n}{filtered\PYZus{}data}\PY{p}{[}\PY{n}{filtered\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year\PYZus{}Gap}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{n}{filtered\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Consecutive\PYZus{}Years}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{*}\PY{l+m+mi}{4}\PY{p}{]}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+\PY{n}{consecutive\PYZus{}ratio} \PY{o}{=} \PY{n}{consecutive\PYZus{}count} \PY{o}{/} \PY{n}{total\PYZus{}count} \PY{k}{if} \PY{n}{total\PYZus{}count} \PY{o}{\PYZgt{}} \PY{l+m+mi}{0} \PY{k}{else} \PY{l+m+mi}{0}
+
+\PY{c+c1}{\PYZsh{} 输出结果}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{时间跨度为1\PYZhy{}15年的运动员中，连续参加的比例为：}\PY{l+s+si}{\PYZob{}}\PY{n}{consecutive\PYZus{}ratio}\PY{l+s+si}{:}\PY{l+s+s2}{.2\PYZpc{}}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 保存结果到 CSV 文件}
+\PY{n}{output\PYZus{}path} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{consecutive\PYZus{}ratio.csv}\PY{l+s+s1}{\PYZsq{}}
+\PY{n}{filtered\PYZus{}data}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{n}{output\PYZus{}path}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{k+kc}{False}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{统计结果已保存到 }\PY{l+s+si}{\PYZob{}}\PY{n}{output\PYZus{}path}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+时间跨度为1-15年的运动员中，连续参加的比例为：94.68\%
+统计结果已保存到 Generated\textbackslash{}consecutive\_ratio.csv
+    \end{Verbatim}
+
+    \paragraph{数据可视化}\label{ux6570ux636eux53efux89c6ux5316}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{22}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} 导入必要的库}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{plt}
+
+\PY{c+c1}{\PYZsh{} 设置支持中文的字体}
+\PY{n}{plt}\PY{o}{.}\PY{n}{rcParams}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{font.sans\PYZhy{}serif}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{SimHei}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}  \PY{c+c1}{\PYZsh{} 使用黑体字体}
+\PY{n}{plt}\PY{o}{.}\PY{n}{rcParams}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{axes.unicode\PYZus{}minus}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{k+kc}{False}  \PY{c+c1}{\PYZsh{} 解决负号显示问题}
+
+\PY{c+c1}{\PYZsh{} 数据}
+\PY{n}{percentages} \PY{o}{=} \PY{p}{[}\PY{n}{consecutive\PYZus{}ratio}\PY{o}{*}\PY{l+m+mi}{100}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{consecutive\PYZus{}ratio}\PY{p}{)}\PY{o}{*}\PY{l+m+mi}{100}\PY{p}{]}  \PY{c+c1}{\PYZsh{} 一个百分数和剩余部分}
+\PY{n}{labels} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{continuous}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{not}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}  \PY{c+c1}{\PYZsh{} 标签}
+\PY{n}{colors} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{blue}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{gray}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}  \PY{c+c1}{\PYZsh{} 颜色，突出显示主要部分}
+
+\PY{c+c1}{\PYZsh{} 绘制饼图}
+\PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}  \PY{c+c1}{\PYZsh{} 设置图形大小}
+\PY{n}{plt}\PY{o}{.}\PY{n}{pie}\PY{p}{(}\PY{n}{percentages}\PY{p}{,} \PY{n}{labels}\PY{o}{=}\PY{n}{labels}\PY{p}{,} \PY{n}{colors}\PY{o}{=}\PY{n}{colors}\PY{p}{,} \PY{n}{autopct}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+si}{\PYZpc{}1.2f}\PY{l+s+si}{\PYZpc{}\PYZpc{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{startangle}\PY{o}{=}\PY{l+m+mi}{90}\PY{p}{)}
+\PY{c+c1}{\PYZsh{} autopct=\PYZsq{}\PYZpc{}1.2f\PYZpc{}\PYZpc{}\PYZsq{} 表示在每个扇形上显示百分比，格式为2位小数}
+\PY{c+c1}{\PYZsh{} startangle=90 表示从90度（即正上方）开始绘制}
+
+\PY{c+c1}{\PYZsh{} 添加标题}
+\PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{参加时间跨度为0\PYZhy{}15年的运动员中连续参加的比例}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 显示图形}
+\PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{C_files/C_37_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{itemize}
+\tightlist
+\item
+  '\,`'我们可以发现，参加奥运会时间跨度0-15年中绝大部分运动员都是连续参加的'\,'\,'
+\item
+  '\,`'而且我们前面发现，绝大部分的运动员的时间跨度在0-15年之间，连续参加届数在1-3届'\,'\,'
+\item
+  '\,`'而且我们知道，0-15之间只能连续参加1-3次奥运会'\,'\,'
+\item
+  '\,`'我们因此可以得出结论，绝大部分奥运会运动员连续参加了1-3次奥运会'\,'\,'
+\item
+  '\,`'所以我们可以得出结论，考虑运动员连续参加比赛对奖牌的影响只需要考虑连续参加2-3次的情况'\,'\,'
+\end{itemize}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{23}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{first\PYZus{}percentage} \PY{o}{=} \PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{/}\PY{p}{(}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{+}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{+}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{+}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{o}{*}\PY{l+m+mi}{100}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{一个参加了一次奥运会的运动员参加下一次奥运会的可能为}\PY{l+s+si}{\PYZob{}}\PY{n}{first\PYZus{}percentage}\PY{+w}{ }\PY{l+s+si}{:}\PY{l+s+s1}{ .2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+一个参加了一次奥运会的运动员参加下一次奥运会的可能为 16.32\%
+    \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{24}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{second\PYZus{}percentage} \PY{o}{=} \PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{/}\PY{p}{(}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{+}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{+}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{o}{*}\PY{l+m+mi}{100}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{一个参加了两次奥运会的运动员参加下一次奥运会的可能为}\PY{l+s+si}{\PYZob{}}\PY{n}{second\PYZus{}percentage}\PY{+w}{ }\PY{l+s+si}{:}\PY{l+s+s1}{ .2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+一个参加了两次奥运会的运动员参加下一次奥运会的可能为 19.18\%
+    \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{25}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{third\PYZus{}percentage} \PY{o}{=} \PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{/}\PY{p}{(}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{+}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{o}{*}\PY{l+m+mi}{100}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{一个参加了三次奥运会的运动员参加下一次奥运会的可能为}\PY{l+s+si}{\PYZob{}}\PY{n}{third\PYZus{}percentage}\PY{+w}{ }\PY{l+s+si}{:}\PY{l+s+s1}{ .2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+一个参加了三次奥运会的运动员参加下一次奥运会的可能为 25.00\%
+    \end{Verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+\end{document}
