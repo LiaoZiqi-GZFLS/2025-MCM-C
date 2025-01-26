@@ -398,7 +398,9 @@
     
 
     
-    \section{导入数据}\label{ux5bfcux5165ux6570ux636e}
+    \section{数据预处理}\label{ux6570ux636eux9884ux5904ux7406}
+
+    \subsection{导入数据}\label{ux5bfcux5165ux6570ux636e}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \prompt{In}{incolor}{1}{\boxspacing}
@@ -528,7 +530,7 @@ summerOly\_athletes.csv 数据预览：
 4   Athletics  Athletics Women's 100 metres  No medal
     \end{Verbatim}
 
-    \section{数据清洗}\label{ux6570ux636eux6e05ux6d17}
+    \subsection{数据清洗}\label{ux6570ux636eux6e05ux6d17}
 
     \subsubsection{缺失值检查}\label{ux7f3aux5931ux503cux68c0ux67e5}
 
@@ -1204,6 +1206,101 @@ Year 2008 2012 2016      2020      2024
 
     \section{分析数据}\label{ux5206ux6790ux6570ux636e}
 
+    \subsection{国家级特征}\label{ux56fdux5bb6ux7ea7ux7279ux5f81}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{33}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{plt}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{seaborn}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{sns}
+
+\PY{c+c1}{\PYZsh{} 加载奖牌数据}
+\PY{n}{medal\PYZus{}data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2025\PYZus{}Problem\PYZus{}C\PYZus{}Data}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{summerOly\PYZus{}medal\PYZus{}counts.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 加载主办国数据}
+\PY{n}{host\PYZus{}data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2025\PYZus{}Problem\PYZus{}C\PYZus{}Data}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{summerOly\PYZus{}hosts.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 数据清洗}
+\PY{n}{medal\PYZus{}data}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{inplace}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 提取主办国信息}
+\PY{n}{host\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Host\PYZus{}NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{host\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Host}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{str}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{, }\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{str}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}  \PY{c+c1}{\PYZsh{} 提取国家名称}
+\PY{n}{host\PYZus{}data} \PY{o}{=} \PY{n}{host\PYZus{}data}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Host\PYZus{}NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}\PY{o}{.}\PY{n}{rename}\PY{p}{(}\PY{n}{columns}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Host\PYZus{}NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 标记主办国}
+\PY{n}{medal\PYZus{}data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{merge}\PY{p}{(}\PY{n}{medal\PYZus{}data}\PY{p}{,} \PY{n}{host\PYZus{}data}\PY{p}{,} \PY{n}{on}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{how}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{left}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{medal\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Is\PYZus{}Host}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{medal\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{notnull}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n+nb}{int}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 计算奖牌增长率}
+\PY{k}{def}\PY{+w}{ }\PY{n+nf}{calculate\PYZus{}growth\PYZus{}rate}\PY{p}{(}\PY{n}{group}\PY{p}{)}\PY{p}{:}
+    \PY{n}{group} \PY{o}{=} \PY{n}{group}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{group}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Medal\PYZus{}Growth\PYZus{}Rate}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{group}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{pct\PYZus{}change}\PY{p}{(}\PY{p}{)}
+    \PY{k}{return} \PY{n}{group}
+
+\PY{n}{growth\PYZus{}data} \PY{o}{=} \PY{n}{medal\PYZus{}data}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{n}{calculate\PYZus{}growth\PYZus{}rate}\PY{p}{)}\PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{n}{drop}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+\PY{n}{growth\PYZus{}data} \PY{o}{=} \PY{n}{growth\PYZus{}data}\PY{o}{.}\PY{n}{dropna}\PY{p}{(}\PY{n}{subset}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Medal\PYZus{}Growth\PYZus{}Rate}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}  \PY{c+c1}{\PYZsh{} 删除NaN值}
+
+\PY{c+c1}{\PYZsh{} 构建特征矩阵}
+\PY{n}{medal\PYZus{}totals} \PY{o}{=} \PY{n}{medal\PYZus{}data}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}
+\PY{n}{gold\PYZus{}totals} \PY{o}{=} \PY{n}{medal\PYZus{}data}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Gold}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{rename}\PY{p}{(}\PY{n}{columns}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Gold}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total\PYZus{}Gold}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}\PY{p}{)}
+
+\PY{n}{features} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{merge}\PY{p}{(}\PY{n}{medal\PYZus{}totals}\PY{p}{,} \PY{n}{gold\PYZus{}totals}\PY{p}{,} \PY{n}{on}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{features} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{merge}\PY{p}{(}\PY{n}{features}\PY{p}{,} \PY{n}{growth\PYZus{}data}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Medal\PYZus{}Growth\PYZus{}Rate}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}\PY{p}{,} \PY{n}{on}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{how}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{left}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{features} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{merge}\PY{p}{(}\PY{n}{features}\PY{p}{,} \PY{n}{medal\PYZus{}data}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Is\PYZus{}Host}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}\PY{p}{,} \PY{n}{on}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{how}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{left}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{features}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{inplace}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 保存特征矩阵}
+\PY{n}{features}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{national\PYZus{}features.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 可视化特征}
+\PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}
+\PY{n}{sns}\PY{o}{.}\PY{n}{histplot}\PY{p}{(}\PY{n}{features}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{l+m+mi}{30}\PY{p}{,} \PY{n}{kde}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Distribution of Total Medals}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}
+\PY{n}{sns}\PY{o}{.}\PY{n}{histplot}\PY{p}{(}\PY{n}{features}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Medal\PYZus{}Growth\PYZus{}Rate}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{l+m+mi}{30}\PY{p}{,} \PY{n}{kde}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Distribution of Medal Growth Rate}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}
+\PY{n}{sns}\PY{o}{.}\PY{n}{countplot}\PY{p}{(}\PY{n}{x}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Is\PYZus{}Host}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{data}\PY{o}{=}\PY{n}{features}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Host Country Effect}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+C:\textbackslash{}Users\textbackslash{}Ziqi\textbackslash{}AppData\textbackslash{}Local\textbackslash{}Temp\textbackslash{}ipykernel\_13772\textbackslash{}107591029.py:28:
+DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns.
+This behavior is deprecated, and in a future version of pandas the grouping
+columns will be excluded from the operation. Either pass `include\_groups=False`
+to exclude the groupings or explicitly select the grouping columns after groupby
+to silence this warning.
+  growth\_data =
+medal\_data.groupby('NOC').apply(calculate\_growth\_rate).reset\_index(drop=True)
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{C_files/C_19_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{C_files/C_19_2.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{C_files/C_19_3.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection{项目级特征}\label{ux9879ux76eeux7ea7ux7279ux5f81}
+
+    \subsection{运动员级特征}\label{ux8fd0ux52a8ux5458ux7ea7ux7279ux5f81}
+
     \subsubsection{预处理}\label{ux9884ux5904ux7406}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
@@ -1478,7 +1575,7 @@ Year 2008 2012 2016      2020      2024
 \end{tcolorbox}
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{C_files/C_26_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{C_files/C_31_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
@@ -1634,7 +1731,7 @@ Year 2008 2012 2016      2020      2024
 \end{tcolorbox}
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{C_files/C_32_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{C_files/C_37_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
@@ -1676,7 +1773,7 @@ Year 2008 2012 2016      2020      2024
     \paragraph{数据可视化}\label{ux6570ux636eux53efux89c6ux5316}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{22}{\boxspacing}
+\prompt{In}{incolor}{28}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} 导入必要的库}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{plt}
@@ -1687,8 +1784,8 @@ Year 2008 2012 2016      2020      2024
 
 \PY{c+c1}{\PYZsh{} 数据}
 \PY{n}{percentages} \PY{o}{=} \PY{p}{[}\PY{n}{consecutive\PYZus{}ratio}\PY{o}{*}\PY{l+m+mi}{100}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{consecutive\PYZus{}ratio}\PY{p}{)}\PY{o}{*}\PY{l+m+mi}{100}\PY{p}{]}  \PY{c+c1}{\PYZsh{} 一个百分数和剩余部分}
-\PY{n}{labels} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{continuous}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{not}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}  \PY{c+c1}{\PYZsh{} 标签}
-\PY{n}{colors} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{blue}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{gray}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}  \PY{c+c1}{\PYZsh{} 颜色，突出显示主要部分}
+\PY{n}{labels} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{continuous}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{not continuous}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}  \PY{c+c1}{\PYZsh{} 标签}
+\PY{n}{colors} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsh{}66ccff}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsh{}66b3ff}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}  \PY{c+c1}{\PYZsh{} 颜色}
 
 \PY{c+c1}{\PYZsh{} 绘制饼图}
 \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}  \PY{c+c1}{\PYZsh{} 设置图形大小}
@@ -1705,59 +1802,46 @@ Year 2008 2012 2016      2020      2024
 \end{tcolorbox}
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{C_files/C_37_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{C_files/C_42_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
-    \begin{itemize}
+    \paragraph{结论}\label{ux7ed3ux8bba}
+
+\begin{itemize}
 \tightlist
 \item
-  '\,`'我们可以发现，参加奥运会时间跨度0-15年中绝大部分运动员都是连续参加的'\,'\,'
+  `我们可以发现，参加奥运会时间跨度0-15年中绝大部分运动员都是连续参加的'
 \item
-  '\,`'而且我们前面发现，绝大部分的运动员的时间跨度在0-15年之间，连续参加届数在1-3届'\,'\,'
+  `而且我们前面发现，绝大部分的运动员的时间跨度在0-15年之间，连续参加届数在1-3届'
 \item
-  '\,`'而且我们知道，0-15之间只能连续参加1-3次奥运会'\,'\,'
+  `而且我们知道，0-15之间只能连续参加1-3次奥运会'
 \item
-  '\,`'我们因此可以得出结论，绝大部分奥运会运动员连续参加了1-3次奥运会'\,'\,'
+  `我们因此可以得出结论，绝大部分奥运会运动员连续参加了1-3次奥运会'
 \item
-  '\,`'所以我们可以得出结论，考虑运动员连续参加比赛对奖牌的影响只需要考虑连续参加2-3次的情况'\,'\,'
+  `所以我们可以得出结论，考虑运动员连续参加比赛对奖牌的影响只需要考虑连续参加2-3次的情况'
 \end{itemize}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{23}{\boxspacing}
+\prompt{In}{incolor}{31}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{first\PYZus{}percentage} \PY{o}{=} \PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{/}\PY{p}{(}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{+}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{+}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{+}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{o}{*}\PY{l+m+mi}{100}
 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{一个参加了一次奥运会的运动员参加下一次奥运会的可能为}\PY{l+s+si}{\PYZob{}}\PY{n}{first\PYZus{}percentage}\PY{+w}{ }\PY{l+s+si}{:}\PY{l+s+s1}{ .2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{second\PYZus{}percentage} \PY{o}{=} \PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{/}\PY{p}{(}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{+}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{+}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{o}{*}\PY{l+m+mi}{100}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{一个参加了两次奥运会的运动员参加下一次奥运会的可能为}\PY{l+s+si}{\PYZob{}}\PY{n}{second\PYZus{}percentage}\PY{+w}{ }\PY{l+s+si}{:}\PY{l+s+s1}{ .2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{third\PYZus{}percentage} \PY{o}{=} \PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{/}\PY{p}{(}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{+}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{o}{*}\PY{l+m+mi}{100}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{一个参加了三次奥运会的运动员参加下一次奥运会的可能为}\PY{l+s+si}{\PYZob{}}\PY{n}{third\PYZus{}percentage}\PY{+w}{ }\PY{l+s+si}{:}\PY{l+s+s1}{ .2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{athlete\PYZus{}join\PYZus{}willing} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+m+mi}{1} \PY{p}{:} \PY{n}{first\PYZus{}percentage}\PY{p}{,} \PY{l+m+mi}{2} \PY{p}{:} \PY{n}{second\PYZus{}percentage}\PY{p}{,} \PY{l+m+mi}{3} \PY{p}{:} \PY{n}{third\PYZus{}percentage}\PY{p}{\PYZcb{}}
 \end{Verbatim}
 \end{tcolorbox}
 
     \begin{Verbatim}[commandchars=\\\{\}]
 一个参加了一次奥运会的运动员参加下一次奥运会的可能为 16.32\%
-    \end{Verbatim}
-
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{24}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-\PY{n}{second\PYZus{}percentage} \PY{o}{=} \PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{/}\PY{p}{(}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{+}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{+}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{o}{*}\PY{l+m+mi}{100}
-\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{一个参加了两次奥运会的运动员参加下一次奥运会的可能为}\PY{l+s+si}{\PYZob{}}\PY{n}{second\PYZus{}percentage}\PY{+w}{ }\PY{l+s+si}{:}\PY{l+s+s1}{ .2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-\end{Verbatim}
-\end{tcolorbox}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
 一个参加了两次奥运会的运动员参加下一次奥运会的可能为 19.18\%
-    \end{Verbatim}
-
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{25}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-\PY{n}{third\PYZus{}percentage} \PY{o}{=} \PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{/}\PY{p}{(}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{+}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{o}{*}\PY{l+m+mi}{100}
-\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{一个参加了三次奥运会的运动员参加下一次奥运会的可能为}\PY{l+s+si}{\PYZob{}}\PY{n}{third\PYZus{}percentage}\PY{+w}{ }\PY{l+s+si}{:}\PY{l+s+s1}{ .2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-\end{Verbatim}
-\end{tcolorbox}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
 一个参加了三次奥运会的运动员参加下一次奥运会的可能为 25.00\%
     \end{Verbatim}
+
+    \section{构建模型}\label{ux6784ux5efaux6a21ux578b}
 
 
     % Add a bibliography block to the postdoc

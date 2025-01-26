@@ -16,7 +16,7 @@ def insert_packages(tex_file):
     with open(tex_file, 'w', encoding='utf-8') as file:
         for line in lines:
             file.write(line)
-            if line.strip().startswith(r'\\documentclass'):
+            if line.strip().startswith(r'\documentclass'):
                 file.write(insert_text)
 
     print(f"已成功修改文件：{tex_file}")
