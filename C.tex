@@ -5902,7 +5902,7 @@ strong multicollinearity or other numerical problems.
     \paragraph{预处理}\label{ux9884ux5904ux7406}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{142}{\boxspacing}
+\prompt{In}{incolor}{ }{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
 
@@ -5951,18 +5951,39 @@ strong multicollinearity or other numerical problems.
 \end{Verbatim}
 \end{tcolorbox}
 
-            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{142}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-Medal\_Type  NOC                  Sport  Gold  Silver  Bronze  Total
-0           AFG              Taekwondo     0       0       2      2
-1           AHO                Sailing     0       1       0      1
-2           AIN                 Rowing     0       1       0      1
-3           AIN                 Tennis     0       2       0      2
-4           AIN  Trampoline Gymnastics     1       1       0      2
-\end{Verbatim}
-\end{tcolorbox}
-        
+    \begin{Verbatim}[commandchars=\\\{\}, frame=single, framerule=2mm, rulecolor=\color{outerrorbackground}]
+\textcolor{ansi-red-intense}{\textbf{---------------------------------------------------------------------------}}
+\textcolor{ansi-red-intense}{\textbf{KeyError}}                                  Traceback (most recent call last)
+Cell \textcolor{ansi-green-intense}{\textbf{In[245], line 38}}
+\textcolor{ansi-green}{     35} medal\_counts[\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{'}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{Total}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{'}] \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=} medal\_counts[[\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{'}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{Gold}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{'}, \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{'}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{Silver}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{'}, \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{'}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{Bronze}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{'}]]\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}sum(axis\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{1})
+\textcolor{ansi-green}{     37} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{95,135,135}}{\# 重新排列列的顺序}
+\textcolor{ansi-green-intense}{\textbf{---> 38}} medal\_counts \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=} \setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{medal\_counts\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{[\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{[\strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{NOC\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{ \strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{Sport\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{Year\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{ \strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{Gold\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{ \strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{Silver\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{ \strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{Bronze\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{ \strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{Total\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{]\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{]\strut}
+\textcolor{ansi-green}{     40} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{95,135,135}}{\# 保存结果到CSV文件}
+\textcolor{ansi-green}{     41} medal\_counts\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}to\_csv(\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{'}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{Generated2}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,95,0}}{\textbf{\textbackslash{}\textbackslash{}}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{medal\_counts.csv}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{'}, index\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{False}})
+
+File \textcolor{ansi-green-intense}{\textbf{c:\textbackslash{}Users\textbackslash{}Ziqi\textbackslash{}Documents\textbackslash{}Python\textbackslash{}2025-MCM-C\textbackslash{}new\_env\textbackslash{}Lib\textbackslash{}site-packages\textbackslash{}pandas\textbackslash{}core\textbackslash{}frame.py:4108}}, in \textcolor{ansi-cyan}{DataFrame.\_\_getitem\_\_}\textcolor{ansi-blue-intense}{\textbf{(self, key)}}
+\textcolor{ansi-green}{   4106}     \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{if}} is\_iterator(key):
+\textcolor{ansi-green}{   4107}         key \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{list}(key)
+\textcolor{ansi-green-intense}{\textbf{-> 4108}}     indexer \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{self\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{.\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{columns\strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{.\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{\_get\_indexer\_strict\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{(\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{key\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{ \strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{"\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{columns\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{"\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{)\strut}[\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{1}]
+\textcolor{ansi-green}{   4110} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{95,135,135}}{\# take() does not accept boolean indexers}
+\textcolor{ansi-green}{   4111} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{if}} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{getattr}(indexer, \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{"}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{dtype}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{"}, \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{None}}) \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{==} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{bool}:
+
+File \textcolor{ansi-green-intense}{\textbf{c:\textbackslash{}Users\textbackslash{}Ziqi\textbackslash{}Documents\textbackslash{}Python\textbackslash{}2025-MCM-C\textbackslash{}new\_env\textbackslash{}Lib\textbackslash{}site-packages\textbackslash{}pandas\textbackslash{}core\textbackslash{}indexes\textbackslash{}base.py:6200}}, in \textcolor{ansi-cyan}{Index.\_get\_indexer\_strict}\textcolor{ansi-blue-intense}{\textbf{(self, key, axis\_name)}}
+\textcolor{ansi-green}{   6197} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{else}}:
+\textcolor{ansi-green}{   6198}     keyarr, indexer, new\_indexer \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{self}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}\_reindex\_non\_unique(keyarr)
+\textcolor{ansi-green-intense}{\textbf{-> 6200}} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{self\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{.\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{\_raise\_if\_missing\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{(\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{keyarr\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{ \strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{indexer\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{ \strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{axis\_name\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{)\strut}
+\textcolor{ansi-green}{   6202} keyarr \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{self}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}take(indexer)
+\textcolor{ansi-green}{   6203} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{if}} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{isinstance}(key, Index):
+\textcolor{ansi-green}{   6204}     \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{95,135,135}}{\# GH 42790 - Preserve name from an Index}
+
+File \textcolor{ansi-green-intense}{\textbf{c:\textbackslash{}Users\textbackslash{}Ziqi\textbackslash{}Documents\textbackslash{}Python\textbackslash{}2025-MCM-C\textbackslash{}new\_env\textbackslash{}Lib\textbackslash{}site-packages\textbackslash{}pandas\textbackslash{}core\textbackslash{}indexes\textbackslash{}base.py:6252}}, in \textcolor{ansi-cyan}{Index.\_raise\_if\_missing}\textcolor{ansi-blue-intense}{\textbf{(self, key, indexer, axis\_name)}}
+\textcolor{ansi-green}{   6249}     \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{raise}} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{215,95,95}}{\textbf{KeyError}}(\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{f}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{"}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{None of [}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,95,135}}{\textbf{\{}}key\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,95,135}}{\textbf{\}}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{] are in the [}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,95,135}}{\textbf{\{}}axis\_name\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,95,135}}{\textbf{\}}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{]}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{"})
+\textcolor{ansi-green}{   6251} not\_found \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{list}(ensure\_index(key)[missing\_mask\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}nonzero()[\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{0}]]\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}unique())
+\textcolor{ansi-green-intense}{\textbf{-> 6252}} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{raise}} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{215,95,95}}{\textbf{KeyError}}(\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{f}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{"}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,95,135}}{\textbf{\{}}not\_found\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,95,135}}{\textbf{\}}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{ not in index}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{"})
+
+\textcolor{ansi-red-intense}{\textbf{KeyError}}: "['Year'] not in index"
+    \end{Verbatim}
+
     \subsubsection{得出优势项目}\label{ux5f97ux51faux4f18ux52bfux9879ux76ee}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
@@ -6037,10 +6058,14 @@ to silence this warning.
 
     \subsection{东道主效应}\label{ux4e1cux9053ux4e3bux6548ux5e94}
 
+    \subsubsection{回归分析模型}\label{ux56deux5f52ux5206ux6790ux6a21ux578b}
+
     \begin{itemize}
 \tightlist
 \item
-  回归分析模型
+  考虑金牌数对奖牌数贡献
+\item
+  考虑项目数量增长对奖牌数贡献
 \end{itemize}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
@@ -6193,6 +6218,247 @@ Is\_Host系数的均值: 1.01
 \item
   Is\_Host系数均值明显为正，说明成为东道主对总奖牌数有正面促进作用。
 \end{itemize}
+
+    \subsection{伟大教练效应}\label{ux4f1fux5927ux6559ux7ec3ux6548ux5e94}
+
+    \subsubsection{预处理}\label{ux9884ux5904ux7406}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{247}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
+
+\PY{c+c1}{\PYZsh{} 读取CSV文件}
+\PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2025\PYZus{}Problem\PYZus{}C\PYZus{}Data}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{summerOly\PYZus{}athletes.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 将Medal列中的值转换为Gold, Silver, Bronze}
+\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Medal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Medal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{No medal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{k+kc}{None}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Gold}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Gold}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Silver}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Silver}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Bronze}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Bronze}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 按NOC, Year, Sport分组，统计每种奖牌的数量}
+\PY{n}{medal\PYZus{}counts} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Medal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{unstack}\PY{p}{(}\PY{n}{fill\PYZus{}value}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 重置索引，将NOC, Year, Sport作为列}
+\PY{n}{medal\PYZus{}counts} \PY{o}{=} \PY{n}{medal\PYZus{}counts}\PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 填充缺失的奖牌类型列}
+\PY{n}{medal\PYZus{}counts} \PY{o}{=} \PY{n}{medal\PYZus{}counts}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 计算Total列}
+\PY{n}{medal\PYZus{}counts}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{medal\PYZus{}counts}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Gold}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{+} \PY{n}{medal\PYZus{}counts}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Silver}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{+} \PY{n}{medal\PYZus{}counts}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Bronze}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+
+\PY{c+c1}{\PYZsh{} 重新排列列的顺序}
+\PY{n}{medal\PYZus{}counts} \PY{o}{=} \PY{n}{medal\PYZus{}counts}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Gold}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Silver}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Bronze}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
+
+\PY{c+c1}{\PYZsh{} 显示结果}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{medal\PYZus{}counts}\PY{p}{)}
+\PY{n}{medal\PYZus{}counts}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated2}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{sports\PYZus{}medal\PYZus{}counts.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Medal  NOC      Sport  Year  Gold  Silver  Bronze  Total
+0      AFG  Taekwondo  2008     0       0       1      1
+1      AFG  Taekwondo  2012     0       0       1      1
+2      AHO    Sailing  1988     0       1       0      1
+3      AIN     Rowing  2024     0       1       0      1
+4      AIN     Tennis  2024     0       2       0      2
+{\ldots}    {\ldots}        {\ldots}   {\ldots}   {\ldots}     {\ldots}     {\ldots}    {\ldots}
+6740   ZAM  Athletics  1996     0       1       0      1
+6741   ZAM  Athletics  2024     0       0       1      1
+6742   ZIM     Hockey  1980    15       0       0     15
+6743   ZIM   Swimming  2004     1       1       1      3
+6744   ZIM   Swimming  2008     1       3       0      4
+
+[6745 rows x 7 columns]
+    \end{Verbatim}
+
+    \subsubsection{LSTM +
+Transformer模型}\label{lstm-transformerux6a21ux578b}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{ }{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{numpy}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{np}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{plt}
+\PY{k+kn}{from}\PY{+w}{ }\PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{preprocessing}\PY{+w}{ }\PY{k+kn}{import} \PY{n}{MinMaxScaler}
+\PY{k+kn}{from}\PY{+w}{ }\PY{n+nn}{tensorflow}\PY{n+nn}{.}\PY{n+nn}{keras}\PY{n+nn}{.}\PY{n+nn}{models}\PY{+w}{ }\PY{k+kn}{import} \PY{n}{Model}
+\PY{k+kn}{from}\PY{+w}{ }\PY{n+nn}{tensorflow}\PY{n+nn}{.}\PY{n+nn}{keras}\PY{n+nn}{.}\PY{n+nn}{layers}\PY{+w}{ }\PY{k+kn}{import} \PY{n}{LSTM}\PY{p}{,} \PY{n}{Dense}\PY{p}{,} \PY{n}{Input}\PY{p}{,} \PY{n}{TimeDistributed}\PY{p}{,} \PY{n}{MultiHeadAttention}\PY{p}{,} \PY{n}{LayerNormalization}\PY{p}{,} \PY{n}{Dropout}
+\PY{k+kn}{from}\PY{+w}{ }\PY{n+nn}{tensorflow}\PY{n+nn}{.}\PY{n+nn}{keras}\PY{n+nn}{.}\PY{n+nn}{optimizers}\PY{+w}{ }\PY{k+kn}{import} \PY{n}{Adam}
+
+\PY{c+c1}{\PYZsh{} 1. 数据准备}
+\PY{c+c1}{\PYZsh{} 读取CSV文件}
+\PY{n}{data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated2}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{sports\PYZus{}medal\PYZus{}counts.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 2. 数据预处理}
+\PY{c+c1}{\PYZsh{} 归一化处理}
+\PY{k}{def}\PY{+w}{ }\PY{n+nf}{preprocess\PYZus{}data}\PY{p}{(}\PY{n}{data}\PY{p}{,} \PY{n}{time\PYZus{}step}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
+    \PY{n}{data} \PY{o}{=} \PY{n}{data}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{n}{by}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{data}\PY{o}{.}\PY{n}{set\PYZus{}index}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{inplace}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+    \PY{n}{scaler} \PY{o}{=} \PY{n}{MinMaxScaler}\PY{p}{(}\PY{p}{)}
+    \PY{n}{data\PYZus{}scaled} \PY{o}{=} \PY{n}{scaler}\PY{o}{.}\PY{n}{fit\PYZus{}transform}\PY{p}{(}\PY{n}{data}\PY{p}{)}
+    \PY{n}{X}\PY{p}{,} \PY{n}{Y} \PY{o}{=} \PY{n}{create\PYZus{}dataset}\PY{p}{(}\PY{n}{data\PYZus{}scaled}\PY{p}{,} \PY{n}{time\PYZus{}step}\PY{p}{)}
+    \PY{n}{X} \PY{o}{=} \PY{n}{X}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{n}{X}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{X}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+    \PY{k}{return} \PY{n}{X}\PY{p}{,} \PY{n}{Y}\PY{p}{,} \PY{n}{scaler}
+
+\PY{c+c1}{\PYZsh{} 创建时间序列数据}
+\PY{k}{def}\PY{+w}{ }\PY{n+nf}{create\PYZus{}dataset}\PY{p}{(}\PY{n}{data}\PY{p}{,} \PY{n}{time\PYZus{}step}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
+    \PY{n}{X}\PY{p}{,} \PY{n}{Y} \PY{o}{=} \PY{p}{[}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{p}{]}
+    \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{data}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{time\PYZus{}step} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
+        \PY{n}{a} \PY{o}{=} \PY{n}{data}\PY{p}{[}\PY{n}{i}\PY{p}{:}\PY{p}{(}\PY{n}{i} \PY{o}{+} \PY{n}{time\PYZus{}step}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}
+        \PY{n}{X}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+        \PY{n}{Y}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{data}\PY{p}{[}\PY{n}{i} \PY{o}{+} \PY{n}{time\PYZus{}step}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+    \PY{k}{return} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{Y}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 3. 构建LSTM + Transformer模型}
+\PY{k}{def}\PY{+w}{ }\PY{n+nf}{transformer\PYZus{}encoder}\PY{p}{(}\PY{n}{inputs}\PY{p}{,} \PY{n}{head\PYZus{}size}\PY{p}{,} \PY{n}{num\PYZus{}heads}\PY{p}{,} \PY{n}{ff\PYZus{}dim}\PY{p}{,} \PY{n}{dropout}\PY{p}{)}\PY{p}{:}
+    \PY{n}{x} \PY{o}{=} \PY{n}{MultiHeadAttention}\PY{p}{(}\PY{n}{key\PYZus{}dim}\PY{o}{=}\PY{n}{head\PYZus{}size}\PY{p}{,} \PY{n}{num\PYZus{}heads}\PY{o}{=}\PY{n}{num\PYZus{}heads}\PY{p}{)}\PY{p}{(}\PY{n}{inputs}\PY{p}{,} \PY{n}{inputs}\PY{p}{)}
+    \PY{n}{x} \PY{o}{=} \PY{n}{Dropout}\PY{p}{(}\PY{n}{dropout}\PY{p}{)}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+    \PY{n}{x} \PY{o}{=} \PY{n}{LayerNormalization}\PY{p}{(}\PY{n}{epsilon}\PY{o}{=}\PY{l+m+mf}{1e\PYZhy{}6}\PY{p}{)}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+    \PY{n}{x} \PY{o}{=} \PY{n}{Dense}\PY{p}{(}\PY{n}{ff\PYZus{}dim}\PY{p}{,} \PY{n}{activation}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{relu}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+    \PY{n}{x} \PY{o}{=} \PY{n}{Dense}\PY{p}{(}\PY{n}{inputs}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+    \PY{n}{x} \PY{o}{=} \PY{n}{Dropout}\PY{p}{(}\PY{n}{dropout}\PY{p}{)}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+    \PY{n}{x} \PY{o}{=} \PY{n}{LayerNormalization}\PY{p}{(}\PY{n}{epsilon}\PY{o}{=}\PY{l+m+mf}{1e\PYZhy{}6}\PY{p}{)}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+    \PY{k}{return} \PY{n}{x}
+
+\PY{k}{def}\PY{+w}{ }\PY{n+nf}{build\PYZus{}model}\PY{p}{(}\PY{n}{time\PYZus{}step}\PY{p}{)}\PY{p}{:}
+    \PY{n}{input\PYZus{}shape} \PY{o}{=} \PY{p}{(}\PY{n}{time\PYZus{}step}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+    \PY{n}{inputs} \PY{o}{=} \PY{n}{Input}\PY{p}{(}\PY{n}{shape}\PY{o}{=}\PY{n}{input\PYZus{}shape}\PY{p}{)}
+    \PY{n}{x} \PY{o}{=} \PY{n}{LSTM}\PY{p}{(}\PY{l+m+mi}{50}\PY{p}{,} \PY{n}{return\PYZus{}sequences}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}\PY{p}{(}\PY{n}{inputs}\PY{p}{)}
+    \PY{n}{x} \PY{o}{=} \PY{n}{transformer\PYZus{}encoder}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{head\PYZus{}size}\PY{o}{=}\PY{l+m+mi}{160}\PY{p}{,} \PY{n}{num\PYZus{}heads}\PY{o}{=}\PY{l+m+mi}{4}\PY{p}{,} \PY{n}{ff\PYZus{}dim}\PY{o}{=}\PY{l+m+mi}{4}\PY{p}{,} \PY{n}{dropout}\PY{o}{=}\PY{l+m+mf}{0.25}\PY{p}{)}
+    \PY{n}{x} \PY{o}{=} \PY{n}{LSTM}\PY{p}{(}\PY{l+m+mi}{50}\PY{p}{)}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+    \PY{n}{outputs} \PY{o}{=} \PY{n}{Dense}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+    \PY{n}{model} \PY{o}{=} \PY{n}{Model}\PY{p}{(}\PY{n}{inputs}\PY{p}{,} \PY{n}{outputs}\PY{p}{)}
+    \PY{n}{model}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{n}{optimizer}\PY{o}{=}\PY{n}{Adam}\PY{p}{(}\PY{n}{learning\PYZus{}rate}\PY{o}{=}\PY{l+m+mf}{1e\PYZhy{}4}\PY{p}{)}\PY{p}{,} \PY{n}{loss}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{mean\PYZus{}squared\PYZus{}error}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \PY{k}{return} \PY{n}{model}
+
+\PY{c+c1}{\PYZsh{} 4. 遍历所有国家和项目}
+\PY{n}{results} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+
+\PY{k}{for} \PY{n}{country} \PY{o+ow}{in} \PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+    \PY{k}{for} \PY{n}{sport} \PY{o+ow}{in} \PY{n}{data}\PY{p}{[}\PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{n}{country}\PY{p}{]}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+        \PY{n}{project\PYZus{}data} \PY{o}{=} \PY{n}{data}\PY{p}{[}\PY{p}{(}\PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{n}{country}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{n}{sport}\PY{p}{)}\PY{p}{]}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
+        
+        \PY{c+c1}{\PYZsh{} 如果数据量太少，跳过}
+        \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{project\PYZus{}data}\PY{p}{)} \PY{o}{\PYZlt{}} \PY{l+m+mi}{10}\PY{p}{:}
+            \PY{k}{continue}
+        
+        \PY{c+c1}{\PYZsh{} 数据预处理}
+        \PY{n}{X}\PY{p}{,} \PY{n}{Y}\PY{p}{,} \PY{n}{scaler} \PY{o}{=} \PY{n}{preprocess\PYZus{}data}\PY{p}{(}\PY{n}{project\PYZus{}data}\PY{p}{,} \PY{n}{time\PYZus{}step}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} 训练模型}
+        \PY{n}{model} \PY{o}{=} \PY{n}{build\PYZus{}model}\PY{p}{(}\PY{n}{time\PYZus{}step}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{)}
+        \PY{n}{model}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{Y}\PY{p}{,} \PY{n}{epochs}\PY{o}{=}\PY{l+m+mi}{100}\PY{p}{,} \PY{n}{batch\PYZus{}size}\PY{o}{=}\PY{l+m+mi}{32}\PY{p}{,} \PY{n}{verbose}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} 使用模型进行预测}
+        \PY{n}{Y\PYZus{}pred} \PY{o}{=} \PY{n}{model}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} 反归一化}
+        \PY{n}{Y\PYZus{}pred} \PY{o}{=} \PY{n}{scaler}\PY{o}{.}\PY{n}{inverse\PYZus{}transform}\PY{p}{(}\PY{n}{Y\PYZus{}pred}\PY{p}{)}
+        \PY{n}{Y\PYZus{}true} \PY{o}{=} \PY{n}{scaler}\PY{o}{.}\PY{n}{inverse\PYZus{}transform}\PY{p}{(}\PY{n}{Y}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} 计算异常分数}
+        \PY{n}{anomaly\PYZus{}score} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{abs}\PY{p}{(}\PY{n}{Y\PYZus{}true} \PY{o}{\PYZhy{}} \PY{n}{Y\PYZus{}pred}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} 找出异常上升或下降的年份}
+        \PY{n}{threshold} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{percentile}\PY{p}{(}\PY{n}{anomaly\PYZus{}score}\PY{p}{,} \PY{l+m+mi}{95}\PY{p}{)}
+        \PY{n}{anomaly\PYZus{}indices} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{where}\PY{p}{(}\PY{n}{anomaly\PYZus{}score}\PY{o}{.}\PY{n}{flatten}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZgt{}} \PY{n}{threshold}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+        
+        \PY{c+c1}{\PYZsh{} 调整索引以匹配原始数据}
+        \PY{n}{anomaly\PYZus{}years} \PY{o}{=} \PY{n}{project\PYZus{}data}\PY{o}{.}\PY{n}{index}\PY{p}{[}\PY{n}{anomaly\PYZus{}indices} \PY{o}{+} \PY{l+m+mi}{5}\PY{p}{]}
+        
+        \PY{c+c1}{\PYZsh{} 区分异常上升和异常下降}
+        \PY{k}{for} \PY{n}{year} \PY{o+ow}{in} \PY{n}{anomaly\PYZus{}years}\PY{p}{:}
+            \PY{n}{index} \PY{o}{=} \PY{n}{anomaly\PYZus{}indices}\PY{p}{[}\PY{n}{anomaly\PYZus{}years}\PY{o}{.}\PY{n}{get\PYZus{}loc}\PY{p}{(}\PY{n}{year}\PY{p}{)}\PY{p}{]}
+            \PY{k}{if} \PY{n}{index} \PY{o}{\PYZhy{}} \PY{l+m+mi}{5} \PY{o}{\PYZlt{}} \PY{l+m+mi}{0}\PY{p}{:}
+                \PY{k}{continue}  \PY{c+c1}{\PYZsh{} 跳过索引超出范围的情况}
+            \PY{k}{if} \PY{n}{Y\PYZus{}pred}\PY{p}{[}\PY{n}{index} \PY{o}{\PYZhy{}} \PY{l+m+mi}{5}\PY{p}{]} \PY{o}{\PYZgt{}} \PY{n}{Y\PYZus{}true}\PY{p}{[}\PY{n}{index} \PY{o}{\PYZhy{}} \PY{l+m+mi}{5}\PY{p}{]}\PY{p}{:}
+                \PY{n}{anomaly\PYZus{}type} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{下降}\PY{l+s+s1}{\PYZsq{}}
+            \PY{k}{else}\PY{p}{:}
+                \PY{n}{anomaly\PYZus{}type} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{上升}\PY{l+s+s1}{\PYZsq{}}
+            \PY{n}{results}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{n}{country}\PY{p}{,} \PY{n}{sport}\PY{p}{,} \PY{n}{year}\PY{p}{,} \PY{n}{anomaly\PYZus{}type}\PY{p}{)}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 5. 输出结果}
+\PY{n}{results\PYZus{}df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{results}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{国家}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{项目}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{年份}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{异常类型}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{results\PYZus{}df}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 153ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 202ms/step
+WARNING:tensorflow:5 out of the last 5 calls to <function
+TensorFlowTrainer.make\_predict\_function.<locals>.one\_step\_on\_data\_distributed at
+0x0000018E0A42EC00> triggered tf.function retracing. Tracing is expensive and
+the excessive number of tracings could be due to (1) creating @tf.function
+repeatedly in a loop, (2) passing tensors with different shapes, (3) passing
+Python objects instead of tensors. For (1), please define your @tf.function
+outside of the loop. For (2), @tf.function has reduce\_retracing=True option that
+can avoid unnecessary retracing. For (3), please refer to
+https://www.tensorflow.org/guide/function\#controlling\_retracing and
+https://www.tensorflow.org/api\_docs/python/tf/function for  more details.
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 173ms/step
+WARNING:tensorflow:6 out of the last 6 calls to <function
+TensorFlowTrainer.make\_predict\_function.<locals>.one\_step\_on\_data\_distributed at
+0x0000018E10E33100> triggered tf.function retracing. Tracing is expensive and
+the excessive number of tracings could be due to (1) creating @tf.function
+repeatedly in a loop, (2) passing tensors with different shapes, (3) passing
+Python objects instead of tensors. For (1), please define your @tf.function
+outside of the loop. For (2), @tf.function has reduce\_retracing=True option that
+can avoid unnecessary retracing. For (3), please refer to
+https://www.tensorflow.org/guide/function\#controlling\_retracing and
+https://www.tensorflow.org/api\_docs/python/tf/function for  more details.
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 153ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 150ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 162ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 155ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 152ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 169ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 156ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 163ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 166ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 161ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 155ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 152ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 156ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 151ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 155ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 153ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 154ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 151ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 152ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 277ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 166ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 163ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 155ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 278ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 158ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 150ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 154ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 153ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 280ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 153ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 150ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 149ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 152ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 154ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 156ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 148ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 312ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 290ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 280ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 165ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 166ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 165ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 166ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{1s} 1s/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 153ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 153ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 152ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 155ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 152ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 158ms/step
+    \end{Verbatim}
 
 
     % Add a bibliography block to the postdoc
