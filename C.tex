@@ -1532,6 +1532,142 @@ Year 2008 2012 2016      2020      2024
     
     \subsection{项目级特征}\label{ux9879ux76eeux7ea7ux7279ux5f81}
 
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{171}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
+
+\PY{c+c1}{\PYZsh{} 读取CSV文件}
+\PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{summerOly\PYZus{}programs\PYZus{}filled.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 获取所有年份列}
+\PY{n}{years} \PY{o}{=} \PY{p}{[}\PY{n}{col} \PY{k}{for} \PY{n}{col} \PY{o+ow}{in} \PY{n}{df}\PY{o}{.}\PY{n}{columns} \PY{k}{if} \PY{n}{col}\PY{o}{.}\PY{n}{isdigit}\PY{p}{(}\PY{p}{)}\PY{p}{]}
+
+\PY{c+c1}{\PYZsh{} 初始化一个空的DataFrame来存储结果}
+\PY{n}{result} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Amount}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 遍历每个年份，计算总项目数}
+\PY{k}{for} \PY{n}{year} \PY{o+ow}{in} \PY{n}{years}\PY{p}{:}
+    \PY{n}{total\PYZus{}events} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{n}{year}\PY{p}{]}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+    \PY{n}{new\PYZus{}row} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{year}\PY{p}{)}\PY{p}{]}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Amount}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{total\PYZus{}events}\PY{p}{)}\PY{p}{]}\PY{p}{\PYZcb{}}\PY{p}{)}
+    \PY{n}{result} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{concat}\PY{p}{(}\PY{p}{[}\PY{n}{result}\PY{p}{,} \PY{n}{new\PYZus{}row}\PY{p}{]}\PY{p}{,} \PY{n}{ignore\PYZus{}index}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 显示结果}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{result}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+
+\PY{n}{result}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{Project\PYZus{}amount.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+   Year Amount
+0  1896    113
+1  1900    236
+2  1904    224
+3  1906    176
+4  1908    267
+    \end{Verbatim}
+
+    \subsubsection{可视化}\label{ux53efux89c6ux5316}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{172}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{plt}
+
+\PY{c+c1}{\PYZsh{} 读取CSV文件}
+\PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{Project\PYZus{}amount.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 绘制折线图}
+\PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}  \PY{c+c1}{\PYZsh{} 设置图形大小}
+\PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Amount}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{marker}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{o}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{linestyle}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}  \PY{c+c1}{\PYZsh{} 绘制折线图，添加标记点}
+
+\PY{c+c1}{\PYZsh{} 添加标题和标签}
+\PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Olympic Events Over the Years}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{16}\PY{p}{)}  \PY{c+c1}{\PYZsh{} 添加标题}
+\PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{14}\PY{p}{)}  \PY{c+c1}{\PYZsh{} 添加x轴标签}
+\PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Amount of Events}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{14}\PY{p}{)}  \PY{c+c1}{\PYZsh{} 添加y轴标签}
+
+\PY{c+c1}{\PYZsh{} 添加网格线}
+\PY{n}{plt}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{k+kc}{True}\PY{p}{,} \PY{n}{linestyle}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.6}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 显示图形}
+\PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{C_files/C_29_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsubsection{线性拟合}\label{ux7ebfux6027ux62dfux5408}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{177}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{numpy}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{np}
+\PY{k+kn}{from}\PY{+w}{ }\PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{linear\PYZus{}model}\PY{+w}{ }\PY{k+kn}{import} \PY{n}{LinearRegression}
+\PY{k+kn}{from}\PY{+w}{ }\PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{metrics}\PY{+w}{ }\PY{k+kn}{import} \PY{n}{r2\PYZus{}score}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{plt}
+
+\PY{c+c1}{\PYZsh{} 读取CSV文件}
+\PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{Project\PYZus{}amount.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 准备数据}
+\PY{n}{X} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{values}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}  \PY{c+c1}{\PYZsh{} 将年份作为自变量}
+\PY{n}{y} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Amount}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{values}  \PY{c+c1}{\PYZsh{} 将项目数作为因变量}
+
+\PY{c+c1}{\PYZsh{} 创建线性回归模型}
+\PY{n}{model} \PY{o}{=} \PY{n}{LinearRegression}\PY{p}{(}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 拟合模型}
+\PY{n}{model}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 预测2028年的总项目数}
+\PY{n}{year\PYZus{}2028} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{2028}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+\PY{n}{predicted\PYZus{}amount\PYZus{}2028} \PY{o}{=} \PY{n}{model}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{year\PYZus{}2028}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 计算决定系数 R\PYZca{}2}
+\PY{n}{y\PYZus{}pred} \PY{o}{=} \PY{n}{model}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+\PY{n}{r2} \PY{o}{=} \PY{n}{r2\PYZus{}score}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{n}{y\PYZus{}pred}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 绘制折线图和拟合线}
+\PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n}{marker}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{o}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{linestyle}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Actual Data}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}  \PY{c+c1}{\PYZsh{} 绘制实际数据}
+\PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y\PYZus{}pred}\PY{p}{,} \PY{n}{linestyle}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fitted Line}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}  \PY{c+c1}{\PYZsh{} 绘制拟合线}
+
+\PY{c+c1}{\PYZsh{} 添加标题和标签}
+\PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Olympic Events Over the Years with Linear Regression}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{16}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{14}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Amount of Events}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{14}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 添加网格线}
+\PY{n}{plt}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{k+kc}{True}\PY{p}{,} \PY{n}{linestyle}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.6}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 添加图例}
+\PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 显示图形}
+\PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 打印预测结果和拟合度}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{预测2028年的总项目数: }\PY{l+s+si}{\PYZob{}}\PY{n+nb}{round}\PY{p}{(}\PY{n}{predicted\PYZus{}amount\PYZus{}2028}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{决定系数 R\PYZca{}2: }\PY{l+s+si}{\PYZob{}}\PY{n}{r2}\PY{l+s+si}{:}\PY{l+s+s2}{.4f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{C_files/C_31_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+预测2028年的总项目数: 721
+决定系数 R\^{}2: 0.9177
+    \end{Verbatim}
+
     \subsection{运动员级特征}\label{ux8fd0ux52a8ux5458ux7ea7ux7279ux5f81}
 
     \subsubsection{预处理}\label{ux9884ux5904ux7406}
@@ -1808,7 +1944,7 @@ Year 2008 2012 2016      2020      2024
 \end{tcolorbox}
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{C_files/C_37_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{C_files/C_42_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
@@ -1968,7 +2104,7 @@ Year 2008 2012 2016      2020      2024
 \end{tcolorbox}
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{C_files/C_43_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{C_files/C_48_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
@@ -2039,7 +2175,7 @@ Year 2008 2012 2016      2020      2024
 \end{tcolorbox}
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{C_files/C_48_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{C_files/C_53_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
@@ -5206,6 +5342,12 @@ MSE: 2.185780634244944, R2: 0.8524910127837848, MAE: 0.5823690356586569
 
     \subsection{第一问}\label{ux7b2cux4e00ux95ee}
 
+    • 构建一个模型，用于预测每个国家的奖牌数（至少包括金牌数和奖牌总数）。
+请包含对模型预测的不确定度/精确度的估计以及模型性能的衡量指标。
+根据您的模型，您对 2028 年美国洛杉矶夏季奥运会奖牌榜的预测结果是
+什么？请给出所有结果的预测区间。您认为哪些国家最有可能取得进
+步？哪些国家的表现会不如 2024 年？
+
     \subsubsection{国家相比2024年进步或退步}\label{ux56fdux5bb6ux76f8ux6bd42024ux5e74ux8fdbux6b65ux6216ux9000ux6b65}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
@@ -5308,6 +5450,13 @@ MSE: 2.185780634244944, R2: 0.8524910127837848, MAE: 0.5823690356586569
     \end{Verbatim}
 
     \subsection{第二问}\label{ux7b2cux4e8cux95ee}
+
+    \begin{itemize}
+\tightlist
+\item
+  您的模型应涵盖尚未获得奖牌的国家；您预计在下一届奥运会中会有多少
+  个国家获得其首枚奖牌？对于这个估计，您认为可能性有多大？
+\end{itemize}
 
     \subsubsection{预处理}\label{ux9884ux5904ux7406}
 
@@ -5440,7 +5589,7 @@ MSE: 2.185780634244944, R2: 0.8524910127837848, MAE: 0.5823690356586569
 \end{tcolorbox}
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{C_files/C_75_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{C_files/C_82_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
@@ -5505,7 +5654,7 @@ MSE: 2.185780634244944, R2: 0.8524910127837848, MAE: 0.5823690356586569
 \end{tcolorbox}
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{C_files/C_77_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{C_files/C_84_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
@@ -5537,10 +5686,56 @@ MSE: 2.185780634244944, R2: 0.8524910127837848, MAE: 0.5823690356586569
 首次获得金牌的国家数量模型的拟合度 (R\^{}2): 0.02
     \end{Verbatim}
 
+    \begin{itemize}
+\tightlist
+\item
+  这说明有2\%的可能完全准确
+\item
+  考虑到数目只为整数，可能性会更大
+\end{itemize}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{137}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} 进行预测}
+\PY{n}{pre\PYZus{}medal} \PY{o}{=} \PY{n}{model\PYZus{}medal}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{years}\PY{p}{)}
+\PY{n}{pre\PYZus{}gold} \PY{o}{=} \PY{n}{model\PYZus{}gold}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{years}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 四舍五入预测值}
+\PY{n}{pre\PYZus{}medal\PYZus{}rounded} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{round}\PY{p}{(}\PY{n}{pre\PYZus{}medal}\PY{p}{)}
+\PY{n}{pre\PYZus{}gold\PYZus{}rounded} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{round}\PY{p}{(}\PY{n}{pre\PYZus{}gold}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 计算偏离}
+\PY{n}{deviation\PYZus{}medal} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{abs}\PY{p}{(}\PY{n}{pre\PYZus{}medal\PYZus{}rounded} \PY{o}{\PYZhy{}} \PY{n}{first\PYZus{}medal\PYZus{}countries}\PY{p}{)}
+\PY{n}{deviation\PYZus{}gold} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{abs}\PY{p}{(}\PY{n}{pre\PYZus{}gold\PYZus{}rounded} \PY{o}{\PYZhy{}} \PY{n}{first\PYZus{}gold\PYZus{}countries}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 统计偏离超过1的次数}
+\PY{n}{count\PYZus{}deviation\PYZus{}medal\PYZus{}over\PYZus{}1} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{n}{deviation\PYZus{}medal} \PY{o}{\PYZgt{}} \PY{l+m+mi}{1}\PY{p}{)}
+\PY{n}{count\PYZus{}deviation\PYZus{}gold\PYZus{}over\PYZus{}1} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{n}{deviation\PYZus{}gold} \PY{o}{\PYZgt{}} \PY{l+m+mi}{1}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 计算比例}
+\PY{n}{proportion\PYZus{}deviation\PYZus{}medal\PYZus{}over\PYZus{}1} \PY{o}{=} \PY{n}{count\PYZus{}deviation\PYZus{}medal\PYZus{}over\PYZus{}1} \PY{o}{/} \PY{n+nb}{len}\PY{p}{(}\PY{n}{years}\PY{p}{)}
+\PY{n}{proportion\PYZus{}deviation\PYZus{}gold\PYZus{}over\PYZus{}1} \PY{o}{=} \PY{n}{count\PYZus{}deviation\PYZus{}gold\PYZus{}over\PYZus{}1} \PY{o}{/} \PY{n+nb}{len}\PY{p}{(}\PY{n}{years}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 输出比例}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{首次获得奖牌的国家数量预测偏离超过1的比例: }\PY{l+s+si}{\PYZob{}}\PY{n}{proportion\PYZus{}deviation\PYZus{}medal\PYZus{}over\PYZus{}1}\PY{l+s+si}{:}\PY{l+s+s2}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{首次获得金牌的国家数量预测偏离超过1的比例: }\PY{l+s+si}{\PYZob{}}\PY{n}{proportion\PYZus{}deviation\PYZus{}gold\PYZus{}over\PYZus{}1}\PY{l+s+si}{:}\PY{l+s+s2}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{首次获得奖牌的国家数量预测准确度: }\PY{l+s+si}{\PYZob{}}\PY{p}{(}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{proportion\PYZus{}deviation\PYZus{}medal\PYZus{}over\PYZus{}1}\PY{p}{)}\PY{o}{*}\PY{l+m+mi}{100}\PY{l+s+si}{:}\PY{l+s+s2}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{首次获得金牌的国家数量预测准确度: }\PY{l+s+si}{\PYZob{}}\PY{p}{(}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{proportion\PYZus{}deviation\PYZus{}gold\PYZus{}over\PYZus{}1}\PY{p}{)}\PY{o}{*}\PY{l+m+mi}{100}\PY{l+s+si}{:}\PY{l+s+s2}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+首次获得奖牌的国家数量预测偏离超过1的比例: 0.57
+首次获得金牌的国家数量预测偏离超过1的比例: 0.67
+首次获得奖牌的国家数量预测准确度: 43.33\%
+首次获得金牌的国家数量预测准确度: 33.33\%
+    \end{Verbatim}
+
     \subsubsection{评估可能性}\label{ux8bc4ux4f30ux53efux80fdux6027}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{92}{\boxspacing}
+\prompt{In}{incolor}{135}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{numpy}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{np}
@@ -5565,17 +5760,20 @@ MSE: 2.185780634244944, R2: 0.8524910127837848, MAE: 0.5823690356586569
 \PY{n}{model\PYZus{}gold}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{years}\PY{p}{,} \PY{n}{first\PYZus{}gold\PYZus{}countries}\PY{p}{)}
 
 \PY{c+c1}{\PYZsh{} 预测2028年的值}
-\PY{n}{year\PYZus{}2028} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{2028}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
-\PY{n}{pre\PYZus{}medal\PYZus{}2028} \PY{o}{=} \PY{n}{model\PYZus{}medal}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{year\PYZus{}2028}\PY{p}{)}
-\PY{n}{pre\PYZus{}gold\PYZus{}2028} \PY{o}{=} \PY{n}{model\PYZus{}gold}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{year\PYZus{}2028}\PY{p}{)}
+\PY{n}{year\PYZus{}2028} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{2028}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+\PY{n}{pre\PYZus{}medal\PYZus{}2028} \PY{o}{=} \PY{n+nb}{round}\PY{p}{(}\PY{n}{model\PYZus{}medal}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{year\PYZus{}2028}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+\PY{n}{pre\PYZus{}gold\PYZus{}2028} \PY{o}{=} \PY{n+nb}{round}\PY{p}{(}\PY{n}{model\PYZus{}gold}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{year\PYZus{}2028}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
 
 \PY{c+c1}{\PYZsh{} 使用statsmodels计算置信区间}
 \PY{n}{X} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{add\PYZus{}constant}\PY{p}{(}\PY{n}{years}\PY{p}{)}  \PY{c+c1}{\PYZsh{} 添加常数项}
 \PY{n}{model\PYZus{}medal\PYZus{}sm} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{OLS}\PY{p}{(}\PY{n}{first\PYZus{}medal\PYZus{}countries}\PY{p}{,} \PY{n}{X}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
 \PY{n}{model\PYZus{}gold\PYZus{}sm} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{OLS}\PY{p}{(}\PY{n}{first\PYZus{}gold\PYZus{}countries}\PY{p}{,} \PY{n}{X}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
 
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{model\PYZus{}medal\PYZus{}sm}\PY{o}{.}\PY{n}{summary}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{model\PYZus{}gold\PYZus{}sm}\PY{o}{.}\PY{n}{summary}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+
 \PY{c+c1}{\PYZsh{} 预测2028年的值及其置信区间}
-\PY{n}{year\PYZus{}2028\PYZus{}sm} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{add\PYZus{}constant}\PY{p}{(}\PY{n}{year\PYZus{}2028}\PY{p}{)}  \PY{c+c1}{\PYZsh{} 添加常数项}
+\PY{n}{year\PYZus{}2028\PYZus{}sm} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{add\PYZus{}constant}\PY{p}{(}\PY{n}{year\PYZus{}2028}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}  \PY{c+c1}{\PYZsh{} 添加常数项}
 \PY{n}{pre\PYZus{}medal\PYZus{}2028\PYZus{}sm} \PY{o}{=} \PY{n}{model\PYZus{}medal\PYZus{}sm}\PY{o}{.}\PY{n}{get\PYZus{}prediction}\PY{p}{(}\PY{n}{year\PYZus{}2028\PYZus{}sm}\PY{p}{)}\PY{o}{.}\PY{n}{summary\PYZus{}frame}\PY{p}{(}\PY{p}{)}
 \PY{n}{pre\PYZus{}gold\PYZus{}2028\PYZus{}sm} \PY{o}{=} \PY{n}{model\PYZus{}gold\PYZus{}sm}\PY{o}{.}\PY{n}{get\PYZus{}prediction}\PY{p}{(}\PY{n}{year\PYZus{}2028\PYZus{}sm}\PY{p}{)}\PY{o}{.}\PY{n}{summary\PYZus{}frame}\PY{p}{(}\PY{p}{)}
 
@@ -5591,8 +5789,8 @@ MSE: 2.185780634244944, R2: 0.8524910127837848, MAE: 0.5823690356586569
 \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{2028}\PY{p}{]}\PY{p}{,} \PY{n}{pre\PYZus{}gold\PYZus{}2028}\PY{p}{,} \PY{n}{marker}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{o}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{green}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Predicted First Gold Countries in 2028}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 
 \PY{c+c1}{\PYZsh{} 添加置信区间}
-\PY{n}{plt}\PY{o}{.}\PY{n}{fill\PYZus{}between}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{2028}\PY{p}{]}\PY{p}{,} \PY{n}{pre\PYZus{}medal\PYZus{}2028\PYZus{}sm}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{mean\PYZus{}ci\PYZus{}lower}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{pre\PYZus{}medal\PYZus{}2028\PYZus{}sm}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{mean\PYZus{}ci\PYZus{}upper}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{red}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.2}\PY{p}{)}
-\PY{n}{plt}\PY{o}{.}\PY{n}{fill\PYZus{}between}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{2028}\PY{p}{]}\PY{p}{,} \PY{n}{pre\PYZus{}gold\PYZus{}2028\PYZus{}sm}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{mean\PYZus{}ci\PYZus{}lower}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{pre\PYZus{}gold\PYZus{}2028\PYZus{}sm}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{mean\PYZus{}ci\PYZus{}upper}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{green}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.2}\PY{p}{)}
+\PY{c+c1}{\PYZsh{}plt.fill\PYZus{}between([2028], pre\PYZus{}medal\PYZus{}2028\PYZus{}sm[\PYZsq{}mean\PYZus{}ci\PYZus{}lower\PYZsq{}], pre\PYZus{}medal\PYZus{}2028\PYZus{}sm[\PYZsq{}mean\PYZus{}ci\PYZus{}upper\PYZsq{}], color=\PYZsq{}red\PYZsq{}, alpha=0.2)}
+\PY{c+c1}{\PYZsh{}plt.fill\PYZus{}between([2028], pre\PYZus{}gold\PYZus{}2028\PYZus{}sm[\PYZsq{}mean\PYZus{}ci\PYZus{}lower\PYZsq{}], pre\PYZus{}gold\PYZus{}2028\PYZus{}sm[\PYZsq{}mean\PYZus{}ci\PYZus{}upper\PYZsq{}], color=\PYZsq{}green\PYZsq{}, alpha=0.2)}
 
 \PY{c+c1}{\PYZsh{} 添加标题和标签}
 \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Number of Countries Winning Medals or Gold for the First Time in Each Olympic Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
@@ -5607,45 +5805,394 @@ MSE: 2.185780634244944, R2: 0.8524910127837848, MAE: 0.5823690356586569
 \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 
 \PY{c+c1}{\PYZsh{} 输出预测结果及其置信区间}
-\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{预测2028年首次获得奖牌的国家数量: }\PY{l+s+si}{\PYZob{}}\PY{n}{pre\PYZus{}medal\PYZus{}2028}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{l+s+si}{:}\PY{l+s+s2}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{预测2028年首次获得金牌的国家数量: }\PY{l+s+si}{\PYZob{}}\PY{n}{pre\PYZus{}gold\PYZus{}2028}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{l+s+si}{:}\PY{l+s+s2}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{预测2028年首次获得奖牌的国家数量: }\PY{l+s+si}{\PYZob{}}\PY{n}{pre\PYZus{}medal\PYZus{}2028}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{预测2028年首次获得金牌的国家数量: }\PY{l+s+si}{\PYZob{}}\PY{n}{pre\PYZus{}gold\PYZus{}2028}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{预测2028年首次获得奖牌的国家数量的置信区间: [}\PY{l+s+si}{\PYZob{}}\PY{n}{pre\PYZus{}medal\PYZus{}2028\PYZus{}sm}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{mean\PYZus{}ci\PYZus{}lower}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{l+s+si}{:}\PY{l+s+s2}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{, }\PY{l+s+si}{\PYZob{}}\PY{n}{pre\PYZus{}medal\PYZus{}2028\PYZus{}sm}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{mean\PYZus{}ci\PYZus{}upper}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{l+s+si}{:}\PY{l+s+s2}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{]}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{预测2028年首次获得金牌的国家数量的置信区间: [}\PY{l+s+si}{\PYZob{}}\PY{n}{pre\PYZus{}gold\PYZus{}2028\PYZus{}sm}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{mean\PYZus{}ci\PYZus{}lower}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{l+s+si}{:}\PY{l+s+s2}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{, }\PY{l+s+si}{\PYZob{}}\PY{n}{pre\PYZus{}gold\PYZus{}2028\PYZus{}sm}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{mean\PYZus{}ci\PYZus{}upper}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{l+s+si}{:}\PY{l+s+s2}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{]}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
-    \begin{Verbatim}[commandchars=\\\{\}, frame=single, framerule=2mm, rulecolor=\color{outerrorbackground}]
-\textcolor{ansi-red-intense}{\textbf{---------------------------------------------------------------------------}}
-\textcolor{ansi-red-intense}{\textbf{ValueError}}                                Traceback (most recent call last)
-Cell \textcolor{ansi-green-intense}{\textbf{In[92], line 35}}
-\textcolor{ansi-green}{     33} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{95,135,135}}{\# 预测2028年的值及其置信区间}
-\textcolor{ansi-green}{     34} year\_2028\_sm \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=} sm\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}add\_constant(year\_2028)  \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{95,135,135}}{\# 添加常数项}
-\textcolor{ansi-green-intense}{\textbf{---> 35}} pre\_medal\_2028\_sm \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=} \setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{model\_medal\_sm\strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{.\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{get\_prediction\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{(\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{year\_2028\_sm\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{)\strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}summary\_frame()
-\textcolor{ansi-green}{     36} pre\_gold\_2028\_sm \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=} model\_gold\_sm\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}get\_prediction(year\_2028\_sm)\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}summary\_frame()
-\textcolor{ansi-green}{     38} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{95,135,135}}{\# 绘制折线图}
+    \begin{Verbatim}[commandchars=\\\{\}]
+                            OLS Regression Results
+==============================================================================
+Dep. Variable:                      y   R-squared:                       0.025
+Model:                            OLS   Adj. R-squared:                 -0.010
+Method:                 Least Squares   F-statistic:                    0.7110
+Date:                Tue, 28 Jan 2025   Prob (F-statistic):              0.406
+Time:                        02:34:37   Log-Likelihood:                -79.692
+No. Observations:                  30   AIC:                             163.4
+Df Residuals:                      28   BIC:                             166.2
+Df Model:                           1
+Covariance Type:            nonrobust
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const        -22.3475     32.992     -0.677      0.504     -89.928      45.233
+x1             0.0142      0.017      0.843      0.406      -0.020       0.049
+==============================================================================
+Omnibus:                       12.296   Durbin-Watson:                   1.450
+Prob(Omnibus):                  0.002   Jarque-Bera (JB):               11.745
+Skew:                           1.241   Prob(JB):                      0.00282
+Kurtosis:                       4.798   Cond. No.                     9.94e+04
+==============================================================================
 
-File \textcolor{ansi-green-intense}{\textbf{c:\textbackslash{}Users\textbackslash{}Ziqi\textbackslash{}Documents\textbackslash{}Python\textbackslash{}2025-MCM-C\textbackslash{}new\_env\textbackslash{}Lib\textbackslash{}site-packages\textbackslash{}statsmodels\textbackslash{}regression\textbackslash{}linear\_model.py:2692}}, in \textcolor{ansi-cyan}{RegressionResults.get\_prediction}\textcolor{ansi-blue-intense}{\textbf{(self, exog, transform, weights, row\_labels, **kwargs)}}
-\textcolor{ansi-green}{   2688} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,255}}{@Appender}(pred\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}get\_prediction\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,0,135}}{\_\_doc\_\_})
-\textcolor{ansi-green}{   2689} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{def}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{188,188,188}}{ }\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,0,255}}{get\_prediction}(\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{self}, exog\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{None}}, transform\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{True}}, weights\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{None}},
-\textcolor{ansi-green}{   2690}                    row\_labels\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{None}}, \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{*}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{*}kwargs):
-\textcolor{ansi-green-intense}{\textbf{-> 2692}}     \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{return}} \setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{pred\strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{.\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{get\_prediction\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{(\strut}
-\textcolor{ansi-green}{   2693} \setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{        \strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{self\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{ \strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{exog\strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{=\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{exog\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{ \strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{transform\strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{=\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{transform\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{ \strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{weights\strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{=\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{weights\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}
-\textcolor{ansi-green}{   2694} \setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{        \strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{row\_labels\strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{=\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{row\_labels\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{ \strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{*\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{*\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{kwargs\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{)\strut}
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly
+specified.
+[2] The condition number is large, 9.94e+04. This might indicate that there are
+strong multicollinearity or other numerical problems.
+                            OLS Regression Results
+==============================================================================
+Dep. Variable:                      y   R-squared:                       0.015
+Model:                            OLS   Adj. R-squared:                 -0.020
+Method:                 Least Squares   F-statistic:                    0.4312
+Date:                Tue, 28 Jan 2025   Prob (F-statistic):              0.517
+Time:                        02:34:37   Log-Likelihood:                -78.874
+No. Observations:                  30   AIC:                             161.7
+Df Residuals:                      28   BIC:                             164.5
+Df Model:                           1
+Covariance Type:            nonrobust
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const        -17.1783     32.104     -0.535      0.597     -82.941      48.584
+x1             0.0107      0.016      0.657      0.517      -0.023       0.044
+==============================================================================
+Omnibus:                       21.261   Durbin-Watson:                   1.473
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               29.640
+Skew:                           1.775   Prob(JB):                     3.66e-07
+Kurtosis:                       6.334   Cond. No.                     9.94e+04
+==============================================================================
 
-File \textcolor{ansi-green-intense}{\textbf{c:\textbackslash{}Users\textbackslash{}Ziqi\textbackslash{}Documents\textbackslash{}Python\textbackslash{}2025-MCM-C\textbackslash{}new\_env\textbackslash{}Lib\textbackslash{}site-packages\textbackslash{}statsmodels\textbackslash{}regression\textbackslash{}\_prediction.py:198}}, in \textcolor{ansi-cyan}{get\_prediction}\textcolor{ansi-blue-intense}{\textbf{(self, exog, transform, weights, row\_labels, pred\_kwds)}}
-\textcolor{ansi-green}{    196} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{if}} pred\_kwds \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,255}}{\textbf{is}} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{None}}:
-\textcolor{ansi-green}{    197}     pred\_kwds \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=} \{\}
-\textcolor{ansi-green-intense}{\textbf{--> 198}} predicted\_mean \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{self\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{.\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{model\strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{.\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{predict\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{(\strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{self\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{.\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{params\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{ \strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{exog\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{ \strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{*\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{*\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{pred\_kwds\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{)\strut}
-\textcolor{ansi-green}{    200} covb \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{self}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}cov\_params()
-\textcolor{ansi-green}{    201} var\_pred\_mean \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=} (exog \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{*} np\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}dot(covb, exog\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}T)\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}T)\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}sum(\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{1})
-
-File \textcolor{ansi-green-intense}{\textbf{c:\textbackslash{}Users\textbackslash{}Ziqi\textbackslash{}Documents\textbackslash{}Python\textbackslash{}2025-MCM-C\textbackslash{}new\_env\textbackslash{}Lib\textbackslash{}site-packages\textbackslash{}statsmodels\textbackslash{}regression\textbackslash{}linear\_model.py:409}}, in \textcolor{ansi-cyan}{RegressionModel.predict}\textcolor{ansi-blue-intense}{\textbf{(self, params, exog)}}
-\textcolor{ansi-green}{    406} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{if}} exog \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,255}}{\textbf{is}} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{None}}:
-\textcolor{ansi-green}{    407}     exog \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{self}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}exog
-\textcolor{ansi-green-intense}{\textbf{--> 409}} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{return}} \setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{np\strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{.\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{dot\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{(\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{exog\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{ \strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{params\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{)\strut}
-
-\textcolor{ansi-red-intense}{\textbf{ValueError}}: shapes (1,1) and (2,) not aligned: 1 (dim 1) != 2 (dim 0)
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly
+specified.
+[2] The condition number is large, 9.94e+04. This might indicate that there are
+strong multicollinearity or other numerical problems.
     \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{C_files/C_90_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+预测2028年首次获得奖牌的国家数量: 6
+预测2028年首次获得金牌的国家数量: 5
+预测2028年首次获得奖牌的国家数量的置信区间: [-182373.15, 91731.90]
+预测2028年首次获得金牌的国家数量的置信区间: [-168204.18, 98528.84]
+    \end{Verbatim}
+
+    \subsection{第三问}\label{ux7b2cux4e09ux95ee}
+
+    \begin{itemize}
+\tightlist
+\item
+  您的模型还应考虑特定奥运会的赛事（数量和类型）。
+\item
+  探究赛事与各国所获奖牌数量之间的关系。
+\item
+  对于不同国家而言，哪些体育项目最为重要？原因何在？
+\item
+  主办国所选择的赛事如何影响比赛结果？
+\end{itemize}
+
+    \subsubsection{各国优势项目}\label{ux5404ux56fdux4f18ux52bfux9879ux76ee}
+
+    \paragraph{预处理}\label{ux9884ux5904ux7406}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{142}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
+
+\PY{c+c1}{\PYZsh{} 读取CSV文件}
+\PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2025\PYZus{}Problem\PYZus{}C\PYZus{}Data}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{summerOly\PYZus{}athletes.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 定义一个函数，将Medal列中的值转换为对应的奖牌类型}
+\PY{k}{def}\PY{+w}{ }\PY{n+nf}{medal\PYZus{}to\PYZus{}type}\PY{p}{(}\PY{n}{medal}\PY{p}{)}\PY{p}{:}
+    \PY{k}{if} \PY{n}{medal} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Gold}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
+        \PY{k}{return} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Gold}\PY{l+s+s1}{\PYZsq{}}
+    \PY{k}{elif} \PY{n}{medal} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Silver}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
+        \PY{k}{return} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Silver}\PY{l+s+s1}{\PYZsq{}}
+    \PY{k}{elif} \PY{n}{medal} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Bronze}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
+        \PY{k}{return} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Bronze}\PY{l+s+s1}{\PYZsq{}}
+    \PY{k}{else}\PY{p}{:}
+        \PY{k}{return} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{No Medal}\PY{l+s+s1}{\PYZsq{}}
+
+\PY{c+c1}{\PYZsh{} 应用函数转换Medal列}
+\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Medal\PYZus{}Type}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Medal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{n}{medal\PYZus{}to\PYZus{}type}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 按NOC和Sport分组，统计每种奖牌的数量}
+\PY{n}{medal\PYZus{}counts} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Medal\PYZus{}Type}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{!=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{No Medal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Medal\PYZus{}Type}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{size}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{unstack}\PY{p}{(}\PY{n}{fill\PYZus{}value}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 重置索引，以便将NOC和Sport作为列}
+\PY{n}{medal\PYZus{}counts} \PY{o}{=} \PY{n}{medal\PYZus{}counts}\PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 填充缺失的奖牌类型列}
+\PY{n}{medal\PYZus{}counts} \PY{o}{=} \PY{n}{medal\PYZus{}counts}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 确保奖牌列是数值类型}
+\PY{n}{medal\PYZus{}counts}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Gold}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{medal\PYZus{}counts}\PY{o}{.}\PY{n}{get}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Gold}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n+nb}{int}\PY{p}{)}
+\PY{n}{medal\PYZus{}counts}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Silver}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{medal\PYZus{}counts}\PY{o}{.}\PY{n}{get}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Silver}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n+nb}{int}\PY{p}{)}
+\PY{n}{medal\PYZus{}counts}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Bronze}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{medal\PYZus{}counts}\PY{o}{.}\PY{n}{get}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Bronze}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n+nb}{int}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 计算总奖牌数}
+\PY{n}{medal\PYZus{}counts}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{medal\PYZus{}counts}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Gold}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Silver}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Bronze}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 重新排列列的顺序}
+\PY{n}{medal\PYZus{}counts} \PY{o}{=} \PY{n}{medal\PYZus{}counts}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Gold}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Silver}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Bronze}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
+
+\PY{c+c1}{\PYZsh{} 保存结果到CSV文件}
+\PY{n}{medal\PYZus{}counts}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated2}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{medal\PYZus{}counts.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 显示结果}
+\PY{n}{medal\PYZus{}counts}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{142}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+Medal\_Type  NOC                  Sport  Gold  Silver  Bronze  Total
+0           AFG              Taekwondo     0       0       2      2
+1           AHO                Sailing     0       1       0      1
+2           AIN                 Rowing     0       1       0      1
+3           AIN                 Tennis     0       2       0      2
+4           AIN  Trampoline Gymnastics     1       1       0      2
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \subsubsection{得出优势项目}\label{ux5f97ux51faux4f18ux52bfux9879ux76ee}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{162}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
+
+\PY{c+c1}{\PYZsh{} 读取CSV文件}
+\PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated2}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{medal\PYZus{}counts.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 定义一个函数，用于获取每个国家总奖牌榜和金牌榜前2的运动项目}
+\PY{k}{def}\PY{+w}{ }\PY{n+nf}{get\PYZus{}top\PYZus{}sports}\PY{p}{(}\PY{n}{group}\PY{p}{)}\PY{p}{:}
+    \PY{c+c1}{\PYZsh{}print(group)}
+    \PY{c+c1}{\PYZsh{} 按总奖牌数降序排列}
+    \PY{n}{total\PYZus{}sorted} \PY{o}{=} \PY{n}{group}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{n}{by}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{ascending}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+    \PY{c+c1}{\PYZsh{} 按金牌数降序排列}
+    \PY{n}{gold\PYZus{}sorted} \PY{o}{=} \PY{n}{group}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{n}{by}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Gold}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{ascending}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+    
+    \PY{c+c1}{\PYZsh{} 获取前2的运动项目}
+    \PY{n}{total\PYZus{}top2} \PY{o}{=} \PY{n}{total\PYZus{}sorted}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
+    \PY{n}{gold\PYZus{}top2} \PY{o}{=} \PY{n}{gold\PYZus{}sorted}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Gold}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
+    
+    \PY{c+c1}{\PYZsh{} 提取结果}
+    \PY{n}{result} \PY{o}{=} \PY{p}{\PYZob{}}
+        \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Gold1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{gold\PYZus{}top2}\PY{o}{.}\PY{n}{iloc}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{gold\PYZus{}top2}\PY{p}{)} \PY{o}{\PYZgt{}} \PY{l+m+mi}{0} \PY{k}{else} \PY{k+kc}{None}\PY{p}{,}
+        \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Gold2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{gold\PYZus{}top2}\PY{o}{.}\PY{n}{iloc}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{gold\PYZus{}top2}\PY{p}{)} \PY{o}{\PYZgt{}} \PY{l+m+mi}{1} \PY{k}{else} \PY{k+kc}{None}\PY{p}{,}
+        \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{total\PYZus{}top2}\PY{o}{.}\PY{n}{iloc}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{total\PYZus{}top2}\PY{p}{)} \PY{o}{\PYZgt{}} \PY{l+m+mi}{0} \PY{k}{else} \PY{k+kc}{None}\PY{p}{,}
+        \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{total\PYZus{}top2}\PY{o}{.}\PY{n}{iloc}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sport}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{total\PYZus{}top2}\PY{p}{)} \PY{o}{\PYZgt{}} \PY{l+m+mi}{1} \PY{k}{else} \PY{k+kc}{None}
+    \PY{p}{\PYZcb{}}
+
+    \PY{c+c1}{\PYZsh{}print(result)}
+    
+    \PY{k}{return} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{n}{result}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 应用函数，获取每个国家的前2运动项目}
+\PY{n}{results} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{n}{get\PYZus{}top\PYZus{}sports}\PY{p}{)}\PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 保存到新的CSV文件}
+\PY{n}{results}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated2}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{top\PYZus{}sports.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 打印结果}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{results}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+     NOC                  Gold1       Gold2      Total1                 Total2
+0    AFG              Taekwondo        None   Taekwondo                   None
+1    AHO                Sailing        None     Sailing                   None
+2    AIN  Trampoline Gymnastics      Rowing      Tennis  Trampoline Gymnastics
+3    ALB              Wrestling        None   Wrestling                   None
+4    ALG              Athletics      Boxing   Athletics                 Boxing
+..   {\ldots}                    {\ldots}         {\ldots}         {\ldots}                    {\ldots}
+152  VIE               Shooting   Taekwondo    Shooting              Taekwondo
+153  WIF              Athletics        None   Athletics                   None
+154  YUG               Handball  Water Polo  Basketball             Water Polo
+155  ZAM              Athletics      Boxing   Athletics                 Boxing
+156  ZIM                 Hockey    Swimming      Hockey               Swimming
+
+[157 rows x 5 columns]
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+C:\textbackslash{}Users\textbackslash{}Ziqi\textbackslash{}AppData\textbackslash{}Local\textbackslash{}Temp\textbackslash{}ipykernel\_20880\textbackslash{}3729593612.py:31:
+DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns.
+This behavior is deprecated, and in a future version of pandas the grouping
+columns will be excluded from the operation. Either pass `include\_groups=False`
+to exclude the groupings or explicitly select the grouping columns after groupby
+to silence this warning.
+  results = df.groupby('NOC').apply(get\_top\_sports).reset\_index()
+    \end{Verbatim}
+
+    \subsection{东道主效应}\label{ux4e1cux9053ux4e3bux6548ux5e94}
+
+    \begin{itemize}
+\tightlist
+\item
+  回归分析模型
+\end{itemize}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{244}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} 导入必要的库}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{statsmodels}\PY{n+nn}{.}\PY{n+nn}{api}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{sm}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{re}
+\PY{k+kn}{from}\PY{+w}{ }\PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{preprocessing}\PY{+w}{ }\PY{k+kn}{import} \PY{n}{StandardScaler}
+
+\PY{c+c1}{\PYZsh{} 读取CSV文件}
+\PY{n}{medal\PYZus{}counts} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2025\PYZus{}Problem\PYZus{}C\PYZus{}Data}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{summerOly\PYZus{}medal\PYZus{}counts.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{hosts} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2025\PYZus{}Problem\PYZus{}C\PYZus{}Data}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{summerOly\PYZus{}hosts.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{project\PYZus{}amount} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{Project\PYZus{}amount.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 数据预处理}
+\PY{c+c1}{\PYZsh{} 去除NOC列和Host列中的非英文字符}
+\PY{n}{medal\PYZus{}counts}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{medal\PYZus{}counts}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{re}\PY{o}{.}\PY{n}{sub}\PY{p}{(}\PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{[\PYZca{}a\PYZhy{}zA\PYZhy{}Z]}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{x}\PY{p}{)}\PY{p}{)}
+\PY{n}{hosts}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Host}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{hosts}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Host}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{re}\PY{o}{.}\PY{n}{sub}\PY{p}{(}\PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{[\PYZca{}a\PYZhy{}zA\PYZhy{}Z]}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{x}\PY{p}{)}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 如果Host中的字符串包含NOC中的字符串，就将其替换为NOC的值}
+\PY{k}{def}\PY{+w}{ }\PY{n+nf}{replace\PYZus{}host}\PY{p}{(}\PY{n}{row}\PY{p}{)}\PY{p}{:}
+    \PY{k}{for} \PY{n}{noc} \PY{o+ow}{in} \PY{n}{medal\PYZus{}counts}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{:}
+        \PY{k}{if} \PY{n}{noc} \PY{o+ow}{in} \PY{n}{row}\PY{p}{:}
+            \PY{k}{return} \PY{n}{noc}
+    \PY{k}{return} \PY{n}{row}
+
+\PY{n}{hosts}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Host}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{hosts}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Host}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{n}{replace\PYZus{}host}\PY{p}{)}
+\PY{n}{hosts}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{hosts}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Host}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{LondonUnitedKingdom}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Host}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{GreatBritain}\PY{l+s+s1}{\PYZsq{}}
+
+\PY{c+c1}{\PYZsh{} 将medal\PYZus{}counts和hosts数据按Year列合并}
+\PY{n}{merged\PYZus{}data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{merge}\PY{p}{(}\PY{n}{medal\PYZus{}counts}\PY{p}{,} \PY{n}{hosts}\PY{p}{,} \PY{n}{on}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{how}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{left}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 将merged\PYZus{}data和project\PYZus{}amount数据按Year列合并}
+\PY{n}{merged\PYZus{}data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{merge}\PY{p}{(}\PY{n}{merged\PYZus{}data}\PY{p}{,} \PY{n}{project\PYZus{}amount}\PY{p}{,} \PY{n}{on}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{how}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{left}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 填充缺失值}
+\PY{n}{merged\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Host}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{merged\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Host}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Not Host}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{merged\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Amount}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{merged\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Amount}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{n}{merged\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Amount}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 创建东道主标识变量}
+\PY{n}{merged\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Is\PYZus{}Host}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{merged\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{n}{merged\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Host}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+
+\PY{c+c1}{\PYZsh{} 选择特征和目标变量}
+\PY{n}{X} \PY{o}{=} \PY{n}{merged\PYZus{}data}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Gold}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Is\PYZus{}Host}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Amount}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
+\PY{n}{y} \PY{o}{=} \PY{n}{merged\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+
+\PY{c+c1}{\PYZsh{} 数据标准化}
+\PY{c+c1}{\PYZsh{}scaler = StandardScaler()}
+\PY{c+c1}{\PYZsh{}X\PYZus{}scaled = scaler.fit\PYZus{}transform(X)}
+
+\PY{c+c1}{\PYZsh{} 添加常数项}
+\PY{c+c1}{\PYZsh{}X\PYZus{}scaled = sm.add\PYZus{}constant(X\PYZus{}scaled)}
+\PY{n}{X} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{add\PYZus{}constant}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 构建回归模型}
+\PY{n}{model} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{OLS}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{n}{X}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n+nb}{float}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 输出模型结果}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{model}\PY{o}{.}\PY{n}{summary}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 对每个国家分别进行回归分析}
+\PY{n}{results} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+\PY{k}{for} \PY{n}{noc} \PY{o+ow}{in} \PY{n}{merged\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+    \PY{n}{country\PYZus{}data} \PY{o}{=} \PY{n}{merged\PYZus{}data}\PY{p}{[}\PY{n}{merged\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{n}{noc}\PY{p}{]}
+    \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{country\PYZus{}data}\PY{p}{)} \PY{o}{\PYZgt{}} \PY{l+m+mi}{1}\PY{p}{:}  \PY{c+c1}{\PYZsh{} 确保每个国家至少有两条数据}
+        \PY{n}{X\PYZus{}country} \PY{o}{=} \PY{n}{country\PYZus{}data}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Gold}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Is\PYZus{}Host}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Amount}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
+        \PY{n}{y\PYZus{}country} \PY{o}{=} \PY{n}{country\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+        
+        \PY{c+c1}{\PYZsh{} 数据标准化}
+        \PY{c+c1}{\PYZsh{}X\PYZus{}country\PYZus{}scaled = scaler.fit\PYZus{}transform(X\PYZus{}country)}
+        
+        \PY{c+c1}{\PYZsh{} 添加常数项}
+        \PY{c+c1}{\PYZsh{}X\PYZus{}country\PYZus{}scaled = sm.add\PYZus{}constant(X\PYZus{}country\PYZus{}scaled)}
+        \PY{n}{X\PYZus{}country} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{add\PYZus{}constant}\PY{p}{(}\PY{n}{X\PYZus{}country}\PY{p}{)}
+
+        \PY{c+c1}{\PYZsh{} 构建回归模型}
+        \PY{n}{model\PYZus{}country} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{OLS}\PY{p}{(}\PY{n}{y\PYZus{}country}\PY{p}{,} \PY{n}{X\PYZus{}country}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n+nb}{float}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} 保存结果}
+        \PY{n}{results}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{\PYZob{}}
+            \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{noc}\PY{p}{,}
+            \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Is\PYZus{}Host\PYZus{}Coef}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{model\PYZus{}country}\PY{o}{.}\PY{n}{params}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Is\PYZus{}Host}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}
+            \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Is\PYZus{}Host\PYZus{}PValue}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{model\PYZus{}country}\PY{o}{.}\PY{n}{pvalues}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Is\PYZus{}Host}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+        \PY{p}{\PYZcb{}}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 将结果转换为DataFrame}
+\PY{n}{results\PYZus{}df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{results}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 输出每个国家的东道主效应结果}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{results\PYZus{}df}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} 计算并输出Is\PYZus{}Host系数的均值}
+\PY{n}{is\PYZus{}host\PYZus{}mean} \PY{o}{=} \PY{n}{results\PYZus{}df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Is\PYZus{}Host\PYZus{}Coef}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Is\PYZus{}Host系数的均值: }\PY{l+s+si}{\PYZob{}}\PY{n}{is\PYZus{}host\PYZus{}mean}\PY{l+s+si}{:}\PY{l+s+s2}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+                            OLS Regression Results
+==============================================================================
+Dep. Variable:                  Total   R-squared:                       0.942
+Model:                            OLS   Adj. R-squared:                  0.942
+Method:                 Least Squares   F-statistic:                     7701.
+Date:                  周二, 28 1月 2025   Prob (F-statistic):               0.00
+Time:                        06:12:02   Log-Likelihood:                -4405.0
+No. Observations:                1435   AIC:                             8818.
+Df Residuals:                    1431   BIC:                             8839.
+Df Model:                           3
+Covariance Type:            nonrobust
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const          2.0739      0.447      4.636      0.000       1.196       2.951
+Gold           2.4847      0.018    140.611      0.000       2.450       2.519
+Is\_Host        1.9067      1.055      1.807      0.071      -0.163       3.977
+Amount         0.0005      0.001      0.689      0.491      -0.001       0.002
+==============================================================================
+Omnibus:                      448.481   Durbin-Watson:                   1.979
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             5078.169
+Skew:                           1.119   Prob(JB):                         0.00
+Kurtosis:                      11.940   Cond. No.                     4.23e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly
+specified.
+[2] The condition number is large, 4.23e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+              NOC  Is\_Host\_Coef  Is\_Host\_PValue
+0    UnitedStates      5.446768        0.652329
+1          Greece      5.424184        0.311642
+2         Germany     16.535894        0.213560
+3          France     14.879555        0.030750
+4    GreatBritain      1.250883        0.837392
+..            {\ldots}           {\ldots}             {\ldots}
+122        Cyprus      0.000000             NaN
+123     Guatemala      0.000000             NaN
+124          Fiji      0.000000             NaN
+125        Jordan      0.000000             NaN
+126        Kosovo      0.000000             NaN
+
+[127 rows x 3 columns]
+Is\_Host系数的均值: 1.01
+    \end{Verbatim}
+
+    \begin{itemize}
+\tightlist
+\item
+  Is\_Host系数均值明显为正，说明成为东道主对总奖牌数有正面促进作用。
+\end{itemize}
 
 
     % Add a bibliography block to the postdoc
