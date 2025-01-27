@@ -985,7 +985,7 @@ Year,NOC,Gold,Silver,Bronze,Total
 1920,RefugeeOlympicTeam,0.0,0.0,0.0,0.0
 1924,UnitedStates,45.0,27.0,27.0,99.0
 1924,Greece,0.0,1.0,0.0,2.0
-1924,Germany,8.0,9.0,11.0,28.0
+1924,Germany,14.0,13.0,15.0,42.0
 1924,France,13.0,15.0,10.0,38.0
 1924,GreatBritain,9.0,13.0,12.0,34.0
 1924,Hungary,2.0,3.0,4.0,9.0
@@ -1312,7 +1312,7 @@ Year,NOC,Gold,Silver,Bronze,Total
 1928,CaboVerde,0.0,0.0,0.0,0.0
 1928,RefugeeOlympicTeam,0.0,0.0,0.0,0.0
 1932,UnitedStates,44.0,36.0,19.0,110.0
-1932,Greece,0.0,1.0,1.0,2.0
+1932,Greece,0.0,0.0,1.0,1.0
 1932,Germany,18.0,12.0,18.0,52.0
 1932,France,11.0,5.0,4.0,20.0
 1932,GreatBritain,5.0,7.0,5.0,17.0
@@ -1488,7 +1488,7 @@ Year,NOC,Gold,Silver,Bronze,Total
 1936,Mixedteam,4.0,2.0,3.0,8.0
 1936,Belgium,0.0,0.0,3.0,3.0
 1936,Italy,9.0,13.0,5.0,27.0
-1936,Cuba,1.0,1.0,0.0,1.0
+1936,Cuba,0.0,2.0,0.0,2.0
 1936,Canada,1.0,3.0,5.0,9.0
 1936,Spain,0.0,0.0,1.0,1.0
 1936,Luxembourg,1.0,0.0,0.0,1.0
@@ -1667,9 +1667,9 @@ Year,NOC,Gold,Silver,Bronze,Total
 1948,SouthAfrica,2.0,2.0,1.0,4.0
 1948,Estonia,2.0,1.0,3.0,6.0
 1948,Brazil,1.0,0.0,1.0,2.0
-1948,Japan,3.0,7.0,4.0,14.0
+1948,Japan,2.0,7.0,4.0,13.0
 1948,Czechoslovakia,6.0,2.0,3.0,11.0
-1948,NewZealand,1.0,0.0,1.0,2.0
+1948,NewZealand,1.0,0.0,1.0,3.0
 1948,Yugoslavia,0.0,2.0,0.0,2.0
 1948,Argentina,3.0,3.0,2.0,7.0
 1948,Uruguay,0.0,1.0,1.0,2.0
@@ -1678,7 +1678,7 @@ Year,NOC,Gold,Silver,Bronze,Total
 1948,Portugal,0.0,1.0,1.0,2.0
 1948,Romania,2.0,2.0,2.0,4.0
 1948,Egypt,2.0,2.0,1.0,5.0
-1948,Ireland,1.0,1.0,1.0,2.0
+1948,Ireland,0.0,1.0,1.0,2.0
 1948,Chile,0.0,2.0,1.0,2.0
 1948,Philippines,0.0,0.0,1.0,2.0
 1948,Mexico,2.0,1.0,2.0,3.0
@@ -1821,7 +1821,7 @@ Year,NOC,Gold,Silver,Bronze,Total
 1952,Spain,0.0,1.0,0.0,1.0
 1952,Luxembourg,1.0,0.0,0.0,1.0
 1952,Norway,2.0,2.0,2.0,5.0
-1952,Netherlands,2.0,5.0,4.0,9.0
+1952,Netherlands,0.0,5.0,4.0,9.0
 1952,India,1.0,0.0,1.0,2.0
 1952,Bohemia,0.0,0.0,1.0,1.0
 1952,Sweden,12.0,13.0,10.0,35.0
@@ -1831,7 +1831,7 @@ Year,NOC,Gold,Silver,Bronze,Total
 1952,SouthAfrica,2.0,4.0,4.0,6.0
 1952,Estonia,2.0,1.0,3.0,6.0
 1952,Brazil,1.0,0.0,2.0,2.0
-1952,Japan,3.0,6.0,4.0,9.0
+1952,Japan,2.0,6.0,4.0,9.0
 1952,Czechoslovakia,7.0,3.0,3.0,13.0
 1952,NewZealand,1.0,0.0,2.0,3.0
 1952,Yugoslavia,1.0,2.0,0.0,3.0
@@ -1842,7 +1842,7 @@ Year,NOC,Gold,Silver,Bronze,Total
 1952,Portugal,0.0,1.0,1.0,1.0
 1952,Romania,3.0,2.0,2.0,8.0
 1952,Egypt,0.0,1.0,1.0,3.0
-1952,Ireland,1.0,1.0,1.0,3.0
+1952,Ireland,0.0,1.0,1.0,3.0
 1952,Chile,0.0,2.0,1.0,2.0
 1952,Philippines,0.0,0.0,1.0,2.0
 1952,Mexico,1.0,1.0,1.0,3.0
@@ -1985,7 +1985,7 @@ Year,NOC,Gold,Silver,Bronze,Total
 1956,Spain,0.0,1.0,0.0,1.0
 1956,Luxembourg,1.0,0.0,0.0,1.0
 1956,Norway,1.0,0.0,2.0,3.0
-1956,Netherlands,1.0,3.0,3.0,6.0
+1956,Netherlands,0.0,3.0,2.0,5.0
 1956,India,1.0,0.0,0.0,1.0
 1956,Bohemia,0.0,0.0,1.0,1.0
 1956,Sweden,8.0,5.0,6.0,19.0
@@ -2149,7 +2149,7 @@ Year,NOC,Gold,Silver,Bronze,Total
 1960,Spain,0.0,0.0,1.0,1.0
 1960,Luxembourg,1.0,0.0,0.0,1.0
 1960,Norway,1.0,0.0,0.0,2.0
-1960,Netherlands,1.0,3.0,2.0,6.0
+1960,Netherlands,0.0,3.0,2.0,6.0
 1960,India,1.0,1.0,0.0,1.0
 1960,Bohemia,0.0,0.0,1.0,1.0
 1960,Sweden,4.0,2.0,3.0,11.0
@@ -2312,7 +2312,7 @@ Year,NOC,Gold,Silver,Bronze,Total
 1964,Canada,1.0,2.0,1.0,4.0
 1964,Spain,0.0,0.0,1.0,1.0
 1964,Luxembourg,1.0,0.0,0.0,1.0
-1964,Norway,1.0,0.0,0.0,2.0
+1964,Norway,1.0,1.0,0.0,2.0
 1964,Netherlands,2.0,4.0,2.0,10.0
 1964,India,1.0,0.0,0.0,1.0
 1964,Bohemia,0.0,0.0,1.0,1.0
@@ -2340,7 +2340,7 @@ Year,NOC,Gold,Silver,Bronze,Total
 1964,Mexico,0.0,0.0,1.0,4.0
 1964,Latvia,0.0,1.0,1.0,2.0
 1964,Turkey,4.0,3.0,1.0,6.0
-1964,Jamaica,0.0,1.0,0.0,2.0
+1964,Jamaica,0.0,1.0,0.0,1.0
 1964,Peru,0.0,1.0,0.0,1.0
 1964,Ceylon,0.0,0.0,0.0,0.0
 1964,TrinidadandTobago,0.0,1.0,2.0,3.0
@@ -2351,7 +2351,7 @@ Year,NOC,Gold,Silver,Bronze,Total
 1964,SovietUnion,30.0,31.0,35.0,96.0
 1964,Lebanon,0.0,1.0,0.0,1.0
 1964,Bulgaria,3.0,5.0,2.0,10.0
-1964,Venezuela,0.0,0.0,1.0,1.0
+1964,Venezuela,0.0,0.0,0.0,1.0
 1964,UnitedTeamofGermany,10.0,22.0,18.0,50.0
 1964,Iceland,0.0,0.0,0.0,1.0
 1964,Pakistan,1.0,1.0,0.0,1.0
@@ -2648,7 +2648,7 @@ Year,NOC,Gold,Silver,Bronze,Total
 1972,Australasia,1.0,1.0,2.0,4.0
 1972,RussianEmpire,0.0,1.0,1.0,3.0
 1972,Finland,3.0,1.0,4.0,8.0
-1972,SouthAfrica,1.0,1.0,3.0,5.0
+1972,SouthAfrica,0.0,1.0,2.0,3.0
 1972,Estonia,1.0,0.0,2.0,3.0
 1972,Brazil,0.0,0.0,2.0,2.0
 1972,Japan,13.0,8.0,8.0,29.0
@@ -2789,7 +2789,7 @@ Year,NOC,Gold,Silver,Bronze,Total
 1972,RefugeeOlympicTeam,0.0,0.0,0.0,0.0
 1976,UnitedStates,34.0,35.0,25.0,94.0
 1976,Greece,0.0,1.0,1.0,2.0
-1976,Germany,20.0,16.0,25.0,61.0
+1976,Germany,23.0,19.0,27.0,69.0
 1976,France,2.0,3.0,4.0,9.0
 1976,GreatBritain,3.0,5.0,5.0,13.0
 1976,Hungary,4.0,9.0,13.0,22.0
@@ -2812,7 +2812,7 @@ Year,NOC,Gold,Silver,Bronze,Total
 1976,Australasia,1.0,1.0,2.0,4.0
 1976,RussianEmpire,0.0,1.0,1.0,3.0
 1976,Finland,4.0,2.0,3.0,6.0
-1976,SouthAfrica,1.0,1.0,2.0,3.0
+1976,SouthAfrica,0.0,1.0,2.0,3.0
 1976,Estonia,1.0,0.0,2.0,3.0
 1976,Brazil,0.0,0.0,2.0,2.0
 1976,Japan,9.0,6.0,10.0,25.0
@@ -2827,7 +2827,7 @@ Year,NOC,Gold,Silver,Bronze,Total
 1976,Romania,4.0,9.0,14.0,27.0
 1976,Egypt,0.0,1.0,1.0,1.0
 1976,Ireland,0.0,1.0,1.0,2.0
-1976,Chile,0.0,2.0,1.0,2.0
+1976,Chile,0.0,1.0,1.0,2.0
 1976,Philippines,0.0,0.0,1.0,1.0
 1976,Mexico,1.0,1.0,1.0,2.0
 1976,Latvia,0.0,1.0,1.0,2.0
@@ -2951,7 +2951,7 @@ Year,NOC,Gold,Silver,Bronze,Total
 1976,Albania,0.0,0.0,0.0,0.0
 1976,CaboVerde,0.0,0.0,0.0,0.0
 1976,RefugeeOlympicTeam,0.0,0.0,0.0,0.0
-1980,UnitedStates,53.0,45.0,28.0,126.0
+1980,UnitedStates,54.0,45.0,27.0,126.0
 1980,Greece,1.0,1.0,2.0,3.0
 1980,Germany,24.0,19.0,27.0,70.0
 1980,France,6.0,5.0,8.0,14.0
@@ -2965,7 +2965,7 @@ Year,NOC,Gold,Silver,Bronze,Total
 1980,Belgium,1.0,1.0,2.0,4.0
 1980,Italy,8.0,5.0,4.0,15.0
 1980,Cuba,8.0,7.0,5.0,20.0
-1980,Canada,4.0,10.0,9.0,23.0
+1980,Canada,5.0,10.0,10.0,24.0
 1980,Spain,1.0,3.0,2.0,6.0
 1980,Luxembourg,1.0,0.0,0.0,1.0
 1980,Norway,1.0,1.0,1.0,3.0
@@ -2991,7 +2991,7 @@ Year,NOC,Gold,Silver,Bronze,Total
 1980,Romania,6.0,10.0,13.0,25.0
 1980,Egypt,0.0,1.0,1.0,2.0
 1980,Ireland,0.0,1.0,1.0,2.0
-1980,Chile,0.0,1.0,1.0,2.0
+1980,Chile,0.0,1.0,0.0,1.0
 1980,Philippines,0.0,0.0,1.0,1.0
 1980,Mexico,1.0,1.0,2.0,4.0
 1980,Latvia,0.0,1.0,1.0,2.0
@@ -3010,16 +3010,16 @@ Year,NOC,Gold,Silver,Bronze,Total
 1980,Venezuela,0.0,1.0,0.0,1.0
 1980,UnitedTeamofGermany,10.0,19.0,13.0,41.0
 1980,Iceland,0.0,0.0,1.0,1.0
-1980,Pakistan,0.0,0.0,0.0,1.0
+1980,Pakistan,0.0,0.0,1.0,1.0
 1980,Bahamas,0.0,0.0,1.0,1.0
 1980,Ethiopia,2.0,0.0,2.0,4.0
 1980,Formosa,0.0,0.0,0.0,0.0
 1980,Ghana,0.0,0.0,1.0,1.0
 1980,Morocco,2.0,0.0,1.0,2.0
-1980,Singapore,0.0,0.0,0.0,0.0
+1980,Singapore,0.0,1.0,0.0,1.0
 1980,BritishWestIndies,0.0,0.0,1.0,1.0
 1980,Iraq,0.0,0.0,0.0,0.0
-1980,Tunisia,0.0,1.0,1.0,2.0
+1980,Tunisia,0.0,0.0,1.0,1.0
 1980,Kenya,2.0,1.0,2.0,6.0
 1980,Nigeria,0.0,1.0,1.0,2.0
 1980,EastGermany,47.0,37.0,42.0,126.0
@@ -3032,7 +3032,7 @@ Year,NOC,Gold,Silver,Bronze,Total
 1980,Colombia,0.0,1.0,1.0,2.0
 1980,Niger,0.0,0.0,0.0,0.0
 1980,Bermuda,0.0,0.0,1.0,1.0
-1980,Thailand,0.0,0.0,0.0,1.0
+1980,Thailand,0.0,0.0,1.0,1.0
 1980,Zimbabwe,1.0,0.0,0.0,1.0
 1980,Tanzania,0.0,2.0,0.0,2.0
 1980,Guyana,0.0,0.0,1.0,1.0
@@ -3120,7 +3120,7 @@ Year,NOC,Gold,Silver,Bronze,Total
 1984,Germany,24.0,19.0,27.0,71.0
 1984,France,5.0,7.0,8.0,28.0
 1984,GreatBritain,5.0,11.0,13.0,37.0
-1984,Hungary,8.0,7.0,11.0,26.0
+1984,Hungary,9.0,9.0,10.0,28.0
 1984,Austria,1.0,1.0,1.0,3.0
 1984,Australia,4.0,8.0,7.0,16.0
 1984,Denmark,1.0,2.0,3.0,6.0
@@ -3144,12 +3144,12 @@ Year,NOC,Gold,Silver,Bronze,Total
 1984,Estonia,1.0,0.0,1.0,2.0
 1984,Brazil,1.0,5.0,2.0,8.0
 1984,Japan,10.0,8.0,14.0,32.0
-1984,Czechoslovakia,2.0,3.0,5.0,10.0
+1984,Czechoslovakia,3.0,3.0,5.0,10.0
 1984,NewZealand,5.0,1.0,4.0,11.0
 1984,Yugoslavia,4.0,4.0,7.0,18.0
 1984,Argentina,0.0,1.0,1.0,2.0
 1984,Uruguay,0.0,0.0,1.0,1.0
-1984,Poland,3.0,9.0,12.0,24.0
+1984,Poland,3.0,9.0,12.0,23.0
 1984,Haiti,0.0,0.0,0.0,1.0
 1984,Portugal,1.0,0.0,2.0,3.0
 1984,Romania,11.0,16.0,17.0,34.0
@@ -3170,13 +3170,13 @@ Year,NOC,Gold,Silver,Bronze,Total
 1984,PuertoRico,0.0,1.0,1.0,2.0
 1984,SovietUnion,64.0,48.0,44.0,156.0
 1984,Lebanon,0.0,0.0,1.0,1.0
-1984,Bulgaria,8.0,13.0,13.0,35.0
+1984,Bulgaria,8.0,13.0,13.0,34.0
 1984,Venezuela,0.0,0.0,3.0,3.0
 1984,UnitedTeamofGermany,10.0,18.0,13.0,41.0
 1984,Iceland,0.0,0.0,1.0,1.0
-1984,Pakistan,1.0,0.0,0.0,1.0
+1984,Pakistan,1.0,0.0,1.0,1.0
 1984,Bahamas,0.0,0.0,1.0,1.0
-1984,Ethiopia,1.0,0.0,2.0,3.0
+1984,Ethiopia,2.0,0.0,2.0,4.0
 1984,Formosa,0.0,0.0,0.0,0.0
 1984,Ghana,0.0,0.0,1.0,1.0
 1984,Morocco,2.0,0.0,1.0,2.0
@@ -3188,7 +3188,7 @@ Year,NOC,Gold,Silver,Bronze,Total
 1984,Nigeria,0.0,1.0,1.0,2.0
 1984,EastGermany,42.0,34.0,34.0,109.0
 1984,WestGermany,17.0,19.0,23.0,59.0
-1984,Mongolia,0.0,1.0,1.0,2.0
+1984,Mongolia,0.0,1.0,2.0,2.0
 1984,Uganda,0.0,1.0,0.0,1.0
 1984,Cameroon,0.0,0.0,1.0,1.0
 1984,Taiwan,0.0,0.0,0.0,0.0
@@ -3196,7 +3196,7 @@ Year,NOC,Gold,Silver,Bronze,Total
 1984,Colombia,0.0,1.0,1.0,1.0
 1984,Niger,0.0,0.0,0.0,0.0
 1984,Bermuda,0.0,0.0,0.0,0.0
-1984,Thailand,0.0,1.0,0.0,1.0
+1984,Thailand,0.0,1.0,1.0,1.0
 1984,Zimbabwe,1.0,0.0,0.0,1.0
 1984,Tanzania,0.0,1.0,0.0,1.0
 1984,Guyana,0.0,0.0,1.0,1.0
@@ -3525,11 +3525,11 @@ Year,NOC,Gold,Silver,Bronze,Total
 1992,Niger,0.0,0.0,0.0,1.0
 1992,Bermuda,0.0,0.0,0.0,0.0
 1992,Thailand,0.0,0.0,1.0,1.0
-1992,Zimbabwe,1.0,0.0,0.0,1.0
+1992,Zimbabwe,1.0,1.0,0.0,3.0
 1992,Tanzania,0.0,1.0,0.0,1.0
 1992,Guyana,0.0,0.0,0.0,0.0
 1992,China,16.0,22.0,16.0,54.0
-1992,IvoryCoast,0.0,0.0,0.0,0.0
+1992,IvoryCoast,0.0,0.0,0.0,1.0
 1992,Syria,1.0,0.0,0.0,1.0
 1992,Algeria,1.0,0.0,1.0,2.0
 1992,ChineseTaipei,0.0,1.0,0.0,1.0
@@ -3693,7 +3693,7 @@ Year,NOC,Gold,Silver,Bronze,Total
 1996,Tanzania,0.0,1.0,0.0,1.0
 1996,Guyana,0.0,0.0,0.0,0.0
 1996,China,16.0,22.0,12.0,50.0
-1996,IvoryCoast,0.0,0.0,0.0,0.0
+1996,IvoryCoast,0.0,0.0,0.0,1.0
 1996,Syria,1.0,0.0,0.0,1.0
 1996,Algeria,2.0,0.0,1.0,3.0
 1996,ChineseTaipei,0.0,1.0,0.0,2.0
@@ -4382,7 +4382,7 @@ Year,NOC,Gold,Silver,Bronze,Total
 2012,Burundi,0.0,1.0,0.0,1.0
 2012,Ecuador,1.0,1.0,0.0,2.0
 2012,HongKong,0.0,0.0,1.0,2.0
-2012,Moldova,0.0,0.0,1.0,1.0
+2012,Moldova,0.0,0.0,1.0,2.0
 2012,Uzbekistan,0.0,1.0,3.0,7.0
 2012,Azerbaijan,2.0,2.0,5.0,9.0
 2012,Tonga,0.0,0.0,0.0,0.0
@@ -4393,7 +4393,7 @@ Year,NOC,Gold,Silver,Bronze,Total
 2012,Vietnam,0.0,1.0,1.0,1.0
 2012,Barbados,0.0,0.0,0.0,0.0
 2012,Kuwait,0.0,0.0,1.0,1.0
-2012,Kyrgyzstan,0.0,1.0,2.0,3.0
+2012,Kyrgyzstan,0.0,1.0,2.0,4.0
 2012,Macedonia,0.0,0.0,0.0,0.0
 2012,UnitedArabEmirates,0.0,0.0,1.0,1.0
 2012,SerbiaandMontenegro,0.0,1.0,0.0,1.0
