@@ -30,7 +30,7 @@
 28,Colombia,Stable,Stable
 29,CostaRica,Stable,Stable
 30,Croatia,Stable,Stable
-31,Cuba,Front,Stable
+31,Cuba,Front,Front
 32,Cyprus,Stable,Stable
 33,CzechRepublic,Front,Back
 34,Denmark,Stable,Stable
@@ -76,7 +76,7 @@
 74,Kenya,Stable,Stable
 75,Kosovo,Stable,Stable
 76,Kuwait,Stable,Stable
-77,Kyrgyzstan,Back,Stable
+77,Kyrgyzstan,Stable,Stable
 78,Latvia,Stable,Stable
 79,Lebanon,Stable,Stable
 80,Lithuania,Front,Stable
@@ -87,7 +87,7 @@
 85,Mexico,Back,Stable
 86,Mixedteam,Stable,Stable
 87,Moldova,Stable,Stable
-88,Mongolia,Stable,Stable
+88,Mongolia,Front,Stable
 89,Montenegro,Stable,Stable
 90,Morocco,Stable,Stable
 91,Mozambique,Stable,Stable
@@ -123,7 +123,7 @@
 121,Singapore,Stable,Stable
 122,Slovakia,Stable,Stable
 123,Slovenia,Stable,Stable
-124,SouthAfrica,Stable,Stable
+124,SouthAfrica,Back,Stable
 125,SouthKorea,Back,Back
 126,Spain,Back,Stable
 127,SriLanka,Stable,Stable
