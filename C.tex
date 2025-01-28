@@ -403,7 +403,7 @@
     \subsection{导入数据}\label{ux5bfcux5165ux6570ux636e}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{42}{\boxspacing}
+\prompt{In}{incolor}{23}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} 导入相关package}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{geopandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{gpd}
@@ -414,7 +414,7 @@
 \end{tcolorbox}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{43}{\boxspacing}
+\prompt{In}{incolor}{24}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{os}
 
@@ -424,7 +424,7 @@
 \end{tcolorbox}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{44}{\boxspacing}
+\prompt{In}{incolor}{25}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} 定义一个函数，自动检测文件编码并读取文件}
 \PY{k}{def}\PY{+w}{ }\PY{n+nf}{read\PYZus{}csv\PYZus{}with\PYZus{}detected\PYZus{}encoding}\PY{p}{(}\PY{n}{file\PYZus{}path}\PY{p}{)}\PY{p}{:}
@@ -545,7 +545,7 @@ summerOly\_athletes.csv 数据预览：
     \subsubsection{缺失值检查}\label{ux7f3aux5931ux503cux68c0ux67e5}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{45}{\boxspacing}
+\prompt{In}{incolor}{26}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} 1. 缺失值检查}
 \PY{k}{def}\PY{+w}{ }\PY{n+nf}{check\PYZus{}missing\PYZus{}values}\PY{p}{(}\PY{n}{file\PYZus{}path}\PY{p}{)}\PY{p}{:}
@@ -702,7 +702,7 @@ dtype: int64
     \subsubsection{补全summerOly\_programs.csv中的缺失值}\label{ux8865ux5168summeroly_programs.csvux4e2dux7684ux7f3aux5931ux503c}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{46}{\boxspacing}
+\prompt{In}{incolor}{27}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{numpy}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{np}
@@ -906,7 +906,7 @@ Year  2016  2020  2024
 数据清洗}\label{medal_counts-ux6570ux636eux6e05ux6d17}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{47}{\boxspacing}
+\prompt{In}{incolor}{28}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} 2. 数据清洗}
 \PY{c+c1}{\PYZsh{} 确保数据的格式正确}
@@ -948,7 +948,7 @@ Year  2016  2020  2024
 \end{tcolorbox}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{48}{\boxspacing}
+\prompt{In}{incolor}{29}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} 7. 输出结果}
 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{金牌表格：}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
@@ -1001,7 +1001,7 @@ Refugee Olympic Team     0     0     0
     \end{Verbatim}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{49}{\boxspacing}
+\prompt{In}{incolor}{30}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{银牌表格：}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \PY{n+nb}{print}\PY{p}{(}\PY{n}{silver\PYZus{}table}\PY{p}{)}
@@ -1054,7 +1054,7 @@ Refugee Olympic Team     0     0     0
     \end{Verbatim}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{50}{\boxspacing}
+\prompt{In}{incolor}{31}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{铜牌表格：}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \PY{n+nb}{print}\PY{p}{(}\PY{n}{bronze\PYZus{}table}\PY{p}{)}
@@ -1107,7 +1107,7 @@ Refugee Olympic Team     0     0     1
     \end{Verbatim}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{51}{\boxspacing}
+\prompt{In}{incolor}{32}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{总数表格：}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \PY{n+nb}{print}\PY{p}{(}\PY{n}{total\PYZus{}table}\PY{p}{)}
@@ -1162,7 +1162,7 @@ Refugee Olympic Team     0     0     1
     \subsubsection{清理summerOly\_medal\_counts.csv异常值}\label{ux6e05ux7406summeroly_medal_counts.csvux5f02ux5e38ux503c}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{52}{\boxspacing}
+\prompt{In}{incolor}{33}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{numpy}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{np}
@@ -1317,7 +1317,7 @@ Adjusting outliers for Bronze
     \subsubsection{处理国家变更与如今不存在的国家}\label{ux5904ux7406ux56fdux5bb6ux53d8ux66f4ux4e0eux5982ux4ecaux4e0dux5b58ux5728ux7684ux56fdux5bb6}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{53}{\boxspacing}
+\prompt{In}{incolor}{34}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
 
@@ -1388,7 +1388,7 @@ Adjusting outliers for Bronze
     \subsubsection{清理athletes.csv并转换格式为宽}\label{ux6e05ux7406athletes.csvux5e76ux8f6cux6362ux683cux5f0fux4e3aux5bbd}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{54}{\boxspacing}
+\prompt{In}{incolor}{35}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} 读取 summerOly\PYZus{}athletes.csv 文件}
 \PY{n}{data} \PY{o}{=} \PY{n}{olympic\PYZus{}athletes}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}
@@ -1445,7 +1445,7 @@ Year 2008 2012 2016      2020      2024
     \subsection{国家级特征}\label{ux56fdux5bb6ux7ea7ux7279ux5f81}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{55}{\boxspacing}
+\prompt{In}{incolor}{36}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{plt}
@@ -1488,7 +1488,7 @@ Year 2008 2012 2016      2020      2024
     { \hspace*{\fill} \\}
     
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{56}{\boxspacing}
+\prompt{In}{incolor}{37}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{plt}
@@ -1533,7 +1533,7 @@ Year 2008 2012 2016      2020      2024
     \subsection{项目级特征}\label{ux9879ux76eeux7ea7ux7279ux5f81}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{171}{\boxspacing}
+\prompt{In}{incolor}{38}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
 
@@ -1571,7 +1571,7 @@ Year 2008 2012 2016      2020      2024
     \subsubsection{可视化}\label{ux53efux89c6ux5316}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{172}{\boxspacing}
+\prompt{In}{incolor}{39}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{plt}
@@ -1604,7 +1604,7 @@ Year 2008 2012 2016      2020      2024
     \subsubsection{线性拟合}\label{ux7ebfux6027ux62dfux5408}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{177}{\boxspacing}
+\prompt{In}{incolor}{40}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{numpy}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{np}
@@ -1673,7 +1673,7 @@ Year 2008 2012 2016      2020      2024
     \subsubsection{预处理}\label{ux9884ux5904ux7406}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{57}{\boxspacing}
+\prompt{In}{incolor}{41}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} 读取 summerOly\PYZus{}athletes.csv 文件}
 \PY{n}{data} \PY{o}{=} \PY{n}{olympic\PYZus{}athletes}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}
@@ -1695,7 +1695,7 @@ Year 2008 2012 2016      2020      2024
     \subsubsection{添加唯一特征值}\label{ux6dfbux52a0ux552fux4e00ux7279ux5f81ux503c}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{58}{\boxspacing}
+\prompt{In}{incolor}{42}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{os}
 
@@ -1705,7 +1705,7 @@ Year 2008 2012 2016      2020      2024
 \end{tcolorbox}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{59}{\boxspacing}
+\prompt{In}{incolor}{43}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
 \PY{k+kn}{from}\PY{+w}{ }\PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{cluster}\PY{+w}{ }\PY{k+kn}{import} \PY{n}{DBSCAN}
@@ -1835,7 +1835,7 @@ Year 2008 2012 2016      2020      2024
     \subsubsection{统计连续参加奥运会的年数与对应人数}\label{ux7edfux8ba1ux8fdeux7eedux53c2ux52a0ux5965ux8fd0ux4f1aux7684ux5e74ux6570ux4e0eux5bf9ux5e94ux4ebaux6570}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{60}{\boxspacing}
+\prompt{In}{incolor}{44}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} 读取CSV文件}
 \PY{n}{file\PYZus{}path} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{athlete\PYZus{}years\PYZus{}processed.csv}\PY{l+s+s1}{\PYZsq{}}  \PY{c+c1}{\PYZsh{} 替换为你的文件路径}
@@ -1844,7 +1844,7 @@ Year 2008 2012 2016      2020      2024
 \end{tcolorbox}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{61}{\boxspacing}
+\prompt{In}{incolor}{45}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} 计算连续参加的届数}
 \PY{k}{def}\PY{+w}{ }\PY{n+nf}{count\PYZus{}consecutive\PYZus{}years}\PY{p}{(}\PY{n}{group}\PY{p}{)}\PY{p}{:}
@@ -1901,7 +1901,7 @@ Year 2008 2012 2016      2020      2024
     \paragraph{数据可视化}\label{ux6570ux636eux53efux89c6ux5316}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{62}{\boxspacing}
+\prompt{In}{incolor}{46}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} 导入必要的库}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
@@ -1917,7 +1917,7 @@ Year 2008 2012 2016      2020      2024
 
 \PY{c+c1}{\PYZsh{} 定义大致届数区间}
 \PY{n}{bins} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{14}\PY{p}{]}
-\PY{n}{labels} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{1次}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2次}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{3次}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{4次及以上}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\PY{n}{labels} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{1 times}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2 times}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{3 times}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{4 times and above}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
 
 \PY{c+c1}{\PYZsh{} 将数据分组到区间}
 \PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Group}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{cut}\PY{p}{(}\PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Consecutive\PYZus{}Years}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{n}{bins}\PY{p}{,} \PY{n}{labels}\PY{o}{=}\PY{n}{labels}\PY{p}{,} \PY{n}{right}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
@@ -1935,9 +1935,9 @@ Year 2008 2012 2016      2020      2024
 \PY{n}{wedges}\PY{p}{,} \PY{n}{texts}\PY{p}{,} \PY{n}{autotexts} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{pie}\PY{p}{(}\PY{n}{sizes}\PY{p}{,} \PY{n}{colors}\PY{o}{=}\PY{n}{colors}\PY{p}{,} \PY{n}{autopct}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+si}{\PYZpc{}1.1f}\PY{l+s+si}{\PYZpc{}\PYZpc{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{startangle}\PY{o}{=}\PY{l+m+mi}{140}\PY{p}{,} \PY{n}{textprops}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fontsize}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{12}\PY{p}{\PYZcb{}}\PY{p}{)}
 
 \PY{c+c1}{\PYZsh{} 添加图例（色块+标签），放置在右侧}
-\PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{wedges}\PY{p}{,} \PY{n}{labels}\PY{p}{,} \PY{n}{title}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{连续参加届数}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{loc}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{center left}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{bbox\PYZus{}to\PYZus{}anchor}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{wedges}\PY{p}{,} \PY{n}{labels}\PY{p}{,} \PY{n}{title}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Continue times}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{loc}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{center left}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{bbox\PYZus{}to\PYZus{}anchor}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
 
-\PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{连续参加奥运会届数的扇形比例图}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{16}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{A chart of the number of consecutive Olympic Games}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{16}\PY{p}{)}
 \PY{n}{plt}\PY{o}{.}\PY{n}{axis}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{equal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}  \PY{c+c1}{\PYZsh{} 确保饼图是圆形}
 \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
@@ -1949,7 +1949,7 @@ Year 2008 2012 2016      2020      2024
     { \hspace*{\fill} \\}
     
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{63}{\boxspacing}
+\prompt{In}{incolor}{47}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} 保存组别与对应比例}
 \PY{n}{group\PYZus{}percentages} \PY{o}{=} \PY{p}{[}\PY{p}{]}
@@ -1967,16 +1967,16 @@ Year 2008 2012 2016      2020      2024
 
     \begin{Verbatim}[commandchars=\\\{\}]
 组别与对应比例：
-1次: 77.4\%
-2次: 16.8\%
-3次: 4.3\%
-4次及以上: 1.5\%
+1 times: 77.4\%
+2 times: 16.8\%
+3 times: 4.3\%
+4 times and above: 1.5\%
     \end{Verbatim}
 
     \subsubsection{统计运动员参加奥运会的时间跨度}\label{ux7edfux8ba1ux8fd0ux52a8ux5458ux53c2ux52a0ux5965ux8fd0ux4f1aux7684ux65f6ux95f4ux8de8ux5ea6}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{64}{\boxspacing}
+\prompt{In}{incolor}{48}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} 读取CSV文件}
 \PY{n}{file\PYZus{}path} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{athlete\PYZus{}years\PYZus{}processed.csv}\PY{l+s+s1}{\PYZsq{}}  \PY{c+c1}{\PYZsh{} 替换为你的文件路径}
@@ -1985,7 +1985,7 @@ Year 2008 2012 2016      2020      2024
 \end{tcolorbox}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{65}{\boxspacing}
+\prompt{In}{incolor}{49}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} 计算每个运动员的第一次和最后一次参赛年份}
 \PY{k}{def}\PY{+w}{ }\PY{n+nf}{calculate\PYZus{}year\PYZus{}gap}\PY{p}{(}\PY{n}{group}\PY{p}{)}\PY{p}{:}
@@ -2061,7 +2061,7 @@ Year 2008 2012 2016      2020      2024
     \paragraph{数据可视化}\label{ux6570ux636eux53efux89c6ux5316}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{66}{\boxspacing}
+\prompt{In}{incolor}{50}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} 导入必要的库}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
@@ -2077,7 +2077,7 @@ Year 2008 2012 2016      2020      2024
 
 \PY{c+c1}{\PYZsh{} 定义大致间隔年数区间}
 \PY{n}{bins} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{15}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{,} \PY{l+m+mi}{30}\PY{p}{,} \PY{l+m+mi}{120}\PY{p}{]}  \PY{c+c1}{\PYZsh{} 区间划分：0\PYZhy{}5年，5\PYZhy{}10年，10\PYZhy{}15年，15\PYZhy{}20年，20\PYZhy{}30年，30年以上}
-\PY{n}{labels} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{0\PYZhy{}5年}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{5\PYZhy{}10年}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{10\PYZhy{}15年}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{15\PYZhy{}20年}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{20\PYZhy{}30年}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{30年以上}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\PY{n}{labels} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{0\PYZhy{}5 years}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{5\PYZhy{}10 years}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{10\PYZhy{}15 years}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{15\PYZhy{}20 years}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{20\PYZhy{}30 years}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{30 years and above}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
 
 \PY{c+c1}{\PYZsh{} 将数据分组到区间}
 \PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Group}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{cut}\PY{p}{(}\PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year\PYZus{}Gap}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{n}{bins}\PY{p}{,} \PY{n}{labels}\PY{o}{=}\PY{n}{labels}\PY{p}{,} \PY{n}{right}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
@@ -2095,9 +2095,9 @@ Year 2008 2012 2016      2020      2024
 \PY{n}{wedges}\PY{p}{,} \PY{n}{texts}\PY{p}{,} \PY{n}{autotexts} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{pie}\PY{p}{(}\PY{n}{sizes}\PY{p}{,} \PY{n}{colors}\PY{o}{=}\PY{n}{colors}\PY{p}{,} \PY{n}{autopct}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+si}{\PYZpc{}1.1f}\PY{l+s+si}{\PYZpc{}\PYZpc{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{startangle}\PY{o}{=}\PY{l+m+mi}{140}\PY{p}{,} \PY{n}{textprops}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fontsize}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{12}\PY{p}{\PYZcb{}}\PY{p}{)}
 
 \PY{c+c1}{\PYZsh{} 添加图例（色块+标签），放置在右侧}
-\PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{wedges}\PY{p}{,} \PY{n}{labels}\PY{p}{,} \PY{n}{title}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{间隔年数区间}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{loc}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{center left}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{bbox\PYZus{}to\PYZus{}anchor}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{wedges}\PY{p}{,} \PY{n}{labels}\PY{p}{,} \PY{n}{title}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Interval of years apart}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{loc}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{center left}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{bbox\PYZus{}to\PYZus{}anchor}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
 
-\PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{运动员第一次参加奥运会和最后一次参加奥运会之间的间隔年数比例图}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{16}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{A bar chart showing the ratio of the number of years between an athlete}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{s first and last participation in the Olympic Games.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{16}\PY{p}{)}
 \PY{n}{plt}\PY{o}{.}\PY{n}{axis}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{equal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}  \PY{c+c1}{\PYZsh{} 确保饼图是圆形}
 \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
@@ -2113,7 +2113,7 @@ Year 2008 2012 2016      2020      2024
     \paragraph{参加时间跨度为0-15年的运动员中连续参加的比例}\label{ux53c2ux52a0ux65f6ux95f4ux8de8ux5ea6ux4e3a0-15ux5e74ux7684ux8fd0ux52a8ux5458ux4e2dux8fdeux7eedux53c2ux52a0ux7684ux6bd4ux4f8b}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{67}{\boxspacing}
+\prompt{In}{incolor}{51}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} 合并时间跨度和连续届数数据}
 \PY{n}{athlete\PYZus{}gaps}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generated}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{athlete\PYZus{}gaps.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
@@ -2146,7 +2146,7 @@ Year 2008 2012 2016      2020      2024
     \paragraph{数据可视化}\label{ux6570ux636eux53efux89c6ux5316}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{68}{\boxspacing}
+\prompt{In}{incolor}{52}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} 导入必要的库}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{plt}
@@ -2167,7 +2167,7 @@ Year 2008 2012 2016      2020      2024
 \PY{c+c1}{\PYZsh{} startangle=90 表示从90度（即正上方）开始绘制}
 
 \PY{c+c1}{\PYZsh{} 添加标题}
-\PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{参加时间跨度为0\PYZhy{}15年的运动员中连续参加的比例}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{The proportion of athletes who have participated continuously among those with a participation time span of 0 to 15 years.}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 
 \PY{c+c1}{\PYZsh{} 显示图形}
 \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
@@ -2196,7 +2196,7 @@ Year 2008 2012 2016      2020      2024
 \end{itemize}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{69}{\boxspacing}
+\prompt{In}{incolor}{53}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{first\PYZus{}percentage} \PY{o}{=} \PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{/}\PY{p}{(}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{+}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{+}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{+}\PY{n}{group\PYZus{}percentages}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{o}{*}\PY{l+m+mi}{100}
 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{一个参加了一次奥运会的运动员参加下一次奥运会的可能为}\PY{l+s+si}{\PYZob{}}\PY{n}{first\PYZus{}percentage}\PY{+w}{ }\PY{l+s+si}{:}\PY{l+s+s1}{ .2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
@@ -2221,7 +2221,7 @@ Year 2008 2012 2016      2020      2024
     \subsubsection{直接预测（超参数优化）}\label{ux76f4ux63a5ux9884ux6d4bux8d85ux53c2ux6570ux4f18ux5316}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{70}{\boxspacing}
+\prompt{In}{incolor}{54}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{numpy}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{np}
@@ -2480,16 +2480,6 @@ Silver Medals Model Evaluation:
 MSE: 1.8287626291987034
 Bronze Medals Model Evaluation:
 MSE: 2.185780634244944
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-c:\textbackslash{}Users\textbackslash{}Ziqi\textbackslash{}Documents\textbackslash{}Python\textbackslash{}2025-MCM-C\textbackslash{}new\_env\textbackslash{}Lib\textbackslash{}site-
-packages\textbackslash{}numpy\textbackslash{}ma\textbackslash{}core.py:2892: RuntimeWarning: invalid value encountered in
-cast
-  \_data = np.array(data, dtype=dtype, copy=copy,
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
 Total Medals Model Evaluation:
 MSE: 140.75342068015084
 Gold Medals Model Evaluation:
@@ -3762,7 +3752,7 @@ MSE: 16.012281431777485
     \subsubsection{非超参数优化模型}\label{ux975eux8d85ux53c2ux6570ux4f18ux5316ux6a21ux578b}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{71}{\boxspacing}
+\prompt{In}{incolor}{55}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{numpy}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{np}
@@ -3996,7 +3986,7 @@ MSE: 2.185780634244944
     \subsubsection{评估预测区间}\label{ux8bc4ux4f30ux9884ux6d4bux533aux95f4}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{72}{\boxspacing}
+\prompt{In}{incolor}{56}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{math}
 
@@ -4959,7 +4949,7 @@ MSE: 1.140026007704961e-08
     \subsubsection{先验预测}\label{ux5148ux9a8cux9884ux6d4b}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{73}{\boxspacing}
+\prompt{In}{incolor}{57}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{numpy}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{np}
@@ -5266,7 +5256,7 @@ MSE: 2.185780634244944, R2: 0.8524910127837848, MAE: 0.5823690356586569
     \subsubsection{区间合成}\label{ux533aux95f4ux5408ux6210}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{74}{\boxspacing}
+\prompt{In}{incolor}{58}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
 
@@ -5313,7 +5303,7 @@ MSE: 2.185780634244944, R2: 0.8524910127837848, MAE: 0.5823690356586569
 \end{tcolorbox}
 
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{74}{\boxspacing}
+\prompt{Out}{outcolor}{58}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
            NOC  Total\_Predicted  Total\_Lower  Total\_Upper  Gold\_Predicted  \textbackslash{}
 0  Afghanistan                1            1            1               0
@@ -5351,7 +5341,7 @@ MSE: 2.185780634244944, R2: 0.8524910127837848, MAE: 0.5823690356586569
     \subsubsection{国家相比2024年进步或退步}\label{ux56fdux5bb6ux76f8ux6bd42024ux5e74ux8fdbux6b65ux6216ux9000ux6b65}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{75}{\boxspacing}
+\prompt{In}{incolor}{59}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} 读取合并后的CSV文件}
 \PY{n}{merged\PYZus{}file} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Result}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{merged\PYZus{}olympics\PYZus{}medal\PYZus{}predictions.csv}\PY{l+s+s1}{\PYZsq{}}
@@ -5370,7 +5360,7 @@ MSE: 2.185780634244944, R2: 0.8524910127837848, MAE: 0.5823690356586569
 \end{tcolorbox}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{76}{\boxspacing}
+\prompt{In}{incolor}{60}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} 读取合并后的CSV文件}
 \PY{n}{medal\PYZus{}file} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2025\PYZus{}Problem\PYZus{}C\PYZus{}Data}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{summerOly\PYZus{}medal\PYZus{}counts.csv}\PY{l+s+s1}{\PYZsq{}}
@@ -5391,7 +5381,7 @@ MSE: 2.185780634244944, R2: 0.8524910127837848, MAE: 0.5823690356586569
 \end{tcolorbox}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{77}{\boxspacing}
+\prompt{In}{incolor}{61}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
 
@@ -5461,7 +5451,7 @@ MSE: 2.185780634244944, R2: 0.8524910127837848, MAE: 0.5823690356586569
     \subsubsection{预处理}\label{ux9884ux5904ux7406}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{78}{\boxspacing}
+\prompt{In}{incolor}{62}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{re}
@@ -5511,7 +5501,7 @@ MSE: 2.185780634244944, R2: 0.8524910127837848, MAE: 0.5823690356586569
     \end{Verbatim}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{79}{\boxspacing}
+\prompt{In}{incolor}{63}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
 
@@ -5556,7 +5546,7 @@ MSE: 2.185780634244944, R2: 0.8524910127837848, MAE: 0.5823690356586569
     \end{Verbatim}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{80}{\boxspacing}
+\prompt{In}{incolor}{64}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{plt}
@@ -5596,7 +5586,7 @@ MSE: 2.185780634244944, R2: 0.8524910127837848, MAE: 0.5823690356586569
     \subsubsection{线性回归预测}\label{ux7ebfux6027ux56deux5f52ux9884ux6d4b}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{81}{\boxspacing}
+\prompt{In}{incolor}{65}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{numpy}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{np}
@@ -5670,7 +5660,7 @@ MSE: 2.185780634244944, R2: 0.8524910127837848, MAE: 0.5823690356586569
 \end{itemize}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{82}{\boxspacing}
+\prompt{In}{incolor}{66}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} 计算模型的拟合度}
 \PY{n}{r2\PYZus{}medal} \PY{o}{=} \PY{n}{model\PYZus{}medal}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{years}\PY{p}{,} \PY{n}{first\PYZus{}medal\PYZus{}countries}\PY{p}{)}
@@ -5695,7 +5685,7 @@ MSE: 2.185780634244944, R2: 0.8524910127837848, MAE: 0.5823690356586569
 \end{itemize}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{137}{\boxspacing}
+\prompt{In}{incolor}{67}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} 进行预测}
 \PY{n}{pre\PYZus{}medal} \PY{o}{=} \PY{n}{model\PYZus{}medal}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{years}\PY{p}{)}
@@ -5735,7 +5725,7 @@ MSE: 2.185780634244944, R2: 0.8524910127837848, MAE: 0.5823690356586569
     \subsubsection{评估可能性}\label{ux8bc4ux4f30ux53efux80fdux6027}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{135}{\boxspacing}
+\prompt{In}{incolor}{68}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{numpy}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{np}
@@ -5818,8 +5808,8 @@ MSE: 2.185780634244944, R2: 0.8524910127837848, MAE: 0.5823690356586569
 Dep. Variable:                      y   R-squared:                       0.025
 Model:                            OLS   Adj. R-squared:                 -0.010
 Method:                 Least Squares   F-statistic:                    0.7110
-Date:                Tue, 28 Jan 2025   Prob (F-statistic):              0.406
-Time:                        02:34:37   Log-Likelihood:                -79.692
+Date:                  周二, 28 1月 2025   Prob (F-statistic):              0.406
+Time:                        07:42:02   Log-Likelihood:                -79.692
 No. Observations:                  30   AIC:                             163.4
 Df Residuals:                      28   BIC:                             166.2
 Df Model:                           1
@@ -5846,8 +5836,8 @@ strong multicollinearity or other numerical problems.
 Dep. Variable:                      y   R-squared:                       0.015
 Model:                            OLS   Adj. R-squared:                 -0.020
 Method:                 Least Squares   F-statistic:                    0.4312
-Date:                Tue, 28 Jan 2025   Prob (F-statistic):              0.517
-Time:                        02:34:37   Log-Likelihood:                -78.874
+Date:                  周二, 28 1月 2025   Prob (F-statistic):              0.517
+Time:                        07:42:02   Log-Likelihood:                -78.874
 No. Observations:                  30   AIC:                             161.7
 Df Residuals:                      28   BIC:                             164.5
 Df Model:                           1
@@ -5902,7 +5892,7 @@ strong multicollinearity or other numerical problems.
     \paragraph{预处理}\label{ux9884ux5904ux7406}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{69}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
 
@@ -5951,43 +5941,22 @@ strong multicollinearity or other numerical problems.
 \end{Verbatim}
 \end{tcolorbox}
 
-    \begin{Verbatim}[commandchars=\\\{\}, frame=single, framerule=2mm, rulecolor=\color{outerrorbackground}]
-\textcolor{ansi-red-intense}{\textbf{---------------------------------------------------------------------------}}
-\textcolor{ansi-red-intense}{\textbf{KeyError}}                                  Traceback (most recent call last)
-Cell \textcolor{ansi-green-intense}{\textbf{In[245], line 38}}
-\textcolor{ansi-green}{     35} medal\_counts[\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{'}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{Total}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{'}] \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=} medal\_counts[[\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{'}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{Gold}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{'}, \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{'}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{Silver}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{'}, \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{'}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{Bronze}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{'}]]\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}sum(axis\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{1})
-\textcolor{ansi-green}{     37} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{95,135,135}}{\# 重新排列列的顺序}
-\textcolor{ansi-green-intense}{\textbf{---> 38}} medal\_counts \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=} \setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{medal\_counts\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{[\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{[\strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{NOC\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{ \strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{Sport\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{Year\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{ \strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{Gold\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{ \strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{Silver\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{ \strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{Bronze\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{ \strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{Total\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{'\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{]\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{]\strut}
-\textcolor{ansi-green}{     40} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{95,135,135}}{\# 保存结果到CSV文件}
-\textcolor{ansi-green}{     41} medal\_counts\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}to\_csv(\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{'}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{Generated2}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,95,0}}{\textbf{\textbackslash{}\textbackslash{}}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{medal\_counts.csv}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{'}, index\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{False}})
-
-File \textcolor{ansi-green-intense}{\textbf{c:\textbackslash{}Users\textbackslash{}Ziqi\textbackslash{}Documents\textbackslash{}Python\textbackslash{}2025-MCM-C\textbackslash{}new\_env\textbackslash{}Lib\textbackslash{}site-packages\textbackslash{}pandas\textbackslash{}core\textbackslash{}frame.py:4108}}, in \textcolor{ansi-cyan}{DataFrame.\_\_getitem\_\_}\textcolor{ansi-blue-intense}{\textbf{(self, key)}}
-\textcolor{ansi-green}{   4106}     \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{if}} is\_iterator(key):
-\textcolor{ansi-green}{   4107}         key \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{list}(key)
-\textcolor{ansi-green-intense}{\textbf{-> 4108}}     indexer \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{self\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{.\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{columns\strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{.\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{\_get\_indexer\_strict\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{(\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{key\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{ \strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{"\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{columns\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{"\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{)\strut}[\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{1}]
-\textcolor{ansi-green}{   4110} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{95,135,135}}{\# take() does not accept boolean indexers}
-\textcolor{ansi-green}{   4111} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{if}} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{getattr}(indexer, \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{"}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{dtype}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{"}, \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{None}}) \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{==} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{bool}:
-
-File \textcolor{ansi-green-intense}{\textbf{c:\textbackslash{}Users\textbackslash{}Ziqi\textbackslash{}Documents\textbackslash{}Python\textbackslash{}2025-MCM-C\textbackslash{}new\_env\textbackslash{}Lib\textbackslash{}site-packages\textbackslash{}pandas\textbackslash{}core\textbackslash{}indexes\textbackslash{}base.py:6200}}, in \textcolor{ansi-cyan}{Index.\_get\_indexer\_strict}\textcolor{ansi-blue-intense}{\textbf{(self, key, axis\_name)}}
-\textcolor{ansi-green}{   6197} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{else}}:
-\textcolor{ansi-green}{   6198}     keyarr, indexer, new\_indexer \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{self}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}\_reindex\_non\_unique(keyarr)
-\textcolor{ansi-green-intense}{\textbf{-> 6200}} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{self\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{.\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{\_raise\_if\_missing\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{(\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{keyarr\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{ \strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{indexer\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{ \strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{axis\_name\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{)\strut}
-\textcolor{ansi-green}{   6202} keyarr \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{self}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}take(indexer)
-\textcolor{ansi-green}{   6203} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{if}} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{isinstance}(key, Index):
-\textcolor{ansi-green}{   6204}     \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{95,135,135}}{\# GH 42790 - Preserve name from an Index}
-
-File \textcolor{ansi-green-intense}{\textbf{c:\textbackslash{}Users\textbackslash{}Ziqi\textbackslash{}Documents\textbackslash{}Python\textbackslash{}2025-MCM-C\textbackslash{}new\_env\textbackslash{}Lib\textbackslash{}site-packages\textbackslash{}pandas\textbackslash{}core\textbackslash{}indexes\textbackslash{}base.py:6252}}, in \textcolor{ansi-cyan}{Index.\_raise\_if\_missing}\textcolor{ansi-blue-intense}{\textbf{(self, key, indexer, axis\_name)}}
-\textcolor{ansi-green}{   6249}     \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{raise}} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{215,95,95}}{\textbf{KeyError}}(\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{f}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{"}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{None of [}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,95,135}}{\textbf{\{}}key\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,95,135}}{\textbf{\}}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{] are in the [}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,95,135}}{\textbf{\{}}axis\_name\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,95,135}}{\textbf{\}}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{]}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{"})
-\textcolor{ansi-green}{   6251} not\_found \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{=} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{list}(ensure\_index(key)[missing\_mask\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}nonzero()[\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{0}]]\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}unique())
-\textcolor{ansi-green-intense}{\textbf{-> 6252}} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{raise}} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{215,95,95}}{\textbf{KeyError}}(\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{f}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{"}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,95,135}}{\textbf{\{}}not\_found\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,95,135}}{\textbf{\}}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{ not in index}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,0}}{"})
-
-\textcolor{ansi-red-intense}{\textbf{KeyError}}: "['Year'] not in index"
-    \end{Verbatim}
-
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{69}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+Medal\_Type  NOC                  Sport  Gold  Silver  Bronze  Total
+0           AFG              Taekwondo     0       0       2      2
+1           AHO                Sailing     0       1       0      1
+2           AIN                 Rowing     0       1       0      1
+3           AIN                 Tennis     0       2       0      2
+4           AIN  Trampoline Gymnastics     1       1       0      2
+\end{Verbatim}
+\end{tcolorbox}
+        
     \subsubsection{得出优势项目}\label{ux5f97ux51faux4f18ux52bfux9879ux76ee}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{162}{\boxspacing}
+\prompt{In}{incolor}{70}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
 
@@ -6047,7 +6016,7 @@ File \textcolor{ansi-green-intense}{\textbf{c:\textbackslash{}Users\textbackslas
     \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-C:\textbackslash{}Users\textbackslash{}Ziqi\textbackslash{}AppData\textbackslash{}Local\textbackslash{}Temp\textbackslash{}ipykernel\_20880\textbackslash{}3729593612.py:31:
+C:\textbackslash{}Users\textbackslash{}Ziqi\textbackslash{}AppData\textbackslash{}Local\textbackslash{}Temp\textbackslash{}ipykernel\_30472\textbackslash{}3729593612.py:31:
 DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns.
 This behavior is deprecated, and in a future version of pandas the grouping
 columns will be excluded from the operation. Either pass `include\_groups=False`
@@ -6069,7 +6038,7 @@ to silence this warning.
 \end{itemize}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{244}{\boxspacing}
+\prompt{In}{incolor}{71}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} 导入必要的库}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
@@ -6172,7 +6141,7 @@ Dep. Variable:                  Total   R-squared:                       0.942
 Model:                            OLS   Adj. R-squared:                  0.942
 Method:                 Least Squares   F-statistic:                     7701.
 Date:                  周二, 28 1月 2025   Prob (F-statistic):               0.00
-Time:                        06:12:02   Log-Likelihood:                -4405.0
+Time:                        07:42:02   Log-Likelihood:                -4405.0
 No. Observations:                1435   AIC:                             8818.
 Df Residuals:                    1431   BIC:                             8839.
 Df Model:                           3
@@ -6224,7 +6193,7 @@ Is\_Host系数的均值: 1.01
     \subsubsection{预处理}\label{ux9884ux5904ux7406}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{247}{\boxspacing}
+\prompt{In}{incolor}{72}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
 
@@ -6276,7 +6245,7 @@ Medal  NOC      Sport  Year  Gold  Silver  Bronze  Total
 Transformer模型}\label{lstm-transformerux6a21ux578b}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{73}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{numpy}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{np}
@@ -6373,92 +6342,239 @@ Transformer模型}\label{lstm-transformerux6a21ux578b}
             \PY{k}{if} \PY{n}{index} \PY{o}{\PYZhy{}} \PY{l+m+mi}{5} \PY{o}{\PYZlt{}} \PY{l+m+mi}{0}\PY{p}{:}
                 \PY{k}{continue}  \PY{c+c1}{\PYZsh{} 跳过索引超出范围的情况}
             \PY{k}{if} \PY{n}{Y\PYZus{}pred}\PY{p}{[}\PY{n}{index} \PY{o}{\PYZhy{}} \PY{l+m+mi}{5}\PY{p}{]} \PY{o}{\PYZgt{}} \PY{n}{Y\PYZus{}true}\PY{p}{[}\PY{n}{index} \PY{o}{\PYZhy{}} \PY{l+m+mi}{5}\PY{p}{]}\PY{p}{:}
-                \PY{n}{anomaly\PYZus{}type} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{下降}\PY{l+s+s1}{\PYZsq{}}
+                \PY{n}{anomaly\PYZus{}type} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Down}\PY{l+s+s1}{\PYZsq{}}
             \PY{k}{else}\PY{p}{:}
-                \PY{n}{anomaly\PYZus{}type} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{上升}\PY{l+s+s1}{\PYZsq{}}
+                \PY{n}{anomaly\PYZus{}type} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Up}\PY{l+s+s1}{\PYZsq{}}
             \PY{n}{results}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{n}{country}\PY{p}{,} \PY{n}{sport}\PY{p}{,} \PY{n}{year}\PY{p}{,} \PY{n}{anomaly\PYZus{}type}\PY{p}{)}\PY{p}{)}
 
 \PY{c+c1}{\PYZsh{} 5. 输出结果}
-\PY{n}{results\PYZus{}df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{results}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{国家}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{项目}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{年份}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{异常类型}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+\PY{n}{results\PYZus{}df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{results}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NOC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sports}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Time}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Type}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
 \PY{n+nb}{print}\PY{p}{(}\PY{n}{results\PYZus{}df}\PY{p}{)}
+\PY{n}{result\PYZus{}df}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Result2}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{exception\PYZus{}country.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 153ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 202ms/step
-WARNING:tensorflow:5 out of the last 5 calls to <function
-TensorFlowTrainer.make\_predict\_function.<locals>.one\_step\_on\_data\_distributed at
-0x0000018E0A42EC00> triggered tf.function retracing. Tracing is expensive and
-the excessive number of tracings could be due to (1) creating @tf.function
-repeatedly in a loop, (2) passing tensors with different shapes, (3) passing
-Python objects instead of tensors. For (1), please define your @tf.function
-outside of the loop. For (2), @tf.function has reduce\_retracing=True option that
-can avoid unnecessary retracing. For (3), please refer to
-https://www.tensorflow.org/guide/function\#controlling\_retracing and
-https://www.tensorflow.org/api\_docs/python/tf/function for  more details.
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 173ms/step
-WARNING:tensorflow:6 out of the last 6 calls to <function
-TensorFlowTrainer.make\_predict\_function.<locals>.one\_step\_on\_data\_distributed at
-0x0000018E10E33100> triggered tf.function retracing. Tracing is expensive and
-the excessive number of tracings could be due to (1) creating @tf.function
-repeatedly in a loop, (2) passing tensors with different shapes, (3) passing
-Python objects instead of tensors. For (1), please define your @tf.function
-outside of the loop. For (2), @tf.function has reduce\_retracing=True option that
-can avoid unnecessary retracing. For (3), please refer to
-https://www.tensorflow.org/guide/function\#controlling\_retracing and
-https://www.tensorflow.org/api\_docs/python/tf/function for  more details.
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 153ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 150ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 162ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 155ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 152ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 158ms/step
 \textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 169ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 164ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 155ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 155ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 154ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 162ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 159ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 153ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 157ms/step
 \textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 156ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 163ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 166ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 155ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 164ms/step
 \textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 161ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 155ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 152ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 156ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 151ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 155ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 153ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 154ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 151ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 152ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 277ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 166ms/step
 \textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 163ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 155ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 278ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 158ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 150ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 154ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 153ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 280ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 153ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 150ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 173ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 160ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 172ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 161ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 186ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 159ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 170ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 162ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 171ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 163ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 161ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 242ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 274ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 259ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 281ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 292ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 277ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 305ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 294ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 267ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 276ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 275ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 274ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 289ms/step
 \textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 149ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 152ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 154ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 156ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 148ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 312ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 290ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 157ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 277ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 289ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 270ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 246ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 275ms/step
 \textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 280ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 165ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 166ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 165ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 166ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{1s} 1s/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 153ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 267ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 272ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 269ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 269ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 266ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 268ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 278ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 267ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 251ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 275ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 275ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 272ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 276ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 269ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 280ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 259ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 279ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 277ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 260ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 274ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 271ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 271ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 272ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 276ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 271ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 277ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 271ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 272ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 280ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 280ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 272ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 283ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 281ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 280ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 273ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 286ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 296ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 277ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 280ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 270ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 279ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 282ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 294ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 267ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 275ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 278ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 269ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 269ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 265ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 278ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 268ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 273ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 220ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 275ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 276ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 274ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 271ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 289ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 282ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 269ms/step
 \textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 153ms/step
 \textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 152ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 155ms/step
-\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 152ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 171ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 164ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 154ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 160ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 164ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 156ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 154ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 163ms/step
 \textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 158ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 165ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 165ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 171ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 163ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 165ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 154ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 155ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 161ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 153ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 158ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 172ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 170ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 153ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 182ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 156ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 159ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 165ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 163ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 158ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 156ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 162ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 159ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 156ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 172ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 159ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 162ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 172ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 163ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 158ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 169ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 158ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 177ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 164ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 172ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 167ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 161ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 160ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 158ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 166ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 155ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 172ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 155ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 156ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 162ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 161ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 157ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 167ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 160ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 168ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 153ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 160ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 158ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 159ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 178ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 166ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 169ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 166ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 166ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 169ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 169ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 157ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 173ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 161ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 164ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 164ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 159ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 168ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 158ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 159ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 172ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 160ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 160ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 154ms/step
+\textbf{1/1} \textcolor{ansi-green}{━━━━━━━━━━━━━━━━━━━━} \textbf{0s} 161ms/step
+    NOC         Sports  Time  Type
+0   AUS       Swimming   242  Down
+1   AUS        Cycling   232  Down
+2   BRA      Athletics   645  Down
+3   CAN      Athletics   859    Up
+4   CAN         Rowing   933    Up
+..  {\ldots}            {\ldots}   {\ldots}   {\ldots}
+65  USA        Sailing  6434  Down
+66  USA         Rowing  6356    Up
+67  USA      Wrestling  6396  Down
+68  USA         Boxing  6397  Down
+69  USA  Equestrianism  6506    Up
+
+[70 rows x 4 columns]
     \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{74}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{results\PYZus{}df}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Result2}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s1}{exception\PYZus{}country.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{itemize}
+\tightlist
+\item
+  在诸如郎平、贝拉·卡罗利这样的伟大教练进出某国时，产生了明显的影响。
+\end{itemize}
 
 
     % Add a bibliography block to the postdoc
